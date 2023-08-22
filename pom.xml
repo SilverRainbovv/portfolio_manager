@@ -20,6 +20,9 @@
     <lombok.version>1.18.28</lombok.version>
     <hibernate.version>6.2.7.Final</hibernate.version>
     <postgresql.driver.version>42.6.0</postgresql.driver.version>
+    <spring.version>6.0.11</spring.version>
+    <assertj.version>3.24.2</assertj.version>
+    <h2.version>2.2.220</h2.version>
 
 <!--    MAVEN PLUGIN VERSIONS-->
     <clean.plugin.version>3.3.1</clean.plugin.version>
@@ -46,6 +49,18 @@
       <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+<!--    <dependency>-->
+<!--      <groupId>org.springframework</groupId>-->
+<!--      <artifactId>spring-core</artifactId>-->
+<!--      <version>${spring.version}</version>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -63,6 +78,11 @@
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>${postgresql.driver.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${h2.version}</version>
     </dependency>
 
   </dependencies>
