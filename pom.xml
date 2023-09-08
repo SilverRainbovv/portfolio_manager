@@ -4,6 +4,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.1.2</version>
+  </parent>
+
   <groupId>com.didenko</groupId>
   <artifactId>portfolio-manager</artifactId>
   <version>1.0-SNAPSHOT</version>
@@ -14,15 +20,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>18</maven.compiler.source>
     <maven.compiler.target>18</maven.compiler.target>
-
-<!--    DEPENDENCY VERSIONS-->
-    <junit.jupiter.version>5.10.0</junit.jupiter.version>
-    <lombok.version>1.18.28</lombok.version>
-    <hibernate.version>6.2.7.Final</hibernate.version>
-    <postgresql.driver.version>42.6.0</postgresql.driver.version>
-    <spring.version>6.0.11</spring.version>
-    <assertj.version>3.24.2</assertj.version>
-    <h2.version>2.2.220</h2.version>
 
 <!--    MAVEN PLUGIN VERSIONS-->
     <clean.plugin.version>3.3.1</clean.plugin.version>
@@ -37,52 +34,29 @@
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>${junit.jupiter.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <version>${junit.jupiter.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.assertj</groupId>
-      <artifactId>assertj-core</artifactId>
-      <version>${assertj.version}</version>
-      <scope>test</scope>
-    </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>org.springframework</groupId>-->
-<!--      <artifactId>spring-core</artifactId>-->
-<!--      <version>${spring.version}</version>-->
-<!--    </dependency>-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.liquibase</groupId>
+      <artifactId>liquibase-core</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>${lombok.version}</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>${hibernate.version}</version>
-    </dependency>
-    <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
-      <version>${postgresql.driver.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>${h2.version}</version>
     </dependency>
 
   </dependencies>
@@ -90,6 +64,10 @@
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>${clean.plugin.version}</version>

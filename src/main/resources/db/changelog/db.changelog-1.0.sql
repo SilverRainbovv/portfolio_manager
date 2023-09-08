@@ -1,15 +1,13 @@
-DROP TABLE IF EXISTS asset_trade;
-DROP TABLE IF EXISTS asset;
-DROP TABLE IF EXISTS portfolio;
-DROP TABLE IF EXISTS user_info;
-DROP TABLE IF EXISTS users;
+--liquibase formatted sql
 
+--changeset didenko:1
 CREATE TABLE users(
                       id BIGSERIAL PRIMARY KEY ,
                       email VARCHAR(64) UNIQUE NOT NULL ,
                       password VARCHAR(64) NOT NULL
 );
 
+--changeset didenko:2
 CREATE TABLE user_info(
                           id BIGINT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE ,
                           firstname VARCHAR(64),
@@ -17,11 +15,13 @@ CREATE TABLE user_info(
                           birth_date DATE
 );
 
+--changeset didenko:3
 CREATE TABLE portfolio(
                           id BIGSERIAL PRIMARY KEY ,
                           user_id BIGINT REFERENCES users(id) ON DELETE CASCADE NOT NULL
 );
 
+--changeset didenko:4
 CREATE TABLE asset(
                       id BIGSERIAL PRIMARY KEY ,
                       portfolio_id BIGINT REFERENCES users(id) ON DELETE CASCADE NOT NULL ,
@@ -29,6 +29,7 @@ CREATE TABLE asset(
                       comments VARCHAR(512)
 );
 
+--changeset didenko:5
 CREATE TABLE asset_trade(
                             asset_id BIGINT PRIMARY KEY REFERENCES asset(id) ON DELETE CASCADE ,
                             position_direction VARCHAR(16) NOT NULL ,
@@ -38,13 +39,3 @@ CREATE TABLE asset_trade(
                             open_date TIMESTAMP WITH TIME ZONE NOT NULL ,
                             close_date TIMESTAMP WITH TIME ZONE NOT NULL
 )
-
-
-
-
-
-
-
-
-
-
