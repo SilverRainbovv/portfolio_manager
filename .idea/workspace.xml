@@ -4,22 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add basic dao layer implementation">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/configuration/ApplicationConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-1.0.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-master.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/didenko/dao/RepositoryTestDataImporter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/didenko/dao/UserRepositoryTest.java" afterDir="false" />
+    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add liquibase">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/Asset.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/AssetTrade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/Portfolio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/UserInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/ApplicationRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/dao/BaseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/dao/BaseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/dao/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/dao/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/util/HibernateUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/didenko/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/didenko/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/ApplicationRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/ApplicationRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/configuration/ApplicationConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/configuration/ApplicationConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/dao/BaseRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/dao/Repository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/dao/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/dao/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-1.0.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-1.0.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/didenko/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/didenko/dao/RepositoryTestDataImporter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/didenko/dao/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/didenko/dao/UserRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +30,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -69,6 +70,9 @@
     &quot;DatabaseDriversLRU&quot;: [
       &quot;postgresql&quot;
     ],
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;PostgreSQL&quot;
+    ],
     &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
       &quot;PostgreSQL&quot;
     ]
@@ -92,12 +96,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ApplicationRunner">
-    <configuration name="ApplicationRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.didenko.ApplicationRunner" />
+    <configuration name="ApplicationConfiguration" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.didenko.configuration.ApplicationConfiguration" />
       <module name="portfolio-manager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.didenko.*" />
+          <option name="PATTERN" value="com.didenko.configuration.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,22 +109,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="portfolio-manager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.didenko.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.didenko" />
-      <option name="MAIN_CLASS_NAME" value="com.didenko.AppTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRepositoryTest.findById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="portfolio-manager" />
       <extension name="coverage">
         <pattern>
@@ -130,7 +119,24 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.didenko.dao" />
       <option name="MAIN_CLASS_NAME" value="com.didenko.dao.UserRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="findById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest.getById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="portfolio-manager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.didenko.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.didenko.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.didenko.dao.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="getById" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -167,10 +173,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.ApplicationRunner" />
+        <item itemvalue="JUnit.UserRepositoryTest.findById" />
+        <item itemvalue="JUnit.UserRepositoryTest.getById" />
+        <item itemvalue="Application.ApplicationConfiguration" />
         <item itemvalue="JUnit.UserRepositoryTest.save" />
-        <item itemvalue="Application.ApplicationRunner" />
-        <item itemvalue="JUnit.UserRepositoryTest" />
-        <item itemvalue="JUnit.AppTest" />
       </list>
     </recent_temporary>
   </component>
@@ -187,7 +193,8 @@
       <workItem from="1692725745198" duration="340000" />
       <workItem from="1692809970907" duration="2572000" />
       <workItem from="1692985199757" duration="1155000" />
-      <workItem from="1694194650319" duration="1762000" />
+      <workItem from="1694194650319" duration="4624000" />
+      <workItem from="1694268422853" duration="8346000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -203,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692726078156</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add liquibase">
+      <created>1694196797857</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1694196797857</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,15 +237,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial project and dependencies setup" />
     <MESSAGE value="add basic dao layer implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="add basic dao layer implementation" />
+    <MESSAGE value="add liquibase" />
+    <option name="LAST_COMMIT_MESSAGE" value="add liquibase" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/didenko/dao/UserRepositoryTest.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="6" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/didenko/ApplicationRunner.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

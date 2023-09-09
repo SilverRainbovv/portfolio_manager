@@ -1,15 +1,12 @@
 package com.didenko.dao;
 
 import com.didenko.entity.User;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
-
-public class UserRepository extends BaseRepository<Long, User> {
-
-    public UserRepository() {
-        super(User.class);
-    }
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findById(Long id);
 }
