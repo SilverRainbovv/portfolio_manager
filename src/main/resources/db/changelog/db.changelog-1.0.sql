@@ -29,7 +29,7 @@ CREATE TABLE portfolio
 CREATE TABLE asset
 (
     id           BIGSERIAL PRIMARY KEY,
-    portfolio_id BIGINT REFERENCES users (id) ON DELETE CASCADE NOT NULL,
+    portfolio_id BIGINT REFERENCES portfolio (id) ON DELETE CASCADE NOT NULL,
     name         VARCHAR(64)                                    NOT NULL,
     comments     VARCHAR(512)
 );
@@ -42,7 +42,7 @@ CREATE TABLE asset_trade
     position_direction VARCHAR(16)              NOT NULL,
     quantity           DECIMAL(2)               NOT NULL,
     open_price         DECIMAL(5)               NOT NULL,
-    close_price        DECIMAL(5)               NOT NULL,
+    close_price        DECIMAL(5) ,
     open_date          TIMESTAMP WITH TIME ZONE NOT NULL,
-    close_date         TIMESTAMP WITH TIME ZONE NOT NULL
+    close_date         TIMESTAMP WITH TIME ZONE
 )
