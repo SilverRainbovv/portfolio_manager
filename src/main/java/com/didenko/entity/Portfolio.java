@@ -5,8 +5,8 @@ import lombok.*;
 
 import java.util.List;
 
-@ToString(exclude = "user")
-@EqualsAndHashCode(exclude = "user")
+@ToString(exclude = {"user", "assets"})
+@EqualsAndHashCode(exclude = {"user", "assets"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
