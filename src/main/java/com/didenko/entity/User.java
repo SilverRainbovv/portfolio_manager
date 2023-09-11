@@ -23,6 +23,9 @@ public class User {
 
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private UserInfo userInfo;
 

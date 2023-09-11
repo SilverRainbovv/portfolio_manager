@@ -1,10 +1,8 @@
 package com.didenko;
 
-import com.didenko.dao.UserRepository;
-import com.didenko.entity.UserInfo;
+import com.didenko.repository.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 @SpringBootApplication
 public class ApplicationRunner
@@ -13,7 +11,5 @@ public class ApplicationRunner
     {
       var context = SpringApplication.run(ApplicationRunner.class, args);
 
-      var userRepository = context.getBean("userRepository", UserRepository.class);
-        System.out.println();
     }
 }
