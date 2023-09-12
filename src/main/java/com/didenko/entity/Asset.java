@@ -6,8 +6,8 @@ import lombok.*;
 
 import java.util.List;
 
-@ToString(exclude = {"portfolio", "trades"})
-@EqualsAndHashCode(exclude = {"portfolio", "trades"})
+@ToString(exclude = {"portfolio"})
+@EqualsAndHashCode(exclude = {"portfolio"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -28,6 +28,6 @@ public class Asset {
     private String comments;
 
     @OneToMany(mappedBy = "asset")
-    private List<AssetTrade> trades;
+    private List<AssetTransaction> transaction;
 
 }

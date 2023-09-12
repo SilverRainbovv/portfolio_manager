@@ -27,12 +27,12 @@ public class UserController {
 
     @GetMapping("/{id}")
     public String findById(Model model, @PathVariable("id") Long id) {
-        var portfolios = portfolioService.getByUserId(id);
+        var portfolios = portfolioService.getByUserId(id).stream().limit(4);
 
         return userService.findById(id)
                 .map(user -> {
                     model.addAttribute("user", user);
-                    model.addAttribute("userPortfolios", portfolios);
+                    model.addAttribute("portfolios", portfolios);
                     return "user/userPage";
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));

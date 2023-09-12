@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Direction</th>
+                <th>Quantity</th>
+                <th>Open</th>
+                <th>Close</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="asset : ${assets}">
+                <td th:text="${asset.name}"></td>
+                <td th:text="${asset.direction}"></td>
+                <td th:if="${asset.direction == 'LONG'}" th:text="${asset.longQuantity}">quantity</td>
+                <td th:if="${asset.direction == 'SHORT'}" th:text="${asset.shortQuantity}">quantity</td>
+                <td th:if="${asset.direction == 'LONG'}" th:text="${asset.longOpenPrice}">open</td>
+                <td th:if="${asset.direction == 'SHORT'}" th:text="${asset.shortOpenPrice}">open</td>
+                <td th:if="${asset.direction == 'LONG'}" th:text="${asset.longClosePrice}">close</td>
+                <td th:if="${asset.direction == 'SHORT'}" th:text="${asset.shortClosePrice}">close</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

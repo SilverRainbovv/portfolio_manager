@@ -31,14 +31,15 @@ CREATE TABLE asset
     id           BIGSERIAL PRIMARY KEY,
     portfolio_id BIGINT REFERENCES portfolio (id) ON DELETE CASCADE NOT NULL,
     name         VARCHAR(64)                                    NOT NULL,
-    comments     VARCHAR(512)
+    comments     VARCHAR(512),
+    UNIQUE (portfolio_id, name)
 );
 
 --changeset didenko:5
-CREATE TABLE asset_trade
+CREATE TABLE asset_transaction
 (
     id                 BIGSERIAL PRIMARY KEY,
-    asset_id           BIGINT REFERENCES asset (id) ON DELETE CASCADE,
+    asset_id           BIGINT REFERENCES asset (id) ON DELETE CASCADE  NOT NULL,
     position_direction VARCHAR(16)              NOT NULL,
     quantity           DECIMAL(2)               NOT NULL,
     open_price         DECIMAL(5)               NOT NULL,

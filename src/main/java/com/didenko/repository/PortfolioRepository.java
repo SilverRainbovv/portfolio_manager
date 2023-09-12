@@ -13,6 +13,6 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, Long> {
     @Query("select p from Portfolio p " +
             "join p.user u " +
             "where u.id = :userId")
-    public List<Portfolio> findByUserId(Long userId);
+    List<Portfolio> findByUserId(Long userId);
 
 }

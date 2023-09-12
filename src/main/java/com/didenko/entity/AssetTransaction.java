@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 @Entity
-public class AssetTrade {
+public class AssetTransaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +21,9 @@ public class AssetTrade {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Asset asset;
+
+    @Enumerated(EnumType.STRING)
+    private PositionDirection positionDirection;
 
     private BigDecimal quantity;
 

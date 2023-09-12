@@ -17,7 +17,10 @@ public class PortfolioReadDtoMapper implements Mapper<Portfolio, PortfolioReadDt
         @Override
         public PortfolioReadDto mapFrom(Portfolio object) {
 
-            List<String> assetNames = assetRepository.getAssetsByPortfolioId(object.getId())
+            var assets = assetRepository.getAllByPortfolioId(object.getId());
+
+
+            List<String> assetNames = assetRepository.getAllByPortfolioId(object.getId())
                     .stream().map(Asset::getName).toList();
 
             return PortfolioReadDto.builder()
