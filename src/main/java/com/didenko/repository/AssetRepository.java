@@ -10,7 +10,6 @@ import java.util.List;
 @Repository
 public interface AssetRepository extends JpaRepository<Asset, Long> {
 
-
     List<Asset> getAllByPortfolioId(Long id);
 
 }

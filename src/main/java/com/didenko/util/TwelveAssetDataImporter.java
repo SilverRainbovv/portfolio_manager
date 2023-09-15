@@ -1,10 +1,12 @@
 package com.didenko.util;
 
-import com.didenko.asset.AssetData;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -16,11 +18,7 @@ public class TwelveAssetDataImporter implements AssetDataImporter{
     private final String apiKey;
 
     @Override
-    public AssetData getAssetData(String assetName) {
-        AssetData assetData = new AssetData();
-        assetData.setName(assetName);
-        JSONObject data;
-
+    public BigDecimal getAssetPrice(String assetName) {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://twelve-data1.p.rapidapi.com/price?symbol=" + assetName))
                 .header("X-RapidAPI-Key", apiKey)
@@ -30,12 +28,10 @@ public class TwelveAssetDataImporter implements AssetDataImporter{
         HttpResponse<String> response = null;
         try {
             response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-            data = new JSONObject(response.body());
-            assetData.setPrice(data.getDouble("price"));
+            JSONObject data = new JSONObject(response.body());
+            return new BigDecimal(data.getString("price"));
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-
-        return assetData;
     }
 }

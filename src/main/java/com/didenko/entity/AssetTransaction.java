@@ -35,4 +35,9 @@ public class AssetTransaction {
 
     private LocalDateTime closeDate;
 
+    public void setAsset(Asset asset){
+        this.asset = asset;
+        asset.addTransaction(this);
+    }
+
 }

@@ -1,9 +1,10 @@
 package com.didenko.util;
 
-import com.didenko.asset.AssetData;
+import java.math.BigDecimal;
+import java.util.Optional;
 
 public interface AssetDataImporter {
 
-    AssetData getAssetData(String assetName);
+    BigDecimal getAssetPrice(String assetName);
 
 }

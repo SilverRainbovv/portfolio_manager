@@ -4,6 +4,7 @@ package com.didenko.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @ToString(exclude = {"portfolio"})
@@ -25,9 +26,16 @@ public class Asset {
 
     private String name;
 
+    @Enumerated(EnumType.STRING)
+    private AssetType assetType;
+
     private String comments;
 
-    @OneToMany(mappedBy = "asset")
-    private List<AssetTransaction> transaction;
+    @Builder.Default
+    @OneToMany(mappedBy = "asset", fetch = FetchType.LAZY)
+    private List<AssetTransaction> transactions = new ArrayList<>();
 
+    public void addTransaction(AssetTransaction transaction){
+        transactions.add(transaction);
+    }
 }

@@ -25,17 +25,12 @@ public class PortfolioController {
     private final AssetTransactionService assetTransactionService;
 
     @GetMapping("/{id}")
-    public String findById(Model model, @PathVariable("id") Long id){
-        var portfolio = portfolioService.getByUserId(id);
-        if (portfolio.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
+    public String findById(Model model, @PathVariable("id") Long portfolioId){
 
-        var portfolioAssets = assetService.findByPortfolioId(id);
+        var portfolioAssets = assetService.findByPortfolioId(portfolioId);
 
-//        model.addAttribute("direction", PositionDirection.values());
         model.addAttribute("assets", portfolioAssets);
-        model.addAttribute("portfolioInfo", portfolio);
+        model.addAttribute("portfolioId", portfolioId);
 
         return "/portfolio/portfolioPage";
     }

@@ -3,21 +3,26 @@ package com.didenko.dto;
 import lombok.Builder;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 @Builder
 public class AssetTransactionReadDto {
 
     private String positionDirection;
 
-    private String quantity;
+    private BigDecimal quantity;
 
-    private String openPrice;
+    private BigDecimal openPrice;
 
-    private String closePrice;
+    private BigDecimal closePrice;
 
     private String openDate;
 
     private String closeDate;
 
+    private BigDecimal currentPrice;
+
+    private BigDecimal profit;
 
 }

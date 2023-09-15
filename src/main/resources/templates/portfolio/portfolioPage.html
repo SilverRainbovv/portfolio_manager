@@ -7,7 +7,8 @@
     <script type="text/javascript" th:src="@{/js/myScript.js}"></script>
 </head>
 <body>
-<!--<a th:href="/asset/addAsset"><button type="button">Add new asset</button></a>-->
+<a th:href="@{/transaction/transaction}"><button type="button">Add new transaction</button></a>
+<a th:href="@{'/transaction/transactions?portfolioId=' + ${portfolioId}}"><button type="button">View all transactions</button></a>
     <table>
         <caption>Open positions</caption>
         <thead>
@@ -16,19 +17,21 @@
                 <th>Direction</th>
                 <th>Quantity</th>
                 <th>Open</th>
-                <th>Close</th>
+                <th>Current</th>
+                <th>Profit</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="asset : ${assets}">
-                <td th:text="${asset.name}"></td>
-                <td th:text="${asset.direction}"></td>
+                <td th:text="${asset.name}">name</td>
+                <td th:text="${asset.direction}">direction</td>
                 <td th:if="${asset.direction == 'LONG'}" th:text="${asset.longQuantity}">quantity</td>
                 <td th:if="${asset.direction == 'SHORT'}" th:text="${asset.shortQuantity}">quantity</td>
-                <td th:if="${asset.direction == 'LONG'}" th:text="${asset.longOpenPrice}">open</td>
-                <td th:if="${asset.direction == 'SHORT'}" th:text="${asset.shortOpenPrice}">open</td>
-                <td th:if="${asset.direction == 'LONG'}" th:text="${asset.longClosePrice}">close</td>
-                <td th:if="${asset.direction == 'SHORT'}" th:text="${asset.shortClosePrice}">close</td>
+                <td th:if="${asset.direction == 'LONG'}" th:text="${asset.longOpenPrice}">longOpen</td>
+                <td th:if="${asset.direction == 'SHORT'}" th:text="${asset.shortOpenPrice}">shortOpen</td>
+                <td th:text="${asset.currentPrice}">current</td>
+                <td th:if="${asset.direction == 'LONG'}" th:text="${asset.longProfit}">longProfit</td>
+                <td th:if="${asset.direction == 'SHORT'}" th:text="${asset.shortProfit}">shortProfit</td>
             </tr>
         </tbody>
     </table>

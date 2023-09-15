@@ -20,57 +20,57 @@ VALUES
     (7, 4), (8, 4),
     (9, 5), (10, 5);
 
-INSERT INTO asset (id, portfolio_id, name, comments)
+INSERT INTO asset (id, portfolio_id, asset_type, name, comments)
 VALUES
     -- Portfolio 1
-    (1, 1, 'AAPL', 'Tech company'),
-    (2, 1, 'MSFT', 'Software company'),
-    (3, 1, 'AMZN', 'E-commerce giant'),
+    (1, 1, 'STOCK', 'AAPL', 'Tech company'),
+    (2, 1, 'STOCK', 'MSFT', 'Software company'),
+    (3, 1, 'STOCK', 'AMZN', 'E-commerce giant'),
 
    -- Portfolio 2
-    (4, 2, 'GOOGL', 'Parent company of Google'),
-    (5, 2, 'TSLA', 'Electric vehicle manufacturer'),
-    (6, 2, 'FB', 'Social media company'),
+    (4, 2, 'STOCK', 'GOOGL', 'Parent company of Google'),
+    (5, 2, 'STOCK', 'TSLA', 'Electric vehicle manufacturer'),
+    (6, 2, 'STOCK', 'FB', 'Social media company'),
 
     -- Portfolio 3
-    (7, 3, 'JNJ', 'Pharmaceutical company'),
-    (8, 3, 'PG', 'Consumer goods company'),
-    (9, 3, 'DIS', 'Entertainment conglomerate'),
+    (7, 3, 'STOCK', 'JNJ', 'Pharmaceutical company'),
+    (8, 3, 'STOCK', 'PG', 'Consumer goods company'),
+    (9, 3, 'STOCK', 'DIS', 'Entertainment conglomerate'),
 
     -- Portfolio 4
-    (10, 4, 'NFLX', 'Streaming service provider'),
-    (11, 4, 'AAPL', 'Tech company'),
-    (12, 4, 'GOOGL', 'Parent company of Google'),
+    (10, 4, 'STOCK', 'NFLX', 'Streaming service provider'),
+    (11, 4, 'STOCK', 'AAPL', 'Tech company'),
+    (12, 4, 'STOCK', 'GOOGL', 'Parent company of Google'),
 
     -- Portfolio 5
-    (13, 5, 'TSLA', 'Electric vehicle manufacturer'),
-    (14, 5, 'AMZN', 'E-commerce giant'),
-    (15, 5, 'JNJ', 'Pharmaceutical company'),
+    (13, 5, 'STOCK', 'TSLA', 'Electric vehicle manufacturer'),
+    (14, 5, 'STOCK', 'AMZN', 'E-commerce giant'),
+    (15, 5, 'STOCK', 'JNJ', 'Pharmaceutical company'),
 
     -- Portfolio 6
-    (16, 6, 'MSFT', 'Software company'),
-    (17, 6, 'AAPL', 'Tech company'),
-    (18, 6, 'FB', 'Social media company'),
+    (16, 6, 'STOCK', 'MSFT', 'Software company'),
+    (17, 6, 'STOCK', 'AAPL', 'Tech company'),
+    (18, 6, 'STOCK', 'FB', 'Social media company'),
 
     -- Portfolio 7
-    (19, 7, 'PG', 'Consumer goods company'),
-    (20, 7, 'DIS', 'Entertainment conglomerate'),
-    (21, 7, 'NFLX', 'Streaming service provider'),
+    (19, 7, 'STOCK', 'PG', 'Consumer goods company'),
+    (20, 7, 'STOCK', 'DIS', 'Entertainment conglomerate'),
+    (21, 7, 'STOCK', 'NFLX', 'Streaming service provider'),
 
     -- Portfolio 8
-    (22, 8, 'TSLA', 'Electric vehicle manufacturer'),
-    (23, 8, 'MSFT', 'Software company'),
-    (24, 8, 'JNJ', 'Pharmaceutical company'),
+    (22, 8, 'STOCK', 'TSLA', 'Electric vehicle manufacturer'),
+    (23, 8, 'STOCK', 'MSFT', 'Software company'),
+    (24, 8, 'STOCK', 'JNJ', 'Pharmaceutical company'),
 
     -- Portfolio 9
-    (25, 9, 'AAPL', 'Tech company'),
-    (26, 9, 'GOOGL', 'Parent company of Google'),
-    (27, 9, 'PG', 'Consumer goods company'),
+    (25, 9, 'STOCK', 'AAPL', 'Tech company'),
+    (26, 9, 'STOCK', 'GOOGL', 'Parent company of Google'),
+    (27, 9, 'STOCK', 'PG', 'Consumer goods company'),
 
     -- Portfolio 10
-    (28, 10, 'DIS', 'Entertainment conglomerate'),
-    (29, 10, 'AMZN', 'E-commerce giant'),
-    (30, 10, 'NFLX', 'Streaming service provider');
+    (28, 10, 'STOCK', 'DIS', 'Entertainment conglomerate'),
+    (29, 10, 'STOCK', 'AMZN', 'E-commerce giant'),
+    (30, 10, 'STOCK', 'NFLX', 'Streaming service provider');
 
 INSERT INTO asset_transaction (asset_id, position_direction, quantity, open_price, close_price, open_date, close_date)
 VALUES

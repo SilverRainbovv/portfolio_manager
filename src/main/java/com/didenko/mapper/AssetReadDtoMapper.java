@@ -1,10 +1,11 @@
 package com.didenko.mapper;
 
-import com.didenko.dto.AssetSumReadDto;
+import com.didenko.dto.AssetReadDto;
 import com.didenko.entity.Asset;
 import com.didenko.entity.AssetTransaction;
 import com.didenko.entity.PositionDirection;
 import com.didenko.repository.AssetTransactionRepository;
+import com.didenko.util.TwelveAssetDataImporter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -19,12 +20,12 @@ import static com.didenko.entity.PositionDirection.*;
 
 @RequiredArgsConstructor
 @Component
-public class AssetReadDtoMapper implements Mapper<Asset, AssetSumReadDto> {
+public class AssetReadDtoMapper implements Mapper<Asset, AssetReadDto> {
 
     private final AssetTransactionRepository assetTransactionRepository;
 
     @Override
-    public AssetSumReadDto mapFrom(Asset object) {
+    public AssetReadDto mapFrom(Asset object) {
         var transactionsGroupedByDirection = assetTransactionRepository
                 .findAllByAssetId(object.getId()).stream()
                 .collect(Collectors.groupingBy(AssetTransaction::getPositionDirection));
@@ -34,40 +35,36 @@ public class AssetReadDtoMapper implements Mapper<Asset, AssetSumReadDto> {
 
         var totalLongOpenPrice = getOpenPriceByDirection(LONG, transactionsGroupedByDirection);
         var totalShortOpenPrice = getOpenPriceByDirection(SHORT, transactionsGroupedByDirection);
-        var totalLongClosePrice = getClosePriceByDirection(LONG, transactionsGroupedByDirection);
-        var totalShortClosePrice = getClosePriceByDirection(SHORT, transactionsGroupedByDirection);
 
-        return AssetSumReadDto.builder()
+        return AssetReadDto.builder()
                 .name(object.getName())
-//                .direction()
+                .assetType(object.getAssetType().name())
                 .comments(object.getComments())
                 .longQuantity(totalLongQuantity)
                 .shortQuantity(totalShortQuantity)
                 .longOpenPrice(totalLongOpenPrice)
                 .shortOpenPrice(totalShortOpenPrice)
-                .longClosePrice(totalLongClosePrice)
-                .shortClosePrice(totalShortClosePrice)
                 .build();
     }
 
-    private String getTotalQuantityByDirection(PositionDirection direction,
+    private BigDecimal getTotalQuantityByDirection(PositionDirection direction,
                                                Map<PositionDirection, List<AssetTransaction>> transactionMap) {
         return transactionMap.get(direction).stream()
                 .map(AssetTransaction::getQuantity)
-                .reduce(BigDecimal.ZERO, BigDecimal::add).toPlainString();
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    private String getOpenPriceByDirection(PositionDirection direction,
+    private BigDecimal getOpenPriceByDirection(PositionDirection direction,
                                            Map<PositionDirection, List<AssetTransaction>> transactionMap) {
         var sorted = transactionMap.get(direction);
         var size = sorted.size();
         var priceSum = sorted.stream()
                 .map(AssetTransaction::getOpenPrice)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-        return priceSum.divide(new BigDecimal(size), RoundingMode.UNNECESSARY).toPlainString();
+        return priceSum.divide(new BigDecimal(size), RoundingMode.UNNECESSARY);
     }
 
-    private String getClosePriceByDirection(PositionDirection direction,
+    private BigDecimal getClosePriceByDirection(PositionDirection direction,
                                             Map<PositionDirection, List<AssetTransaction>> transactionMap) {
         var sorted = transactionMap.get(direction);
         var size = sorted.size();
@@ -75,6 +72,6 @@ public class AssetReadDtoMapper implements Mapper<Asset, AssetSumReadDto> {
                 .map(AssetTransaction::getClosePrice)
                 .filter(Objects::nonNull)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-        return priceSum.divide(new BigDecimal(size), RoundingMode.UNNECESSARY).toPlainString();
+        return priceSum.divide(new BigDecimal(size), RoundingMode.UNNECESSARY);
     }
 }
