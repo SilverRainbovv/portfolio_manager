@@ -3,24 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>User page</title>
+    <link th:href="@{/css/userPage.css}" rel="stylesheet">
+<!--   below for reference only-->
+    <link href="../../static/css/userPage.css" rel="stylesheet">
 </head>
 <body>
+<div id="userInfo">
 Email: <div th:text="${user.email}"/><br>
 Name: <div th:text="|${user.firstname} ${user.lastname}|"/><br>
 Birthdate: <div th:text="${user.birthDate}"/><br>
+</div>
     <table>
         <thead>
         <tr>
             <th>Portfolio name</th>
             <th>Description</th>
             <th>Assets</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
             <tr th:each="portfolio : ${portfolios}">
-                <td><a th:href="@{'/portfolio/' + ${portfolio.id}}"><div th:text="${portfolio.name}"></div></a></td>
+                <td th:text="${portfolio.name}">Portfolio name</td>
                 <td th:text="${portfolio.description}">Description Placeholder</td>
                 <td th:text="${portfolio.assets.toString()}">Assets Placeholder</td>
+                <td><a th:href="@{'/portfolio/' + ${portfolio.id}}"><button type="button">View</button></a></td>
             </tr>
         </tbody>
     </table>

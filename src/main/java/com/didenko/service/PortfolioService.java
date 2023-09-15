@@ -4,6 +4,7 @@ import com.didenko.dto.PortfolioReadDto;
 import com.didenko.entity.Portfolio;
 import com.didenko.mapper.PortfolioReadDtoMapper;
 import com.didenko.repository.PortfolioRepository;
+import com.didenko.util.TwelveAssetDataImporter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -5,7 +5,9 @@ import com.didenko.entity.PositionDirection;
 import com.didenko.mapper.AssetReadDtoMapper;
 import com.didenko.repository.AssetRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 

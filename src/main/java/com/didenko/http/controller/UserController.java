@@ -27,7 +27,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public String findById(Model model, @PathVariable("id") Long id) {
-        var portfolios = portfolioService.getByUserId(id).stream().limit(4);
+        var portfolios = portfolioService.getByUserId(id).stream();/*.limit(4);*/
 
         return userService.findById(id)
                 .map(user -> {

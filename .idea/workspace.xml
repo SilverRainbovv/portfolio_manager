@@ -5,28 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add columns to portfolio table, start user page creation">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/dto/AssetTransactionReadDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/PositionDirection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/PortfolioController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetReadDtoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetTransactionReadDtoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetTransactionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetTransactionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/portfolio/portfolioPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/didenko/repository/AssetRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/asset/AssetData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/util/AssetDataImporter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/util/TwelveAssetDataImporter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/portfolioPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/userPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/didenko/repository/TestStock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/dto/AssetReadDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/dto/AssetSumReadDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/entity/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/Asset.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/entity/AssetTrade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/AssetTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/configuration/ApplicationConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/configuration/ApplicationConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/PortfolioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/PortfolioController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioReadDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioReadDtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/PortfolioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/PortfolioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-1.0.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-1.0.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-1.1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-1.1.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/service/PortfolioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/PortfolioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/portfolio/portfolioPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/portfolio/portfolioPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/userPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/userPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/test-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/test-data.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,15 +32,18 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="HTML File" />
-        <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -71,6 +69,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/JAVA/portfolio-manager/src/main/resources/db/changelog&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -99,9 +98,11 @@
       <recent name="E:\JAVA\portfolio-manager\src\test\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\JAVA\portfolio-manager\src\main\resources\templates" />
-      <recent name="E:\JAVA\portfolio-manager\src\main\resources\templates\user" />
       <recent name="E:\JAVA\portfolio-manager\src\main\resources" />
+      <recent name="E:\JAVA\portfolio-manager\src\main\resources\static\js" />
+      <recent name="E:\JAVA\portfolio-manager\src\main\resources\static" />
+      <recent name="E:\JAVA\portfolio-manager\src\main\resources\static\css" />
+      <recent name="E:\JAVA\portfolio-manager\src\main\resources\templates" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -144,6 +145,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestStock.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="portfolio-manager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.didenko.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.didenko.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.didenko.repository.TestStock" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="portfolio-manager" />
       <extension name="coverage">
@@ -155,22 +172,6 @@
       <option name="PACKAGE_NAME" value="com.didenko.repository" />
       <option name="MAIN_CLASS_NAME" value="com.didenko.repository.UserRepositoryTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserRepositoryTest.findById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="portfolio-manager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.didenko.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.didenko.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.didenko.repository.UserRepositoryTest" />
-      <option name="METHOD_NAME" value="findById" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -191,14 +192,17 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.ApplicationRunner" />
+        <item itemvalue="JUnit.TestStock.test" />
         <item itemvalue="JUnit.AssetRepositoryTest.getAllByPortfolioId" />
         <item itemvalue="JUnit.PortfolioRepositoryTest.findByUserId" />
         <item itemvalue="JUnit.UserRepositoryTest" />
-        <item itemvalue="JUnit.UserRepositoryTest.findById" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpringBootOptions">
+    <option name="showAdditionalConfigNotification" value="false" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="" />
@@ -216,6 +220,11 @@
       <workItem from="1694366252505" duration="8601000" />
       <workItem from="1694434094859" duration="14307000" />
       <workItem from="1694517053305" duration="14832000" />
+      <workItem from="1694680713679" duration="3431000" />
+      <workItem from="1694715903915" duration="70000" />
+      <workItem from="1694716709962" duration="967000" />
+      <workItem from="1694718557813" duration="4084000" />
+      <workItem from="1694762409220" duration="12132000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -302,9 +311,9 @@
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/didenko/http/controller/PortfolioController.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="15" />
+          <url>file://$PROJECT_DIR$/src/test/java/com/didenko/repository/TestStock.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
