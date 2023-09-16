@@ -1,6 +1,3 @@
-twelve-data-api:
-  keyValue: d92758f004msh5504ab76a522473p1e07abjsn189616a816bd
-
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/portfolio_manager
