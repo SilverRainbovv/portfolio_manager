@@ -5,6 +5,29 @@
     <title>Transactions</title>
 </head>
 <body>
-
+    <table>
+        <thead>
+        <tr>
+            <th>Asset</th>
+            <th>L/S</th>
+            <th>Open time</th>
+            <th>Open price</th>
+            <th>Volume</th>
+            <th>Price</th>
+            <th>Profit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="transaction : ${transactions}">
+            <td th:text="${transaction.assetName}">Asset</td>
+            <td th:text="${transaction.positionDirection}">L/S</td>
+            <td th:text="${transaction.openDate}">Open time</td>
+            <td th:text="${transaction.openPrice}">Open price</td>
+            <td th:text="${transaction.volume}">Volume</td>
+            <td th:text="${transaction.closePrice} ? ${transaction.closePrice} : ${transaction.currentPrice}">Price</td>
+            <th th:text="${transaction.profit}">Profit</th>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>

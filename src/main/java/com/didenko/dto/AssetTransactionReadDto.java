@@ -9,9 +9,11 @@ import java.math.BigDecimal;
 @Builder
 public class AssetTransactionReadDto {
 
+    private String assetName;
+
     private String positionDirection;
 
-    private BigDecimal quantity;
+    private BigDecimal volume;
 
     private BigDecimal openPrice;
 
