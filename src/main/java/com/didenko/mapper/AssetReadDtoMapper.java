@@ -5,7 +5,6 @@ import com.didenko.entity.Asset;
 import com.didenko.entity.AssetTransaction;
 import com.didenko.entity.PositionDirection;
 import com.didenko.repository.AssetTransactionRepository;
-import com.didenko.util.TwelveAssetDataImporter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
