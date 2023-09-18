@@ -13,6 +13,8 @@ public class AssetTransactionReadDto {
 
     private String positionDirection;
 
+    private String state;
+
     private BigDecimal volume;
 
     private BigDecimal openPrice;

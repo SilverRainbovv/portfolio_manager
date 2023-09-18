@@ -23,6 +23,9 @@ public class AssetTransaction {
     private Asset asset;
 
     @Enumerated(EnumType.STRING)
+    private TransactionState state;
+
+    @Enumerated(EnumType.STRING)
     private PositionDirection positionDirection;
 
     private BigDecimal quantity;

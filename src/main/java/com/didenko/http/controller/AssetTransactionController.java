@@ -1,5 +1,7 @@
 package com.didenko.http.controller;
 
+import com.didenko.dto.AssetTransactionReadDto;
+import com.didenko.entity.TransactionState;
 import com.didenko.service.AssetTransactionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,7 +22,10 @@ public class AssetTransactionController {
     public String findByPortfolioId(Model model, @RequestParam(value = "portfolioId") Long portfolioId){
 
         var transactions = transactionService.findByPortfolioId(portfolioId);
-        model.addAttribute("transactions", transactions);
+        model.addAttribute("openTransactions", transactions.stream()
+                .filter(transaction -> transaction.getState().equals(TransactionState.OPEN.name())).toList());
+        model.addAttribute("closedTransactions", transactions.stream()
+                .filter(transaction -> transaction.getState().equals(TransactionState.CLOSED.name())).toList());
 
         //TODO create page with portfolio transactions
 

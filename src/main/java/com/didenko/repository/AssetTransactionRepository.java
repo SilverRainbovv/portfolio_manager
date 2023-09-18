@@ -14,7 +14,8 @@ public interface AssetTransactionRepository extends JpaRepository<AssetTransacti
     @Query("select t from AssetTransaction t " +
             "join t.asset a " +
             "join a.portfolio p " +
-            "where p.id = :portfolioId"
+            "where p.id = :portfolioId "
+//            + "order by t.state DESC , t.asset.name"
     )
     List<AssetTransaction> findAllByPortfolioId(Long portfolioId);
 

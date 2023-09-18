@@ -2,6 +2,8 @@ package com.didenko.mapper;
 
 import com.didenko.dto.AssetTransactionReadDto;
 import com.didenko.entity.AssetTransaction;
+import com.didenko.entity.PositionDirection;
+import com.didenko.entity.TransactionState;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -14,24 +16,26 @@ import static com.didenko.entity.PositionDirection.*;
 public class AssetTransactionReadDtoMapper
        /* implements Mapper<AssetTransaction, AssetTransactionReadDto>*/ {
 
-    public AssetTransactionReadDto mapFrom(AssetTransaction object, BigDecimal price) {
-        var currentPrice = object.getClosePrice() != null
-                ? object.getClosePrice()
-                : price;
+    public AssetTransactionReadDto mapFrom(AssetTransaction object, BigDecimal currentPrice) {
         return AssetTransactionReadDto.builder()
                 .assetName(object.getAsset().getName())
                 .positionDirection(object.getPositionDirection().name())
+                .state(object.getState().name())
                 .volume(object.getQuantity())
                 .openPrice(object.getOpenPrice())
                 .openDate(object.getOpenDate().toString())
                 .closePrice(object.getClosePrice())
                 .closeDate(object.getCloseDate() == null ? null : object.getCloseDate().toString())
                 .currentPrice(currentPrice)
-                .profit(object.getPositionDirection().name().equals(LONG.name())
-                        ? currentPrice.multiply(object.getQuantity())
-                            .subtract(object.getOpenPrice().multiply(object.getQuantity()))
-                        : object.getOpenPrice().multiply(object.getQuantity())
-                            .subtract(currentPrice.multiply(object.getQuantity())))
+                .profit(getProfit(object, currentPrice))
                 .build();
+    }
+    private BigDecimal getProfit(AssetTransaction transaction, BigDecimal currentPrice){
+        var price = transaction.getState().equals(TransactionState.OPEN) ? currentPrice : transaction.getClosePrice();
+        return transaction.getPositionDirection().equals(LONG)
+                ? price.multiply(transaction.getQuantity())
+                .subtract(transaction.getOpenPrice().multiply(transaction.getQuantity()))
+                : transaction.getOpenPrice().multiply(transaction.getQuantity())
+                .subtract(price.multiply(transaction.getQuantity()));
     }
 }

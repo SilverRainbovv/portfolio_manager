@@ -42,6 +42,7 @@ public class AssetService {
         assetSummaryLong.setDirection(PositionDirection.LONG.name());
         assetSummaryLong.setLongQuantity(object.getLongQuantity());
         assetSummaryLong.setLongOpenPrice(object.getLongOpenPrice());
+        assetSummaryLong.setCurrentPrice(object.getCurrentPrice());
         assetSummaryLong.setLongProfit(object.getCurrentPrice().multiply(object.getLongQuantity())
                 .subtract(object.getLongOpenPrice().multiply(object.getLongQuantity())));
 
@@ -49,6 +50,7 @@ public class AssetService {
         assetSummaryShort.setDirection(PositionDirection.SHORT.name());
         assetSummaryShort.setShortQuantity(object.getShortQuantity());
         assetSummaryShort.setShortOpenPrice(object.getShortOpenPrice());
+        assetSummaryShort.setCurrentPrice(object.getCurrentPrice());
         assetSummaryShort.setShortProfit(object.getShortOpenPrice().multiply(object.getShortQuantity())
                 .subtract(object.getCurrentPrice().multiply(object.getShortQuantity())));
 
