@@ -32,7 +32,7 @@ public class Asset {
     private String comments;
 
     @Builder.Default
-    @OneToMany(mappedBy = "asset", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "asset", fetch = FetchType.EAGER)
     private List<AssetTransaction> transactions = new ArrayList<>();
 
     public void addTransaction(AssetTransaction transaction){

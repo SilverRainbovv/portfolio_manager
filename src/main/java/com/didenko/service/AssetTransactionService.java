@@ -2,6 +2,7 @@ package com.didenko.service;
 
 import com.didenko.dto.AssetTransactionReadDto;
 import com.didenko.entity.AssetTransaction;
+import com.didenko.entity.TransactionState;
 import com.didenko.mapper.AssetTransactionReadDtoMapper;
 import com.didenko.repository.AssetTransactionRepository;
 import com.didenko.util.PriceForAssetsRetriever;
@@ -32,6 +33,11 @@ public class AssetTransactionService {
         return setCurrentPriceAndMapToDto(assetTransactions);
     }
 
+    public List<AssetTransactionReadDto> findByPortfolioIdAndTransactionState(Long portfolioId, TransactionState state) {
+        var assetTransactions = transactionRepository.findAllByPortfolioIdAndTransactionState(portfolioId, state);
+
+        return setCurrentPriceAndMapToDto(assetTransactions);
+    }
     private List<AssetTransactionReadDto> setCurrentPriceAndMapToDto(List<AssetTransaction> assetTransactions){
 
         var transactionNamePriceMap = retriever.retrieveForAssetTransactionsList(assetTransactions);

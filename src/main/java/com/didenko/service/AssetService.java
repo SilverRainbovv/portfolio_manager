@@ -2,6 +2,7 @@ package com.didenko.service;
 
 import com.didenko.dto.AssetReadDto;
 import com.didenko.entity.PositionDirection;
+import com.didenko.entity.TransactionState;
 import com.didenko.mapper.AssetReadDtoMapper;
 import com.didenko.repository.AssetRepository;
 import com.didenko.util.AssetDataImporter;
@@ -18,8 +19,8 @@ public class AssetService {
 
     private final AssetRepository assetRepository;
     private final AssetReadDtoMapper assetReadDtoMapper;
-    private final AssetDataImporter assetDataImporter;
     private final PriceForAssetsRetriever priceRetriever;
+
     @Transactional(readOnly = true)
     public List<AssetReadDto> findByPortfolioId(Long portfolioId){
 

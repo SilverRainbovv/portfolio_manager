@@ -9,3 +9,8 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
       ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+

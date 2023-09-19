@@ -15,23 +15,22 @@
             <tr>
                 <th>Name</th>
                 <th>Direction</th>
-                <th>Quantity</th>
-                <th>Open</th>
-                <th>Current</th>
+                <th>Volume</th>
+                <th>Open price</th>
+                <th>Open date</th>
+                <th>Current price</th>
                 <th>Profit</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="asset : ${assets}">
-                <td th:text="${asset.name}">name</td>
-                <td th:text="${asset.direction}">direction</td>
-                <td th:if="${asset.direction == 'LONG'}" th:text="${asset.longQuantity}">quantity</td>
-                <td th:if="${asset.direction == 'SHORT'}" th:text="${asset.shortQuantity}">quantity</td>
-                <td th:if="${asset.direction == 'LONG'}" th:text="${asset.longOpenPrice}">longOpen</td>
-                <td th:if="${asset.direction == 'SHORT'}" th:text="${asset.shortOpenPrice}">shortOpen</td>
-                <td th:text="${asset.currentPrice}">current</td>
-                <td th:if="${asset.direction == 'LONG'}" th:text="${asset.longProfit}">longProfit</td>
-                <td th:if="${asset.direction == 'SHORT'}" th:text="${asset.shortProfit}">shortProfit</td>
+            <tr th:each="position : ${positions}">
+                <td th:text="${position.assetName}">name</td>
+                <td th:text="${position.direction}">direction</td>
+                <td th:text="${position.quantity}">quantity</td>
+                <td th:text="${position.openPrice}">openPrice</td>
+                <td th:text="${position.openDate}">openDate</td>
+                <td th:text="${position.currentPrice}">currentPrice</td>
+                <td th:text="${position.profit}">profit</td>
             </tr>
         </tbody>
     </table>
