@@ -2,9 +2,33 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Transactions</title>
+    <title>New Transaction</title>
 </head>
 <body>
-
+<form th:action="@{/transaction/transaction?(portfolioId=${portfolioId})}" method="post">
+    <label for="assetName">Asset name:
+        <input id="assetName" type="text" name="assetName">
+    </label><br>
+    <div>
+        <label for="assetType">Asset type:</label>
+        <select id="assetType" name="assetType">
+            <option th:each="type : ${assetTypes}"
+                    th:value="${type}"
+                    th:text="${type}">Asset type:
+            </option>
+        </select>
+    </div>
+    <div th:each="direction : ${positionDirections}">
+        <input id="${direction}" type="radio" name="direction" th:value="${direction}">
+        <label th:for="${direction}" th:text="${direction}">Transaction direction:</label>
+    </div>
+    <label for="openPrice">Open price:
+        <input id="openPrice" type="number" name="openPrice">
+    </label><br>
+    <label for="openDate">Open date and time:
+        <input id="openDate" type="datetime-local" name="openDate">
+    </label>
+    <button type="submit">Add transaction</button>
+</form>
 </body>
 </html>

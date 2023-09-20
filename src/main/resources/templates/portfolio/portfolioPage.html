@@ -7,7 +7,7 @@
     <script type="text/javascript" th:src="@{/js/myScript.js}"></script>
 </head>
 <body>
-<a th:href="@{/transaction/transaction}"><button type="button">Add new transaction</button></a>
+<a th:href="@{'/transaction/transaction?portfolioId=' + ${portfolioId}}"><button type="button">Add new transaction</button></a>
 <a th:href="@{'/transaction/transactions?portfolioId=' + ${portfolioId}}"><button type="button">View all transactions</button></a>
     <table>
         <caption>Open positions</caption>
