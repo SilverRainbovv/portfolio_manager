@@ -36,10 +36,12 @@ public class PortfolioController {
         var portfolioTransactions = transactionService
                 .findByPortfolioIdAndTransactionState(portfolioId, TransactionState.OPEN);
 
-        var positions = convertToPositions(portfolioTransactions);
-        positions.sort(Comparator.comparing(PositionDto::getAssetName));
+        if (!portfolioTransactions.isEmpty()) {
+            var positions = convertToPositions(portfolioTransactions);
+            positions.sort(Comparator.comparing(PositionDto::getAssetName));
 
-        model.addAttribute("positions", positions);
+            model.addAttribute("positions", positions);
+        }
 
         model.addAttribute("portfolioId", portfolioId);
 

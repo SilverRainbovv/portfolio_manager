@@ -21,9 +21,12 @@
     <div th:each="direction : ${positionDirections}">
         <input id="${direction}" type="radio" name="direction" th:value="${direction}">
         <label th:for="${direction}" th:text="${direction}">Transaction direction:</label>
-    </div>
+    </div><br>
+    <label for="volume">Volume:
+        <input id="volume" type="number" step="0.00001" name="volume">
+    </label><br>
     <label for="openPrice">Open price:
-        <input id="openPrice" type="number" name="openPrice">
+        <input id="openPrice" type="number" step="0.00001" name="openPrice">
     </label><br>
     <label for="openDate">Open date and time:
         <input id="openDate" type="datetime-local" name="openDate">

@@ -1,5 +1,6 @@
 package com.didenko.http.controller;
 
+import com.didenko.dto.AssetTransactionCreateEditDto;
 import com.didenko.dto.AssetTransactionReadDto;
 import com.didenko.entity.AssetType;
 import com.didenko.entity.PositionDirection;
@@ -42,9 +43,11 @@ public class AssetTransactionController {
     @PostMapping("transaction")
 
 
-    public String create(@RequestParam(value = "portfolioId") Long portfolioId){
+    public String create(@ModelAttribute AssetTransactionCreateEditDto createEditDto,
+                         @RequestParam(value = "portfolioId") Long portfolioId){
 
-    //TODO add transactionCreateDto and creation logic
+        createEditDto.setPortfolioId(portfolioId);
+        transactionService.save(createEditDto);
 
         return "redirect:/portfolio/1";
     }

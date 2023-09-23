@@ -44,8 +44,13 @@ public class TwelveAssetDataImporter implements AssetDataImporter{
 
             while (resultTree.hasNext()){
                 var node = resultTree.next();
-                var key = node.getKey();
-                resultMap.put(key, new BigDecimal(node.getValue().get("price").asText()));
+                if(assetNames.size() == 1){
+                   var price = node.getValue().asText();
+                   resultMap.put(assetNames.get(0),new BigDecimal(price));
+                }else {
+                    var key = node.getKey();
+                    resultMap.put(key, new BigDecimal(node.getValue().get("price").asText()));
+                }
             }
 
             return resultMap;

@@ -1,6 +1,5 @@
 package com.didenko.entity;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
