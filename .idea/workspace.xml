@@ -4,19 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add transaction creation mapping and html page">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/dto/AssetTransactionCreateEditDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetTransactionCreateEditDtoMapper.java" afterDir="false" />
+    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="fix price bug during price reception add new transaction creation logic">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/configuration/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/dto/PortfolioCreateEditDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/dto/UserLoginDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/RegistrationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioCreateEditDtoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/portfolio/portfolioCreatePage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/registration.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/entity/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/Asset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/PortfolioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/PortfolioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetTransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetTransactionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetTransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetTransactionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/util/TwelveAssetDataImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/util/TwelveAssetDataImporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transaction/transaction.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transaction/transaction.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/test-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/test-data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/UserCreateEditDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/UserCreateEditDtoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/UserReadDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/UserReadDtoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/service/PortfolioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/PortfolioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/userPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/userPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/users.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +41,8 @@
         <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="Interface" />
-        <option value="HTML File" />
         <option value="Enum" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -228,7 +239,17 @@
       <workItem from="1695226559075" duration="2298000" />
       <workItem from="1695228885516" duration="4396000" />
       <workItem from="1695366323543" duration="2430000" />
-      <workItem from="1695471800952" duration="9920000" />
+      <workItem from="1695471800952" duration="10594000" />
+      <workItem from="1695572772193" duration="4757000" />
+      <workItem from="1695628874256" duration="1332000" />
+      <workItem from="1695647624372" duration="3213000" />
+      <workItem from="1695718819352" duration="6763000" />
+      <workItem from="1695800187140" duration="3010000" />
+      <workItem from="1695886140133" duration="1052000" />
+      <workItem from="1696259571639" duration="68000" />
+      <workItem from="1696772513643" duration="39000" />
+      <workItem from="1697103334058" duration="3263000" />
+      <workItem from="1697276877936" duration="1292000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -335,7 +356,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695235628574</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fix price bug during price reception add new transaction creation logic">
+      <created>1695488030202</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1695488030202</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,28 +395,21 @@
     <MESSAGE value="change transactions page logic" />
     <MESSAGE value="fix bug with wrong result on portfolio page" />
     <MESSAGE value="add transaction creation mapping and html page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add transaction creation mapping and html page" />
+    <MESSAGE value="fix price bug during price reception add new transaction creation logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix price bug during price reception add new transaction creation logic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/didenko/repository/AssetRepositoryTest.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="11" />
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-crypto/6.1.2/spring-security-crypto-6.1.2-sources.jar!/org/springframework/security/crypto/password/PasswordEncoder.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/didenko/util/PriceForAssetsRetriever.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/didenko/util/PriceForAssetsRetriever.java</url>
-          <line>34</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="31" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/didenko/http/controller/PortfolioController.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

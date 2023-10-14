@@ -1,6 +1,7 @@
 package com.didenko.http.controller;
 
 import com.didenko.dto.AssetTransactionReadDto;
+import com.didenko.dto.PortfolioCreateEditDto;
 import com.didenko.dto.PositionDto;
 import com.didenko.entity.PositionDirection;
 import com.didenko.entity.TransactionState;
@@ -8,11 +9,12 @@ import com.didenko.service.AssetService;
 import com.didenko.service.AssetTransactionService;
 import com.didenko.service.PortfolioService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -29,6 +31,19 @@ public class PortfolioController {
     private final PortfolioService portfolioService;
     private final AssetService assetService;
     private final AssetTransactionService transactionService;
+
+    @GetMapping("/create")
+    public String createPage(){
+        return "/portfolio/portfolioCreatePage";
+    }
+
+    @PostMapping("/create")
+    public String createPortfolio(@ModelAttribute PortfolioCreateEditDto portfolio,
+                                  @AuthenticationPrincipal UserDetails userDetails){
+        portfolio.setUsername(userDetails.getUsername());
+        portfolioService.createPortfolio(portfolio);
+        return "";
+    }
 
     @GetMapping("/{id}")
     public String findById(Model model, @PathVariable("id") Long portfolioId) {

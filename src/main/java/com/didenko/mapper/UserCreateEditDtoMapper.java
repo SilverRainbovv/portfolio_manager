@@ -34,6 +34,6 @@ public class UserCreateEditDtoMapper implements Mapper<UserCreateEditDto, User> 
 
         entity.setEmail(object.getEmail());
         entity.setPassword(object.getPassword());
-        entity.setRole(object.getRole());
+        entity.setRole(Role.USER);
     }
 }

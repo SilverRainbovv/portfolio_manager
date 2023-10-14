@@ -1,25 +1,46 @@
 package com.didenko.service;
 
 import com.didenko.dto.UserCreateEditDto;
+import com.didenko.dto.UserLoginDto;
 import com.didenko.dto.UserReadDto;
 import com.didenko.mapper.UserCreateEditDtoMapper;
 import com.didenko.mapper.UserReadDtoMapper;
 import com.didenko.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+//import org.springframework.security.core.userdetails.User;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final UserReadDtoMapper userReadDtoMapper;
     private final UserCreateEditDtoMapper userCreateEditDtoMapper;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByEmail(username)
+                .map(user -> new User(
+                        user.getEmail(),
+                        user.getPassword(),
+                        Collections.singleton(user.getRole())
+                ))
+                .orElseThrow(() -> new UsernameNotFoundException("Failed to retrieve user: " + username));
+    }
 
     public Optional<UserReadDto> findById(Long id){
         return userRepository.findById(id)
@@ -59,4 +80,17 @@ public class UserService {
                 .orElse(false);
     }
 
+    public Optional<UserReadDto> login(UserLoginDto userLoginDto) {
+        var maybeUser = userRepository.findByEmail(userLoginDto.getEmail());
+        if (maybeUser.isPresent() && maybeUser.get().getPassword().equals(userLoginDto.getPassword())) {
+            return Optional.of(userReadDtoMapper.mapFrom(maybeUser.get()));
+        }
+        return Optional.empty();
+    }
+
+    public Optional<UserReadDto> findByEmail(String email) {
+
+        return userRepository.findByEmail(email)
+                .map(userReadDtoMapper::mapFrom);
+    }
 }

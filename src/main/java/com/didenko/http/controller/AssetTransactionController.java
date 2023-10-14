@@ -41,15 +41,13 @@ public class AssetTransactionController {
     }
 
     @PostMapping("transaction")
-
-
     public String create(@ModelAttribute AssetTransactionCreateEditDto createEditDto,
                          @RequestParam(value = "portfolioId") Long portfolioId){
 
         createEditDto.setPortfolioId(portfolioId);
         transactionService.save(createEditDto);
 
-        return "redirect:/portfolio/1";
+        return "redirect:/portfolio/" + portfolioId;
     }
 
 
