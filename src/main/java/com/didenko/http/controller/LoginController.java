@@ -14,12 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LoginController {
 
-    private final UserService userService;
-
     @GetMapping
     public String loginPage(){
         return "/login";
     }
-
 
 }

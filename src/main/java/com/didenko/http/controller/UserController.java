@@ -1,10 +1,12 @@
 package com.didenko.http.controller;
 
 import com.didenko.dto.UserCreateEditDto;
+import com.didenko.entity.User;
 import com.didenko.service.PortfolioService;
 import com.didenko.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +20,12 @@ public class UserController {
     private final UserService userService;
     private final PortfolioService portfolioService;
 
-//    @GetMapping
-//    public String findAll(Model model){
-//        model.addAttribute("users", userService.findAll());
-//        return "users";
-//    }
+    @GetMapping
+    public String userRedirect(@AuthenticationPrincipal User user){
+
+        return "redirect:/user/" + user.getId();
+    }
+
 
     @GetMapping("/{id}")
     public String findById(Model model, @PathVariable("id") Long id) {

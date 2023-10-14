@@ -5,6 +5,7 @@ import com.didenko.dto.PortfolioCreateEditDto;
 import com.didenko.dto.PositionDto;
 import com.didenko.entity.PositionDirection;
 import com.didenko.entity.TransactionState;
+import com.didenko.entity.User;
 import com.didenko.service.AssetService;
 import com.didenko.service.AssetTransactionService;
 import com.didenko.service.PortfolioService;
@@ -29,7 +30,6 @@ import java.util.stream.Collectors;
 public class PortfolioController {
 
     private final PortfolioService portfolioService;
-    private final AssetService assetService;
     private final AssetTransactionService transactionService;
 
     @GetMapping("/create")
@@ -39,10 +39,10 @@ public class PortfolioController {
 
     @PostMapping("/create")
     public String createPortfolio(@ModelAttribute PortfolioCreateEditDto portfolio,
-                                  @AuthenticationPrincipal UserDetails userDetails){
-        portfolio.setUsername(userDetails.getUsername());
+                                  @AuthenticationPrincipal User userDetails){
+        portfolio.setUser(userDetails);
         portfolioService.createPortfolio(portfolio);
-        return "";
+        return "redirect:/user/" + userDetails.getId();
     }
 
     @GetMapping("/{id}")

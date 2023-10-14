@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -43,7 +44,7 @@ public class AssetTransactionService {
                 findAllByPortfolioIdAndTransactionState(portfolioId, state);
 
         return  assetTransactions.isEmpty()
-                ? null
+                ? new ArrayList<>()
                 : setCurrentPriceAndMapToDto(assetTransactions);
     }
     private List<AssetTransactionReadDto> setCurrentPriceAndMapToDto(List<AssetTransaction> assetTransactions){

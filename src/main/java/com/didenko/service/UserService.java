@@ -3,6 +3,7 @@ package com.didenko.service;
 import com.didenko.dto.UserCreateEditDto;
 import com.didenko.dto.UserLoginDto;
 import com.didenko.dto.UserReadDto;
+import com.didenko.entity.User;
 import com.didenko.mapper.UserCreateEditDtoMapper;
 import com.didenko.mapper.UserReadDtoMapper;
 import com.didenko.repository.UserRepository;
@@ -11,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 //import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.userdetails.UserDetailsService;
 //import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -32,13 +32,8 @@ public class UserService implements UserDetailsService {
     private final UserCreateEditDtoMapper userCreateEditDtoMapper;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public User loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByEmail(username)
-                .map(user -> new User(
-                        user.getEmail(),
-                        user.getPassword(),
-                        Collections.singleton(user.getRole())
-                ))
                 .orElseThrow(() -> new UsernameNotFoundException("Failed to retrieve user: " + username));
     }
 

@@ -3,6 +3,7 @@ package com.didenko.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @ToString(exclude = {"user", "assets"})
@@ -26,5 +27,6 @@ public class Portfolio {
     private User user;
 
     @OneToMany(mappedBy = "portfolio")
-    private List<Asset> assets;
+    @Builder.Default
+    private List<Asset> assets = new ArrayList<>();
 }
