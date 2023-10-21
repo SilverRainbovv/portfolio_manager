@@ -6,13 +6,11 @@ import com.didenko.dto.PositionDto;
 import com.didenko.entity.PositionDirection;
 import com.didenko.entity.TransactionState;
 import com.didenko.entity.User;
-import com.didenko.service.AssetService;
 import com.didenko.service.AssetTransactionService;
 import com.didenko.service.PortfolioService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -46,7 +44,10 @@ public class PortfolioController {
     }
 
     @GetMapping("/{id}")
-    public String findById(Model model, @PathVariable("id") Long portfolioId) {
+    public String findById(Model model, @PathVariable("id") Long portfolioId,
+                           @AuthenticationPrincipal User user) {
+
+        verifyPortfolioBelongsToUser(portfolioId, user);
 
         var portfolioTransactions = transactionService
                 .findByPortfolioIdAndTransactionState(portfolioId, TransactionState.OPEN);
@@ -62,6 +63,13 @@ public class PortfolioController {
 
         return "/portfolio/portfolioPage";
     }
+
+    private void verifyPortfolioBelongsToUser(Long portfolioId, User user) throws AccessDeniedException {
+
+        boolean verified = portfolioService.verifyPortfolioBelongsToUser(portfolioId, user.getId());
+        if (!verified) throw new org.springframework.security.access.AccessDeniedException("403 access denied");
+    }
+
 
     private List<PositionDto> convertToPositions(List<AssetTransactionReadDto> transactions) {
 
@@ -87,7 +95,7 @@ public class PortfolioController {
                             .filter(t -> t.getPositionDirection().equals(PositionDirection.SHORT.name()))
                             .toList();
 
-                    if (longs.size() > 0){
+                    if (!longs.isEmpty()){
                         var longPosition = new PositionDto();
                         longPosition.setAssetName(name);
                         longPosition.setDirection(PositionDirection.LONG.name());
@@ -108,7 +116,7 @@ public class PortfolioController {
 
                         positions.add(longPosition);
                     }
-                    if (shorts.size() > 0){
+                    if (!shorts.isEmpty()){
                         var shortPosition = new PositionDto();
                         shortPosition.setAssetName(name);
                         shortPosition.setDirection(PositionDirection.SHORT.name());

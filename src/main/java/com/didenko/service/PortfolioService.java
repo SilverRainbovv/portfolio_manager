@@ -31,4 +31,8 @@ public class PortfolioService {
                 .map(portfolioReadDtoMapper::mapFrom).toList();
     }
 
+    public boolean verifyPortfolioBelongsToUser(Long portfolioId, Long userId){
+        return portfolioRepository.verifyPortfolioBelongsToUserById(portfolioId, userId).isPresent();
+    }
+
 }

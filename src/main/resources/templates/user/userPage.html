@@ -26,7 +26,7 @@
     </thead>
     <tbody>
     <tr th:each="portfolio : ${portfolios}">
-        <td th:text="${portfolio.name}">Portfolio name</td>2
+        <td th:text="${portfolio.name}">Portfolio name</td>
         <td th:text="${portfolio.description}">Description Placeholder</td>
         <td th:text="${portfolio.assets.toString()}">Assets Placeholder</td>
         <td><a th:href="@{'/portfolio/' + ${portfolio.id}}">

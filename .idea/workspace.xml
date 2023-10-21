@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add basic spring security">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-1.6.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="fix password encryption">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/configuration/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/UserCreateEditDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/UserCreateEditDtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-1.2.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-1.2.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-master.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-master.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/PortfolioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/PortfolioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/PortfolioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/PortfolioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/service/PortfolioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/PortfolioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/portfolio/portfolioPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/portfolio/portfolioPage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +260,7 @@
       <workItem from="1697696252985" duration="1260000" />
       <workItem from="1697722054946" duration="2149000" />
       <workItem from="1697801074712" duration="2232000" />
-      <workItem from="1697876502433" duration="1129000" />
+      <workItem from="1697876502433" duration="3745000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -384,7 +381,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697278861303</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="fix password encryption">
+      <option name="closed" value="true" />
+      <created>1697877820909</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1697877820909</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -418,7 +423,8 @@
     <MESSAGE value="add transaction creation mapping and html page" />
     <MESSAGE value="fix price bug during price reception add new transaction creation logic" />
     <MESSAGE value="add basic spring security" />
-    <option name="LAST_COMMIT_MESSAGE" value="add basic spring security" />
+    <MESSAGE value="fix password encryption" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix password encryption" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

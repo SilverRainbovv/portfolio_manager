@@ -7,32 +7,39 @@
     <script type="text/javascript" th:src="@{/js/myScript.js}"></script>
 </head>
 <body>
-<a th:href="@{'/transaction/transaction?portfolioId=' + ${portfolioId}}"><button type="button">Add new transaction</button></a>
-<a th:href="@{'/transaction/transactions?portfolioId=' + ${portfolioId}}"><button type="button">View all transactions</button></a>
+<a th:href="@{'/transaction/transaction?portfolioId=' + ${portfolioId}}">
+    <button type="button">Add new transaction</button>
+</a>
+<a th:href="@{'/transaction/transactions?portfolioId=' + ${portfolioId}}">
+    <button type="button">View all transactions</button>
+</a>
+<div th:if="${positions == null}">This portfolio is empty</div>
+<div th:if="${positions}">
     <table>
         <caption>Open positions</caption>
         <thead>
-            <tr>
-                <th>Name</th>
-                <th>Direction</th>
-                <th>Volume</th>
-                <th>Open price</th>
-                <th>Open date</th>
-                <th>Current price</th>
-                <th>Profit</th>
-            </tr>
+        <tr>
+            <th>Name</th>
+            <th>Direction</th>
+            <th>Volume</th>
+            <th>Open price</th>
+            <th>Open date</th>
+            <th>Current price</th>
+            <th>Profit</th>
+        </tr>
         </thead>
         <tbody>
-            <tr th:each="position : ${positions}">
-                <td th:text="${position.assetName}">name</td>
-                <td th:text="${position.direction}">direction</td>
-                <td th:text="${position.quantity}">quantity</td>
-                <td th:text="${position.openPrice}">openPrice</td>
-                <td th:text="${position.openDate}">openDate</td>
-                <td th:text="${position.currentPrice}">currentPrice</td>
-                <td th:text="${position.profit}">profit</td>
-            </tr>
+        <tr th:each="position : ${positions}">
+            <td th:text="${position.assetName}">name</td>
+            <td th:text="${position.direction}">direction</td>
+            <td th:text="${position.quantity}">quantity</td>
+            <td th:text="${position.openPrice}">openPrice</td>
+            <td th:text="${position.openDate}">openDate</td>
+            <td th:text="${position.currentPrice}">currentPrice</td>
+            <td th:text="${position.profit}">profit</td>
+        </tr>
         </tbody>
     </table>
+</div>
 </body>
 </html>
