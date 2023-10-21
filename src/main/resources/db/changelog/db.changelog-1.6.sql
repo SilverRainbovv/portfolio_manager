@@ -2,4 +2,4 @@
 
 --changeset didenko:1
 ALTER TABLE users
-    ADD COLUMN role VARCHAR(16) NOT NULL DEFAULT 'USER';
+ALTER COLUMN password TYPE VARCHAR(128);

@@ -4,12 +4,19 @@ import com.didenko.dto.UserCreateEditDto;
 import com.didenko.entity.Role;
 import com.didenko.entity.User;
 import com.didenko.entity.UserInfo;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
+@RequiredArgsConstructor
 @Component
 public class UserCreateEditDtoMapper implements Mapper<UserCreateEditDto, User> {
+
+    private final PasswordEncoder passwordEncoder;
 
     public User mapFrom(UserCreateEditDto object, User entity) {
        copy(object, entity);
@@ -32,8 +39,12 @@ public class UserCreateEditDtoMapper implements Mapper<UserCreateEditDto, User> 
                 .build();
         userInfo.setUser(entity);
 
+        Optional.ofNullable(object.getPassword())
+                .filter(StringUtils::hasText)
+                .map(passwordEncoder::encode)
+                .ifPresent(entity::setPassword);
+
         entity.setEmail(object.getEmail());
-        entity.setPassword(object.getPassword());
         entity.setRole(Role.USER);
     }
 }
