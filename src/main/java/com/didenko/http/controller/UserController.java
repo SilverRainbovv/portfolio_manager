@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/user")
 @RequiredArgsConstructor
@@ -28,16 +30,23 @@ public class UserController {
 
 
     @GetMapping("/{id}")
-    public String findById(Model model, @PathVariable("id") Long id) {
-        var portfolios = portfolioService.getByUserId(id).stream();/*.limit(4);*/
+    public String findById(Model model, @PathVariable("id") Long id, @AuthenticationPrincipal User user) {
+
+        validateUser(id, user.getId());
+
+        var portfolios = portfolioService.getByUserId(id).stream().toList();
 
         return userService.findById(id)
-                .map(user -> {
-                    model.addAttribute("user", user);
+                .map(maybeUser -> {
+                    model.addAttribute("user", maybeUser);
                     model.addAttribute("portfolios", portfolios);
                     return "user/userPage";
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    private void validateUser(Long urlId, Long authenticatedId) {
+        if (!urlId.equals(authenticatedId)) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping
@@ -45,5 +54,4 @@ public class UserController {
 
         System.out.println();
     }
-
 }

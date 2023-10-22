@@ -49,6 +49,8 @@ public class AssetTransactionService {
     }
     private List<AssetTransactionReadDto> setCurrentPriceAndMapToDto(List<AssetTransaction> assetTransactions){
 
+        if (assetTransactions.isEmpty()) return new ArrayList<>();
+
         var transactionNamePriceMap = retriever.retrieveForAssetTransactionsList(assetTransactions);
 
         return assetTransactions.stream()

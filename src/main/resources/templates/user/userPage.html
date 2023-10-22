@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>User page</title>
     <link th:href="@{/css/userPage.css}" rel="stylesheet">
-    <!--   below for reference only-->
-    <link href="../../static/css/userPage.css" rel="stylesheet">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
 </head>
 <body>
+<div th:insert="~{fragment :: header}"></div>
 <div th:text="|Email: ${user.email}|"/>
 <br>
 <div th:text="|Name: ${user.firstname} ${user.lastname}|"/>
@@ -21,6 +21,7 @@
         <th>Portfolio name</th>
         <th>Description</th>
         <th>Assets</th>
+        <th>Profit</th>
         <th></th>
     </tr>
     </thead>
@@ -29,6 +30,7 @@
         <td th:text="${portfolio.name}">Portfolio name</td>
         <td th:text="${portfolio.description}">Description Placeholder</td>
         <td th:text="${portfolio.assets.toString()}">Assets Placeholder</td>
+        <td th:text="${portfolio.profit.toString()}">Profit placeholder</td>
         <td><a th:href="@{'/portfolio/' + ${portfolio.id}}">
             <button type="button">View</button>
         </a></td>
