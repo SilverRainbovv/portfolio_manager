@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>Portfolio</title>
     <link th:href="@{/css/portfolioPage.css}" rel="stylesheet"/>
+    <link th:href="@{/css/header.css}" rel="stylesheet">
     <script type="text/javascript" th:src="@{/js/myScript.js}"></script>
 </head>
 <body>
+<div th:insert="~{fragment :: header}"></div>
 <a th:href="@{'/transaction/transaction?portfolioId=' + ${portfolioId}}">
     <button type="button">Add new transaction</button>
 </a>

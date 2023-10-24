@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>New Transaction</title>
+    <link th:href="@{/css/header.css}" rel="stylesheet">
 </head>
 <body>
+<div th:insert="~{fragment :: header}"></div>
 <form th:action="@{/transaction/transaction?(portfolioId=${portfolioId})}" method="post">
     <label for="assetName">Asset name:
-        <input id="assetName" type="text" name="assetName">
+        <input id="assetName" type="text" name="assetName" th:value="${transaction} ? ${transaction.assetName} : ''">
     </label><br>
     <div>
         <label for="assetType">Asset type:</label>
@@ -19,17 +21,18 @@
         </select>
     </div>
     <div th:each="direction : ${positionDirections}">
-        <input id="${direction}" type="radio" name="direction" th:value="${direction}">
+        <input id="${direction}" type="radio" name="direction" th:value="${direction}"
+            th:checked="${direction.equals(transaction.positionDirection)}">
         <label th:for="${direction}" th:text="${direction}">Transaction direction:</label>
     </div><br>
     <label for="volume">Volume:
-        <input id="volume" type="number" step="0.00001" name="volume">
+        <input id="volume" type="number" step="0.00001" name="volume" th:value="${transaction} ? ${transaction.volume} : ''">
     </label><br>
     <label for="openPrice">Open price:
-        <input id="openPrice" type="number" step="0.00001" name="openPrice">
+        <input id="openPrice" type="number" step="0.00001" name="openPrice" th:value="${transaction} ? ${transaction.openPrice} : ''">
     </label><br>
     <label for="openDate">Open date and time:
-        <input id="openDate" type="datetime-local" name="openDate">
+        <input id="openDate" type="datetime-local" name="openDate" th:value="${transaction} ? ${transaction.openDate} : ''">
     </label>
     <button type="submit">Add transaction</button>
 </form>

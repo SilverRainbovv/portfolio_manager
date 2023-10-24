@@ -1,0 +1,9 @@
+.header-block {
+    border-style: hidden;
+}
+
+.menu > li {
+    display: inline-flex;
+    margin-left: 20px;
+    font-family: 'Quicksand', sans-serif;
+}

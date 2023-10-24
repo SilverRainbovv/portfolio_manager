@@ -1,5 +1,8 @@
 package com.didenko.dto;
 
+import com.didenko.entity.AssetType;
+import com.didenko.entity.PositionDirection;
+import com.didenko.entity.TransactionState;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,11 +12,17 @@ import java.math.BigDecimal;
 @Builder
 public class AssetTransactionReadDto {
 
+    private Long id;
+
+    private Long portfolioId;
+
+    private AssetType assetType;
+
     private String assetName;
 
-    private String positionDirection;
+    private PositionDirection positionDirection;
 
-    private String state;
+    private TransactionState state;
 
     private BigDecimal volume;
 

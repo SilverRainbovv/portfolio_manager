@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -74,4 +75,7 @@ public class AssetTransactionService {
         transactionRepository.save(transaction);
     }
 
+    public Optional<AssetTransactionReadDto> findByTransactionId(Long id) {
+        return transactionRepository.findById(id).map(t -> assetTransactionReadDtoMapper.mapFrom(t, t.getOpenPrice()));
+    }
 }

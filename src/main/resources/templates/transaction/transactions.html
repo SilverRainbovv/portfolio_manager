@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Transactions</title>
+    <link th:href="@{/css/header.css}" rel="stylesheet">
 </head>
 <body>
+<div th:insert="~{fragment :: header}"></div>
     <table>
         <caption>Open Transactions</caption>
         <thead>
@@ -16,6 +18,7 @@
             <th>Volume</th>
             <th>Current Price</th>
             <th>Profit</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -26,7 +29,8 @@
             <td th:text="${transaction.openPrice}">Open price</td>
             <td th:text="${transaction.volume}">Volume</td>
             <td th:text="${transaction.currentPrice}">Price</td>
-            <th th:text="${transaction.profit}">Profit</th>
+            <td th:text="${transaction.profit}">Profit</td>
+            <td><a th:href="@{|/transaction/transaction/${transaction.id}|}">Edit</a></td>
         </tr>
         </tbody>
     </table>

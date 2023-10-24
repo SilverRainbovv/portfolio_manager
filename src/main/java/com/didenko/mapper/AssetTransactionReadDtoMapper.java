@@ -2,7 +2,6 @@ package com.didenko.mapper;
 
 import com.didenko.dto.AssetTransactionReadDto;
 import com.didenko.entity.AssetTransaction;
-import com.didenko.entity.PositionDirection;
 import com.didenko.entity.TransactionState;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -18,9 +17,12 @@ public class AssetTransactionReadDtoMapper
 
     public AssetTransactionReadDto mapFrom(AssetTransaction object, BigDecimal currentPrice) {
         return AssetTransactionReadDto.builder()
+                .id(object.getId())
+                .portfolioId(object.getAsset().getPortfolio().getId())
                 .assetName(object.getAsset().getName())
-                .positionDirection(object.getPositionDirection().name())
-                .state(object.getState().name())
+                .assetType(object.getAsset().getAssetType())
+                .positionDirection(object.getPositionDirection())
+                .state(object.getState())
                 .volume(object.getQuantity())
                 .openPrice(object.getOpenPrice())
                 .openDate(object.getOpenDate().toString())

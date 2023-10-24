@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>New Portfolio</title>
+    <link th:href="@{/css/header.css}" rel="stylesheet">
 </head>
 <body>
-    <form th:action="@{/portfolio/create}" method="post">
-        <label for="name">Portfolio name
-            <input id="name" name="name" type="text" required>
-        </label>
-        <label for="description">Portfolio description
-            <input id="description" name="description" type="text">
-        </label>
-        <button type="submit">Create</button>
-    </form>
+<div th:insert="~{fragment :: header}"></div>
+<form th:action="@{/portfolio/create}" method="post">
+    <label for="name">Portfolio name
+        <input id="name" name="name" type="text" required>
+    </label>
+    <label for="description">Portfolio description
+        <input id="description" name="description" type="text">
+    </label>
+    <button type="submit">Create</button>
+</form>
 </body>
 </html>
