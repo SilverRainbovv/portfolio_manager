@@ -39,7 +39,7 @@ public class AssetTransactionController {
         return "/transaction/transaction";
     }
 
-    @GetMapping("transaction/{id}")
+    @GetMapping("transaction/update/{id}")
     public String edit(Model model, @PathVariable Long id) {
 
         var transaction = transactionService.findByTransactionId(id);
@@ -50,15 +50,26 @@ public class AssetTransactionController {
                 },
                 () -> {throw new ResponseStatusException(HttpStatus.NOT_FOUND);});
 
-        return "/transaction/transaction";
+        return "/transaction/transactionUpdate";
     }
 
     @PostMapping("transaction")
-    public String createEdit(@ModelAttribute AssetTransactionCreateEditDto createEditDto,
+    public String create(@ModelAttribute AssetTransactionCreateEditDto createEditDto,
                          @RequestParam(value = "portfolioId") Long portfolioId){
 
         createEditDto.setPortfolioId(portfolioId);
         transactionService.save(createEditDto);
+
+        return "redirect:/portfolio/" + portfolioId;
+    }
+
+    @PostMapping("transaction/update")
+    public String edit(@ModelAttribute AssetTransactionCreateEditDto createEditDto,
+                       @RequestParam(value = "portfolioId") Long portfolioId,
+                       @RequestParam(value = "transactionId") Long transactionId){
+        createEditDto.setPortfolioId(portfolioId);
+        createEditDto.setId(transactionId);
+        transactionService.update(createEditDto);
 
         return "redirect:/portfolio/" + portfolioId;
     }

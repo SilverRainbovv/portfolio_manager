@@ -8,6 +8,7 @@ import com.didenko.entity.TransactionState;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Component
 public class AssetTransactionCreateEditDtoMapper implements Mapper<AssetTransactionCreateEditDto, AssetTransaction> {
@@ -20,15 +21,21 @@ public class AssetTransactionCreateEditDtoMapper implements Mapper<AssetTransact
                         .id(object.getPortfolioId())
                         .build())
                 .build();
+        BigDecimal closePrice = object.getClosePrice().isEmpty() ? null : new BigDecimal(object.getClosePrice());
+        LocalDateTime closeDate = object.getCloseDate() == null ? null : object.getCloseDate();
         var transaction = AssetTransaction.builder()
+                .id(object.getId())
                 .state(TransactionState.OPEN)
                 .positionDirection(object.getDirection())
                 .quantity(new BigDecimal(object.getVolume()))
                 .openPrice(new BigDecimal(object.getOpenPrice()))
                 .openDate(object.getOpenDate())
+                .closePrice(closePrice)
+                .closeDate(closeDate)
                 .build();
         transaction.setAsset(asset);
 
         return transaction;
     }
+
 }

@@ -78,4 +78,16 @@ public class AssetTransactionService {
     public Optional<AssetTransactionReadDto> findByTransactionId(Long id) {
         return transactionRepository.findById(id).map(t -> assetTransactionReadDtoMapper.mapFrom(t, t.getOpenPrice()));
     }
+
+    @Transactional
+    public void update(AssetTransactionCreateEditDto createEditDto) {
+        AssetTransaction transaction = assetTransactionCreateEditDtoMapper.mapFrom(createEditDto);
+        var volume = transaction.getQuantity();
+        var openPrice = transaction.getOpenPrice();
+        var closePrice = transaction.getClosePrice();
+        var openDate = transaction.getOpenDate();
+        var closeDate = transaction.getCloseDate();
+        var state = closePrice == null ? TransactionState.OPEN : TransactionState.CLOSED;
+        transactionRepository.updateById(transaction.getId(), volume, openPrice, closePrice, openDate, closeDate, state);
+    }
 }

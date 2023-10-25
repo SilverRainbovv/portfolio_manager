@@ -3,11 +3,15 @@ package com.didenko.repository;
 import com.didenko.entity.AssetTransaction;
 import com.didenko.entity.TransactionState;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
-public interface AssetTransactionRepository extends JpaRepository<AssetTransaction, Long> {
+public interface AssetTransactionRepository extends JpaRepository<AssetTransaction, Long>, CrudRepository<AssetTransaction, Long> {
 
     List<AssetTransaction> findAllByAssetId(Long assetId);
 
@@ -23,4 +27,13 @@ public interface AssetTransactionRepository extends JpaRepository<AssetTransacti
             "join a.portfolio p " +
             "where t.state = :state and p.id = :portfolioId")
     List<AssetTransaction> findAllByPortfolioIdAndTransactionState(Long portfolioId, TransactionState state);
+
+    @Modifying
+    @Query("update AssetTransaction t " +
+            "set t.quantity = :volume, t.openPrice = :openPrice, t.openDate = :openDate, " +
+            "t.closePrice = :closePrice, t.closeDate = :closeDate, " +
+            "t.state = :transactionState " +
+            "where t.id = :transactionId")
+    void updateById(Long transactionId, BigDecimal volume, BigDecimal openPrice, BigDecimal closePrice,
+                    LocalDateTime openDate, LocalDateTime closeDate, TransactionState transactionState);
 }

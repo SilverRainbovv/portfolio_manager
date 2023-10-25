@@ -2,16 +2,19 @@ package com.didenko.dto;
 
 import com.didenko.entity.AssetType;
 import com.didenko.entity.PositionDirection;
+import com.didenko.entity.TransactionState;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Value;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 public class AssetTransactionCreateEditDto {
+
+    private Long id;
+
+    private Long portfolioId;
 
     private String assetName;
 
@@ -19,12 +22,15 @@ public class AssetTransactionCreateEditDto {
 
     private PositionDirection direction;
 
+    private TransactionState transactionState;
+
     private String openPrice;
 
     private String volume;
 
     private LocalDateTime openDate;
 
-    private Long portfolioId;
+    private String closePrice;
 
+    private LocalDateTime closeDate;
 }
