@@ -23,6 +23,7 @@ public class AssetTransactionController {
     public String findByPortfolioId(Model model, @RequestParam(value = "portfolioId") Long portfolioId){
 
         var transactions = transactionService.findByPortfolioId(portfolioId);
+        model.addAttribute("portfolioId", portfolioId);
         model.addAttribute("openTransactions", transactions.stream()
                 .filter(transaction -> transaction.getState().equals(TransactionState.OPEN)).toList());
         model.addAttribute("closedTransactions", transactions.stream()

@@ -25,7 +25,7 @@ public class AssetTransactionCreateEditDtoMapper implements Mapper<AssetTransact
         LocalDateTime closeDate = object.getCloseDate() == null ? null : object.getCloseDate();
         var transaction = AssetTransaction.builder()
                 .id(object.getId())
-                .state(TransactionState.OPEN)
+                .state(closePrice == null ? TransactionState.OPEN : TransactionState.CLOSED)
                 .positionDirection(object.getDirection())
                 .quantity(new BigDecimal(object.getVolume()))
                 .openPrice(new BigDecimal(object.getOpenPrice()))
