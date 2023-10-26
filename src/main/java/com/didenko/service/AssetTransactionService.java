@@ -35,7 +35,7 @@ public class AssetTransactionService {
     }
 
     public List<AssetTransactionReadDto> findByPortfolioId(Long portfolioId) {
-        var assetTransactions = transactionRepository.findAllByPortfolioId(portfolioId);
+        var assetTransactions = transactionRepository.findAllByAssetPortfolioId(portfolioId);
 
         return setCurrentPriceAndMapToDto(assetTransactions);
     }
