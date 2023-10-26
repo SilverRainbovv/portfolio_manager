@@ -79,14 +79,9 @@ public class TransactionsToPositionConverter {
                                 shorts.stream().map(AssetTransactionReadDto::getVolume)
                                         .reduce(BigDecimal.ZERO, BigDecimal::add));
 
-                        shortPosition.setOpenPrice(
-                                shorts.stream().map(AssetTransactionReadDto::getOpenPrice)
-                                        .reduce(BigDecimal.ZERO, BigDecimal::add)
-                                        .divide(new BigDecimal(longs.size()), RoundingMode.UNNECESSARY));
-
                         var sum = new ArrayList<BigDecimal>();
                         var totalVolume = new ArrayList<BigDecimal>();
-                        longs.forEach(current -> {
+                        shorts.forEach(current -> {
                             sum.add(current.getOpenPrice().multiply(current.getVolume()));
                             totalVolume.add(current.getVolume());
                         });
