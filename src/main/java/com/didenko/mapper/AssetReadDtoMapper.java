@@ -36,6 +36,7 @@ public class AssetReadDtoMapper implements Mapper<Asset, AssetReadDto> {
         var totalShortOpenPrice = getOpenPriceByDirection(SHORT, transactionsGroupedByDirection);
 
         return AssetReadDto.builder()
+                .id(object.getId().toString())
                 .name(object.getName())
                 .assetType(object.getAssetType().name())
                 .comments(object.getComments())
@@ -48,7 +49,11 @@ public class AssetReadDtoMapper implements Mapper<Asset, AssetReadDto> {
 
     private BigDecimal getTotalQuantityByDirection(PositionDirection direction,
                                                Map<PositionDirection, List<AssetTransaction>> transactionMap) {
-        return transactionMap.get(direction).stream()
+        if (transactionMap.get(direction) == null) return null;
+        return transactionMap.entrySet().stream()
+                .filter(entry -> entry.getKey().equals(direction))
+                .map(Map.Entry::getValue)
+                .flatMap(List::stream)
                 .map(AssetTransaction::getQuantity)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
@@ -56,6 +61,7 @@ public class AssetReadDtoMapper implements Mapper<Asset, AssetReadDto> {
     private BigDecimal getOpenPriceByDirection(PositionDirection direction,
                                            Map<PositionDirection, List<AssetTransaction>> transactionMap) {
         var sorted = transactionMap.get(direction);
+        if (sorted == null) return null;
         var size = sorted.size();
         var priceSum = sorted.stream()
                 .map(AssetTransaction::getOpenPrice)

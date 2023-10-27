@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add test container configuration">
+    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="fix short position calculation error">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/didenko/mapper/AssetReadDtoMapperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/util/TransactionsToPositionConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/util/TransactionsToPositionConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetReadDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetReadDtoMapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +127,21 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ApplicationRunner">
+    <configuration name="AssetReadDtoMapperTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="portfolio-manager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.didenko.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.didenko.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.didenko.mapper.AssetReadDtoMapperTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AssetReadDtoMapperTest.mapFromAssetTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="portfolio-manager" />
       <extension name="coverage">
@@ -173,22 +189,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestStock.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="portfolio-manager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.didenko.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.didenko.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.didenko.repository.TestStock" />
-      <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ApplicationRunner" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="portfolio-manager" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.didenko.ApplicationRunner" />
@@ -205,10 +205,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.ApplicationRunner" />
+        <item itemvalue="JUnit.AssetReadDtoMapperTest" />
         <item itemvalue="JUnit.AssetReadDtoMapperTest.mapFromAssetTest" />
         <item itemvalue="JUnit.AssetTransactionRepositoryTest" />
         <item itemvalue="JUnit.AssetTransactionRepositoryTest.checkPageable" />
-        <item itemvalue="JUnit.TestStock.test" />
       </list>
     </recent_temporary>
   </component>
@@ -265,7 +265,8 @@
       <workItem from="1698131720109" duration="8443000" />
       <workItem from="1698220923655" duration="5753000" />
       <workItem from="1698308395827" duration="13801000" />
-      <workItem from="1698326639350" duration="596000" />
+      <workItem from="1698326639350" duration="950000" />
+      <workItem from="1698396790025" duration="2137000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -434,7 +435,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698315371820</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="fix short position calculation error">
+      <option name="closed" value="true" />
+      <created>1698327554734</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1698327554734</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,7 +483,8 @@
     <MESSAGE value="add transaction edit functional" />
     <MESSAGE value="fix transaction state during transaction creation" />
     <MESSAGE value="add test container configuration" />
-    <option name="LAST_COMMIT_MESSAGE" value="add test container configuration" />
+    <MESSAGE value="fix short position calculation error" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix short position calculation error" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -490,24 +500,19 @@
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetReadDtoMapper.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/didenko/service/AssetTransactionService.java</url>
           <line>66</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/didenko/util/TransactionsToPositionConverter.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="44" />
+          <line>88</line>
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/didenko/util/TransactionsToPositionConverter.java</url>
-          <line>93</line>
-          <option name="timeStamp" value="45" />
+          <line>82</line>
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetTransactionRepository.java</url>
