@@ -4,17 +4,19 @@ import com.didenko.entity.AssetTransaction;
 import com.didenko.entity.TransactionState;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-import java.awt.print.Pageable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public interface AssetTransactionRepository extends JpaRepository<AssetTransaction, Long>, CrudRepository<AssetTransaction, Long> {
+public interface AssetTransactionRepository extends JpaRepository<AssetTransaction, Long>,
+        PagingAndSortingRepository<AssetTransaction, Long> {
 
     List<AssetTransaction> findAllByAssetId(Long assetId);
 
@@ -24,9 +26,9 @@ public interface AssetTransactionRepository extends JpaRepository<AssetTransacti
             "join a.portfolio p " +
             "where p.id = :portfolioId "
     )
-    Page<AssetTransaction> findAllByPortfolioId(Long portfolioId, PageRequest pageable);
+    Page<AssetTransaction> findAllByPortfolioId(Long portfolioId, Pageable pageable);
 
-
+    Page<AssetTransaction> findAllByAssetPortfolioId(Long portfolioId, Pageable pageable);
     List<AssetTransaction> findAllByAssetPortfolioId(Long portfolioId);
 
     @Query("select t from AssetTransaction t " +

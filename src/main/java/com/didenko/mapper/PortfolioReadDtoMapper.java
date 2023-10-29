@@ -4,14 +4,12 @@ import com.didenko.dto.PortfolioReadDto;
 import com.didenko.dto.PositionDto;
 import com.didenko.entity.Asset;
 import com.didenko.entity.Portfolio;
-import com.didenko.entity.TransactionState;
 import com.didenko.repository.AssetRepository;
 import com.didenko.service.AssetTransactionService;
 import com.didenko.util.TransactionsToPositionConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import javax.xml.crypto.dsig.TransformService;
 import java.math.BigDecimal;
 import java.util.List;
 

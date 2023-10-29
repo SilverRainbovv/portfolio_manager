@@ -60,7 +60,6 @@ class AssetReadDtoMapperTest {
             .name("test")
             .assetType(AssetType.STOCK.name())
             .comments("test comments")
-//            .direction(PositionDirection.LONG.name())
             .longQuantity(new BigDecimal(10))
             .shortQuantity(null)
             .longOpenPrice(new BigDecimal(50))

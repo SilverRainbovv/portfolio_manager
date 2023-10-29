@@ -9,7 +9,34 @@
 <div th:insert="~{fragment :: header}"></div>
 <a th:href="@{'/transaction/transaction?portfolioId=' + ${portfolioId}}">
     <button type="button">Add new transaction</button>
-</a>
+</a><br>
+<form th:action="@{/transaction/transactions}" method="get">
+    <label for="portfolioId">
+        <input id="portfolioId" type="text" name="portfolioId" th:value="${portfolioId}" hidden="hidden">
+    </label>
+    <label for="findAsset">Find Asset
+        <input id="findAsset" type="text" name="findAsset">
+    </label>
+    <label for="sortBy">Sort by</label>
+    <select id="sortBy" name="sortBy">
+        <option value="assetName">Asset name</option>
+        <option value="positionDirection">Position direction</option>
+        <option value="openTime">Open time</option>
+        <option value="openPrice">Open price</option>
+        <option value="volume">Volume</option>
+        <option value="currentPrice">Current Price</option>
+        <option value="profit">Profit</option>
+    </select>
+    <label for="pageSize">Transactions pet page</label>
+    <select id="pageSize" name="pageSize" th:value="currentPageSize">
+        <option value="1">1</option>
+        <option value="5">5</option>
+        <option value="5">10</option>
+        <option value="5">20</option>
+        <option value="5">25</option>
+    </select>
+    <button type="submit">Submit</button>
+</form>
     <table>
         <caption>Open Transactions</caption>
         <thead>
@@ -64,5 +91,8 @@
         </tr>
         </tbody>
     </table>
+<form th:if="${totalPages > 1}" th:action="@{/transaction/transactions(portfolioId = ${portfolioId})}" method="get">
+    <div th:each="page:${#numbers.sequence(0, totalPages)}"></div>
+</form>
 </body>
 </html>

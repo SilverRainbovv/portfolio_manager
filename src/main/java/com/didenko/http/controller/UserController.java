@@ -28,7 +28,6 @@ public class UserController {
         return "redirect:/user/" + user.getId();
     }
 
-
     @GetMapping("/{id}")
     public String findById(Model model, @PathVariable("id") Long id, @AuthenticationPrincipal User user) {
 

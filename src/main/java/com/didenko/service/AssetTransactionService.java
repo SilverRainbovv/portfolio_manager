@@ -10,6 +10,9 @@ import com.didenko.repository.AssetRepository;
 import com.didenko.repository.AssetTransactionRepository;
 import com.didenko.util.PriceForAssetsRetriever;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +37,12 @@ public class AssetTransactionService {
         return setCurrentPriceAndMapToDto(assetTransactions);
     }
 
+    public Page<AssetTransactionReadDto> findByPortfolioIdPageable(Long portfolioId, Pageable pageable) {
+        var assetTransactions = transactionRepository.findAllByAssetPortfolioId(portfolioId, pageable);
+
+        return setCurrentPriceAndMapToDto(assetTransactions, pageable);
+    }
+
     public List<AssetTransactionReadDto> findByPortfolioId(Long portfolioId) {
         var assetTransactions = transactionRepository.findAllByAssetPortfolioId(portfolioId);
 
@@ -47,6 +56,22 @@ public class AssetTransactionService {
         return  assetTransactions.isEmpty()
                 ? new ArrayList<>()
                 : setCurrentPriceAndMapToDto(assetTransactions);
+    }
+    private Page<AssetTransactionReadDto> setCurrentPriceAndMapToDto(Page<AssetTransaction> assetTransactions,
+                                                                     Pageable pageable){
+
+        if (assetTransactions.isEmpty()) return Page.empty();
+
+        var transactionNamePriceMap = retriever.retrieveForAssetTransactionsList(assetTransactions);
+
+        var content = assetTransactions.stream()
+                .map(transaction -> {
+                    var price = transactionNamePriceMap.get(transaction.getAsset().getName());
+                    return assetTransactionReadDtoMapper.mapFrom(transaction, price);
+                })
+                .toList();
+
+        return new PageImpl<AssetTransactionReadDto>(content, pageable, content.size());
     }
     private List<AssetTransactionReadDto> setCurrentPriceAndMapToDto(List<AssetTransaction> assetTransactions){
 

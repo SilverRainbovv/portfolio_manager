@@ -4,6 +4,7 @@ import com.didenko.dto.AssetReadDto;
 import com.didenko.entity.Asset;
 import com.didenko.entity.AssetTransaction;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -22,8 +23,14 @@ public class PriceForAssetsRetriever {
                 .map(AssetTransaction::getAsset)
                 .map(Asset::getName)
                 .distinct().toList());
+    }
 
-//        transactionDtos.forEach(transaction -> transaction.setCurrentPrice(names.get(transaction.getAssetName())));
+    public Map<String, BigDecimal> retrieveForAssetTransactionsList(Page<AssetTransaction> transactions) {
+
+        return assetDataImporter.getAssetPrice(transactions.stream()
+                .map(AssetTransaction::getAsset)
+                .map(Asset::getName)
+                .distinct().toList());
     }
 
     public List<AssetReadDto> retrieveForAssetDtosList(List<AssetReadDto> assetDtos) {

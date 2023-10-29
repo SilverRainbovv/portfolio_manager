@@ -4,10 +4,12 @@ import com.didenko.entity.AssetType;
 import com.didenko.entity.PositionDirection;
 import com.didenko.entity.TransactionState;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
+@Builder
 @Data
 @AllArgsConstructor
 public class AssetTransactionCreateEditDto {
