@@ -26,6 +26,10 @@ public class User implements UserDetails {
 
     private String password;
 
+    @Transient
+    @Builder.Default
+    private UserPreferences userPreferences = new UserPreferences();
+
     @Enumerated(EnumType.STRING)
     private Role role;
 

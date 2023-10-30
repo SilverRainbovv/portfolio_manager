@@ -4,11 +4,13 @@ import com.didenko.dto.AssetTransactionCreateEditDto;
 import com.didenko.entity.AssetType;
 import com.didenko.entity.PositionDirection;
 import com.didenko.entity.TransactionState;
+import com.didenko.entity.User;
 import com.didenko.service.AssetTransactionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,16 +24,26 @@ public class AssetTransactionController {
     private final AssetTransactionService transactionService;
 
     private static final Integer DEFAULT_PAGE_SIZE = 5;
-    private static final Integer DEFAULT_PAGE = 1;
+    private static final Integer DEFAULT_PAGE = 0;
 
     @GetMapping("transactions/**")
     public String findByPortfolioId(Model model, @RequestParam(value = "portfolioId") Long portfolioId,
                                     @RequestParam(value = "page", required = false) Integer page,
-                                    @RequestParam(value = "pageSize", required = false) Integer pageSize){
+                                    @RequestParam(value = "pageSize", required = false) Integer pageSize,
+                                    @AuthenticationPrincipal User user){
 
-        Integer currentPageSize = pageSize == null ? DEFAULT_PAGE_SIZE : pageSize;
+        int currentPageSize = DEFAULT_PAGE_SIZE;
+        if (pageSize != null){
+            currentPageSize = pageSize;
+            user.getUserPreferences().setPageSize(pageSize);
+        } else {
+            Integer userPageSize = user.getUserPreferences().getPageSize();
+            if (userPageSize != null) currentPageSize = userPageSize;
+        }
+
+//        currentPageSize = pageSize == null ? DEFAULT_PAGE_SIZE : pageSize;
         Integer currentPage = page == null ? DEFAULT_PAGE : page;
-        Pageable pageable = PageRequest.of(currentPage - 1, currentPageSize);
+        Pageable pageable = PageRequest.of(currentPage, currentPageSize);
 
         var transactions = transactionService.findByPortfolioIdPageable(portfolioId, pageable);
         model.addAttribute("portfolioId", portfolioId);

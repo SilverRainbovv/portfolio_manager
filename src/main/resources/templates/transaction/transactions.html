@@ -92,7 +92,9 @@
         </tbody>
     </table>
 <form th:if="${totalPages > 1}" th:action="@{/transaction/transactions(portfolioId = ${portfolioId})}" method="get">
-    <div th:each="page:${#numbers.sequence(0, totalPages)}"></div>
+    <span th:each="page:${#numbers.sequence(0, totalPages - 1)}">
+        <a th:href="@{/transaction/transactions(portfolioId = ${portfolioId}, page = ${page})}" th:text="${page + 1}"></a>
+    </span>
 </form>
 </body>
 </html>

@@ -4,20 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="changes to AssetReadDtoMapper">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/didenko/mapper/AssetTransactionCreateEditDtoMapperTest.java" afterDir="false" />
+    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add pagination">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/UserPreferences.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/dto/AssetTransactionCreateEditDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/dto/AssetTransactionCreateEditDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioReadDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioReadDtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetTransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetTransactionRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetTransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetTransactionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/util/PriceForAssetsRetriever.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/util/PriceForAssetsRetriever.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/util/TwelveAssetDataImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/util/TwelveAssetDataImporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactionUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactionUpdate.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactions.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/didenko/mapper/AssetReadDtoMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/didenko/mapper/AssetReadDtoMapperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +25,8 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="HTML File" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -280,6 +273,8 @@
       <workItem from="1698398950658" duration="2962000" />
       <workItem from="1698423361844" duration="1291000" />
       <workItem from="1698482393380" duration="10074000" />
+      <workItem from="1698565632275" duration="2356000" />
+      <workItem from="1698665333713" duration="1525000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -464,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698399034694</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="add pagination">
+      <option name="closed" value="true" />
+      <created>1698565693808</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1698565693808</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,7 +509,8 @@
     <MESSAGE value="add test container configuration" />
     <MESSAGE value="fix short position calculation error" />
     <MESSAGE value="changes to AssetReadDtoMapper" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes to AssetReadDtoMapper" />
+    <MESSAGE value="add pagination" />
+    <option name="LAST_COMMIT_MESSAGE" value="add pagination" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -522,19 +526,14 @@
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioReadDtoMapper.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="33" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioReadDtoMapper.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioReadDtoMapper.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="35" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/didenko/entity/User.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

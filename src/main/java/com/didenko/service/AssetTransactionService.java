@@ -71,7 +71,7 @@ public class AssetTransactionService {
                 })
                 .toList();
 
-        return new PageImpl<AssetTransactionReadDto>(content, pageable, content.size());
+        return new PageImpl<AssetTransactionReadDto>(content, pageable, assetTransactions.getTotalPages());
     }
     private List<AssetTransactionReadDto> setCurrentPriceAndMapToDto(List<AssetTransaction> assetTransactions){
 
