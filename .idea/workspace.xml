@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add UserPreferences to store user choice">
+    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="fix bug, now assets are created in corresponding portfolio">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/PageSizeOptions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/TransactionsSortingOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetTransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetTransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transaction/transaction.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transaction/transaction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactions.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactions.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,10 +23,10 @@
         <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="Interface" />
-        <option value="Enum" />
         <option value="HTML File" />
         <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -272,7 +274,7 @@
       <workItem from="1698423361844" duration="1291000" />
       <workItem from="1698482393380" duration="10074000" />
       <workItem from="1698565632275" duration="2356000" />
-      <workItem from="1698665333713" duration="2598000" />
+      <workItem from="1698665333713" duration="6599000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -473,7 +475,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698667583422</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="fix bug, now assets are created in corresponding portfolio">
+      <option name="closed" value="true" />
+      <created>1698668125363</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1698668125363</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,7 +501,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add basic dao layer implementation" />
     <MESSAGE value="add liquibase" />
     <MESSAGE value="add entity mapping for tables users, portfolio, asset, assetTrade" />
     <MESSAGE value="minor changes to sql, add test data temporary in sql file" />
@@ -516,7 +525,8 @@
     <MESSAGE value="changes to AssetReadDtoMapper" />
     <MESSAGE value="add pagination" />
     <MESSAGE value="add UserPreferences to store user choice" />
-    <option name="LAST_COMMIT_MESSAGE" value="add UserPreferences to store user choice" />
+    <MESSAGE value="fix bug, now assets are created in corresponding portfolio" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bug, now assets are created in corresponding portfolio" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -535,6 +545,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/didenko/entity/User.java</url>
           <line>28</line>
           <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java</url>
+          <line>115</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java</url>
+          <line>107</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

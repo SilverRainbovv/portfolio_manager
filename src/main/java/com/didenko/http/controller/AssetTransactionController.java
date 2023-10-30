@@ -1,14 +1,12 @@
 package com.didenko.http.controller;
 
 import com.didenko.dto.AssetTransactionCreateEditDto;
-import com.didenko.entity.AssetType;
-import com.didenko.entity.PositionDirection;
-import com.didenko.entity.TransactionState;
-import com.didenko.entity.User;
+import com.didenko.entity.*;
 import com.didenko.service.AssetTransactionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -25,33 +23,33 @@ public class AssetTransactionController {
 
     private static final Integer DEFAULT_PAGE_SIZE = 5;
     private static final Integer DEFAULT_PAGE = 0;
+    private static final TransactionsSortingOrder DEFAULT_SORTING_ORDER = TransactionsSortingOrder.ASSET_NAME;
 
     @GetMapping("transactions/**")
     public String findByPortfolioId(Model model, @RequestParam(value = "portfolioId") Long portfolioId,
                                     @RequestParam(value = "page", required = false) Integer page,
-                                    @RequestParam(value = "pageSize", required = false) Integer pageSize,
+                                    @RequestParam(value = "pageSize", required = false) PageSizeOptions pageSize,
+                                    @RequestParam(value = "sortBy", required = false) TransactionsSortingOrder sortingOrder,
                                     @AuthenticationPrincipal User user){
 
-        int currentPageSize = DEFAULT_PAGE_SIZE;
-        if (pageSize != null){
-            currentPageSize = pageSize;
-            user.getUserPreferences().setPageSize(pageSize);
-        } else {
-            Integer userPageSize = user.getUserPreferences().getPageSize();
-            if (userPageSize != null) currentPageSize = userPageSize;
-        }
-
+        TransactionsSortingOrder currentSortingOrder = sortingOrder == null ? DEFAULT_SORTING_ORDER : sortingOrder;
         Integer currentPage = page == null ? DEFAULT_PAGE : page;
-        Pageable pageable = PageRequest.of(currentPage, currentPageSize);
+        Integer currentPageSize = getPageSize(pageSize, user);
+        Pageable pageable = PageRequest.of(currentPage, currentPageSize,
+                Sort.by(currentSortingOrder.fieldName));
 
         var transactions = transactionService.findByPortfolioIdPageable(portfolioId, pageable);
+
+        model.addAttribute("pageSizeOptions", PageSizeOptions.values());
+        model.addAttribute("sortingOrders", TransactionsSortingOrder.values());
         model.addAttribute("portfolioId", portfolioId);
         model.addAttribute("openTransactions", transactions.stream()
                 .filter(transaction -> transaction.getState().equals(TransactionState.OPEN)).toList());
         model.addAttribute("closedTransactions", transactions.stream()
                 .filter(transaction -> transaction.getState().equals(TransactionState.CLOSED)).toList());
-        model.addAttribute("currentPageSize", pageSize);
+        model.addAttribute("currentPageSize", currentPageSize);
         model.addAttribute("currentPage", currentPage);
+        model.addAttribute("currentSortingOrder", currentSortingOrder);
         model.addAttribute("totalPages", transactions.getTotalPages());
 
         return "/transaction/transactions";
@@ -104,6 +102,18 @@ public class AssetTransactionController {
         model.addAttribute("portfolioId", portfolioId);
         model.addAttribute("assetTypes", AssetType.values());
         model.addAttribute("positionDirections", PositionDirection.values());
+    }
+
+    private Integer getPageSize(PageSizeOptions pageSize, User user){
+        int currentPageSize = DEFAULT_PAGE_SIZE;
+        if (pageSize != null){
+            currentPageSize = pageSize.size;
+            user.getUserPreferences().setPageSize(pageSize.size);
+        } else {
+            Integer userPageSize = user.getUserPreferences().getPageSize();
+            if (userPageSize != null) currentPageSize = userPageSize;
+        }
+        return currentPageSize;
     }
 
 }

@@ -19,21 +19,18 @@
     </label>
     <label for="sortBy">Sort by</label>
     <select id="sortBy" name="sortBy">
-        <option value="assetName">Asset name</option>
-        <option value="positionDirection">Position direction</option>
-        <option value="openTime">Open time</option>
-        <option value="openPrice">Open price</option>
-        <option value="volume">Volume</option>
-        <option value="currentPrice">Current Price</option>
-        <option value="profit">Profit</option>
+        <option th:each="sortingOrder : ${sortingOrders}"
+        th:value="${sortingOrder}"
+        th:text="${sortingOrder.order}"
+        th:selected="${currentSortingOrder.equals(sortingOrder)}">Sort by
+        </option>
     </select>
     <label for="pageSize">Transactions pet page</label>
-    <select id="pageSize" name="pageSize" th:value="currentPageSize">
-        <option value="1">1</option>
-        <option value="5">5</option>
-        <option value="5">10</option>
-        <option value="5">20</option>
-        <option value="5">25</option>
+    <select id="pageSize" name="pageSize">
+        <option th:each="pageSize : ${pageSizeOptions}"
+        th:value="${pageSize}"
+        th:text="${pageSize.size}"
+        th:selected="${currentPageSize.equals(pageSize.size)}">Transactions pet page</option>
     </select>
     <button type="submit">Submit</button>
 </form>

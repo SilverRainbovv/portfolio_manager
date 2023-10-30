@@ -7,7 +7,7 @@
 </head>
 <body>
 <div th:insert="~{fragment :: header}"></div>
-<form th:action="@{/transaction/transaction?(portfolioId=${portfolioId})}" method="post">
+<form th:action="@{/transaction/transaction(portfolioId = ${portfolioId})}" method="post">
     <label for="assetName">Asset name:
         <input id="assetName" type="text" name="assetName">
     </label><br>
@@ -22,9 +22,10 @@
     </div>
     <div th:each="direction : ${positionDirections}">
         <input id="${direction}" type="radio" name="direction" th:value="${direction}"
-            th:checked="${direction}">
+               th:checked="${direction.equals(direction.LONG)}">
         <label th:for="${direction}" th:text="${direction}">Transaction direction:</label>
-    </div><br>
+    </div>
+    <br>
     <label for="volume">Volume:
         <input id="volume" type="number" step="0.00001" name="volume">
     </label><br>
