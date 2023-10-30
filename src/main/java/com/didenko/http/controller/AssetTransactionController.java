@@ -41,7 +41,6 @@ public class AssetTransactionController {
             if (userPageSize != null) currentPageSize = userPageSize;
         }
 
-//        currentPageSize = pageSize == null ? DEFAULT_PAGE_SIZE : pageSize;
         Integer currentPage = page == null ? DEFAULT_PAGE : page;
         Pageable pageable = PageRequest.of(currentPage, currentPageSize);
 

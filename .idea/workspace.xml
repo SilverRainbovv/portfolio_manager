@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add pagination">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/UserPreferences.java" afterDir="false" />
+    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add UserPreferences to store user choice">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetTransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetTransactionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactions.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactions.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,7 +272,7 @@
       <workItem from="1698423361844" duration="1291000" />
       <workItem from="1698482393380" duration="10074000" />
       <workItem from="1698565632275" duration="2356000" />
-      <workItem from="1698665333713" duration="1525000" />
+      <workItem from="1698665333713" duration="2598000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -467,7 +465,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698565693808</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="add UserPreferences to store user choice">
+      <option name="closed" value="true" />
+      <created>1698667583422</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1698667583422</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -485,7 +491,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial project and dependencies setup" />
     <MESSAGE value="add basic dao layer implementation" />
     <MESSAGE value="add liquibase" />
     <MESSAGE value="add entity mapping for tables users, portfolio, asset, assetTrade" />
@@ -510,7 +515,8 @@
     <MESSAGE value="fix short position calculation error" />
     <MESSAGE value="changes to AssetReadDtoMapper" />
     <MESSAGE value="add pagination" />
-    <option name="LAST_COMMIT_MESSAGE" value="add pagination" />
+    <MESSAGE value="add UserPreferences to store user choice" />
+    <option name="LAST_COMMIT_MESSAGE" value="add UserPreferences to store user choice" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -524,11 +530,6 @@
           <url>file://$PROJECT_DIR$/src/test/java/com/didenko/repository/AssetTransactionRepositoryTest.java</url>
           <line>21</line>
           <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/didenko/entity/User.java</url>

@@ -91,7 +91,8 @@ public class AssetTransactionService {
     public void save(AssetTransactionCreateEditDto transactionDto){
         var transaction = assetTransactionCreateEditDtoMapper.mapFrom(transactionDto);
 
-        var persistedAsset = assetRepository.findByName(transaction.getAsset().getName());
+        var persistedAsset = assetRepository.findByNameAndPortfolioId(transaction.getAsset().getName(),
+                transaction.getAsset().getPortfolio().getId());
         if(persistedAsset.isPresent()){
             transaction.setAsset(persistedAsset.get());
         } else {

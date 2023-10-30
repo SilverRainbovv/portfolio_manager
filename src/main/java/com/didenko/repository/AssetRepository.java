@@ -18,6 +18,6 @@ import java.util.Optional;
 public interface AssetRepository extends JpaRepository<Asset, Long>, CrudRepository<Asset, Long> {
     List<Asset> getAllByPortfolioId(Long id);
 
-    Optional<Asset> findByName(String name);
+    Optional<Asset> findByNameAndPortfolioId(String name, Long portfolioId);
 
 }
