@@ -43,6 +43,14 @@ public class AssetTransactionService {
         return setCurrentPriceAndMapToDto(assetTransactions, pageable);
     }
 
+    public Page<AssetTransactionReadDto> findByAssetNameAndPortfolioId(Long portfolioId,
+                                                                       Pageable pageable, String assetName) {
+        var assetTransactions = transactionRepository.findAllByAssetNameAndAssetPortfolioId(assetName,
+                portfolioId, pageable);
+
+        return setCurrentPriceAndMapToDto(assetTransactions, pageable);
+    }
+
     public List<AssetTransactionReadDto> findByPortfolioId(Long portfolioId) {
         var assetTransactions = transactionRepository.findAllByAssetPortfolioId(portfolioId);
 
@@ -53,12 +61,13 @@ public class AssetTransactionService {
         var assetTransactions = transactionRepository.
                 findAllByPortfolioIdAndTransactionState(portfolioId, state);
 
-        return  assetTransactions.isEmpty()
+        return assetTransactions.isEmpty()
                 ? new ArrayList<>()
                 : setCurrentPriceAndMapToDto(assetTransactions);
     }
+
     private Page<AssetTransactionReadDto> setCurrentPriceAndMapToDto(Page<AssetTransaction> assetTransactions,
-                                                                     Pageable pageable){
+                                                                     Pageable pageable) {
 
         if (assetTransactions.isEmpty()) return Page.empty();
 
@@ -73,7 +82,8 @@ public class AssetTransactionService {
 
         return new PageImpl<AssetTransactionReadDto>(content, pageable, assetTransactions.getTotalPages());
     }
-    private List<AssetTransactionReadDto> setCurrentPriceAndMapToDto(List<AssetTransaction> assetTransactions){
+
+    private List<AssetTransactionReadDto> setCurrentPriceAndMapToDto(List<AssetTransaction> assetTransactions) {
 
         if (assetTransactions.isEmpty()) return new ArrayList<>();
 
@@ -88,12 +98,12 @@ public class AssetTransactionService {
     }
 
     @Transactional
-    public void save(AssetTransactionCreateEditDto transactionDto){
+    public void save(AssetTransactionCreateEditDto transactionDto) {
         var transaction = assetTransactionCreateEditDtoMapper.mapFrom(transactionDto);
 
         var persistedAsset = assetRepository.findByNameAndPortfolioId(transaction.getAsset().getName(),
                 transaction.getAsset().getPortfolio().getId());
-        if(persistedAsset.isPresent()){
+        if (persistedAsset.isPresent()) {
             transaction.setAsset(persistedAsset.get());
         } else {
             transaction.setAsset(assetRepository.save(transaction.getAsset()));

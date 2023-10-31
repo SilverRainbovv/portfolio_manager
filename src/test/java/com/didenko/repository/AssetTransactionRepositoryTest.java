@@ -12,15 +12,7 @@ class AssetTransactionRepositoryTest extends IntegrationTestBase {
 
     private final AssetTransactionRepository repository;
 
-    @Test
-    public void checkPageable(){
-        var pageable = PageRequest.of(1, 2);
 
-        var result = repository.findAllByAssetPortfolioId(2L);
-        var result2 = repository.findAllByPortfolioId(2L, pageable);
-
-         System.out.println();
-    }
 
 
 }

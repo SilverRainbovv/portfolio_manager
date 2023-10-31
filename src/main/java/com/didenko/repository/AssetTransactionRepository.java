@@ -20,15 +20,8 @@ public interface AssetTransactionRepository extends JpaRepository<AssetTransacti
 
     List<AssetTransaction> findAllByAssetId(Long assetId);
 
-    @Deprecated
-    @Query("select t from AssetTransaction t " +
-            "join t.asset a " +
-            "join a.portfolio p " +
-            "where p.id = :portfolioId "
-    )
-    Page<AssetTransaction> findAllByPortfolioId(Long portfolioId, Pageable pageable);
-
     Page<AssetTransaction> findAllByAssetPortfolioId(Long portfolioId, Pageable pageable);
+    Page<AssetTransaction> findAllByAssetNameAndAssetPortfolioId(String asset_name, Long asset_portfolio_id, Pageable pageable);
     List<AssetTransaction> findAllByAssetPortfolioId(Long portfolioId);
 
     @Query("select t from AssetTransaction t " +

@@ -27,18 +27,21 @@ public class AssetTransactionController {
 
     @GetMapping("transactions/**")
     public String findByPortfolioId(Model model, @RequestParam(value = "portfolioId") Long portfolioId,
+                                    @RequestParam(value = "findAsset", required = false) String assetName,
                                     @RequestParam(value = "page", required = false) Integer page,
                                     @RequestParam(value = "pageSize", required = false) PageSizeOptions pageSize,
                                     @RequestParam(value = "sortBy", required = false) TransactionsSortingOrder sortingOrder,
                                     @AuthenticationPrincipal User user){
 
+        String currentAssetName = assetName == null ? "" : assetName;
         TransactionsSortingOrder currentSortingOrder = sortingOrder == null ? DEFAULT_SORTING_ORDER : sortingOrder;
         Integer currentPage = page == null ? DEFAULT_PAGE : page;
         Integer currentPageSize = getPageSize(pageSize, user);
         Pageable pageable = PageRequest.of(currentPage, currentPageSize,
                 Sort.by(currentSortingOrder.fieldName));
 
-        var transactions = transactionService.findByPortfolioIdPageable(portfolioId, pageable);
+        var transactions = currentAssetName.isEmpty() ? transactionService.findByPortfolioIdPageable(portfolioId, pageable)
+                : transactionService.findByAssetNameAndPortfolioId(portfolioId, pageable, assetName);
 
         model.addAttribute("pageSizeOptions", PageSizeOptions.values());
         model.addAttribute("sortingOrders", TransactionsSortingOrder.values());
@@ -50,6 +53,7 @@ public class AssetTransactionController {
         model.addAttribute("currentPageSize", currentPageSize);
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("currentSortingOrder", currentSortingOrder);
+        model.addAttribute("currentAssetName", currentAssetName);
         model.addAttribute("totalPages", transactions.getTotalPages());
 
         return "/transaction/transactions";
