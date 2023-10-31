@@ -26,8 +26,13 @@ public class TransactionsToPositionConverter {
 
         transactionsByName.keySet().forEach(name -> {
 
-                    var currentPrice = transactionsByName.get(name).get(0).getCurrentPrice();
-                    var openDate = transactionsByName.get(name).get(0).getOpenDate();
+            var transaction = transactionsByName.get(name).get(0);
+
+                    var currentPrice = transaction.getClosePrice() == null ? transaction.getCurrentPrice()
+                            : transaction.getClosePrice();
+                    var closePrice = transaction.getClosePrice();
+                    var openDate = transaction.getOpenDate();
+                    var closeDate = transaction.getCloseDate();
 
                     var longs = transactionsByName.values().stream()
                             .flatMap(List::stream)
@@ -41,15 +46,17 @@ public class TransactionsToPositionConverter {
                             .filter(t -> t.getPositionDirection().equals(PositionDirection.SHORT))
                             .toList();
 
-                    if (!longs.isEmpty()){
+                    if (!longs.isEmpty()) {
                         var longPosition = new PositionDto();
                         longPosition.setAssetName(name);
                         longPosition.setDirection(PositionDirection.LONG.name());
                         longPosition.setCurrentPrice(currentPrice);
                         longPosition.setOpenDate(openDate);
+                        longPosition.setClosePrice(closePrice);
+                        longPosition.setCloseDate(closeDate);
 
                         longPosition.setQuantity(
-                                longs .stream().map(AssetTransactionReadDto::getVolume)
+                                longs.stream().map(AssetTransactionReadDto::getVolume)
                                         .reduce(BigDecimal.ZERO, BigDecimal::add));
 
                         var sum = new ArrayList<BigDecimal>();
@@ -68,12 +75,14 @@ public class TransactionsToPositionConverter {
 
                         positions.add(longPosition);
                     }
-                    if (!shorts.isEmpty()){
+                    if (!shorts.isEmpty()) {
                         var shortPosition = new PositionDto();
                         shortPosition.setAssetName(name);
                         shortPosition.setDirection(PositionDirection.SHORT.name());
                         shortPosition.setCurrentPrice(currentPrice);
                         shortPosition.setOpenDate(openDate);
+                        shortPosition.setClosePrice(closePrice);
+                        shortPosition.setCloseDate(closeDate);
 
                         shortPosition.setQuantity(
                                 shorts.stream().map(AssetTransactionReadDto::getVolume)

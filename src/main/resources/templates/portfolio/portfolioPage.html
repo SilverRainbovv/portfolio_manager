@@ -15,8 +15,8 @@
 <a th:href="@{'/transaction/transactions?portfolioId=' + ${portfolioId}}">
     <button type="button">View all transactions</button>
 </a>
-<div th:if="${positions == null}">This portfolio is empty</div>
-<div th:if="${positions}">
+<div th:if="${openPositions == null && closedPositions == null}">This portfolio is empty</div>
+<div th:if="${openPositions}">
     <table>
         <caption>Open positions</caption>
         <thead>
@@ -31,13 +31,42 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="position : ${positions}">
+        <tr th:each="position : ${openPositions}">
             <td th:text="${position.assetName}">name</td>
             <td th:text="${position.direction}">direction</td>
             <td th:text="${position.quantity}">quantity</td>
             <td th:text="${position.openPrice}">openPrice</td>
             <td th:text="${position.openDate}">openDate</td>
             <td th:text="${position.currentPrice}">currentPrice</td>
+            <td th:text="${position.profit}">profit</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:if="${closedPositions}">
+    <table>
+        <caption>Closed positions</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Direction</th>
+            <th>Volume</th>
+            <th>Open price</th>
+            <th>Open date</th>
+            <th>Close price</th>
+            <th>Close date</th>
+            <th>Profit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="position : ${closedPositions}">
+            <td th:text="${position.assetName}">name</td>
+            <td th:text="${position.direction}">direction</td>
+            <td th:text="${position.quantity}">quantity</td>
+            <td th:text="${position.openPrice}">openPrice</td>
+            <td th:text="${position.openDate}">openDate</td>
+            <td th:text="${position.closePrice}">closePrice</td>
+            <td th:text="${position.closeDate}">closeDate</td>
             <td th:text="${position.profit}">profit</td>
         </tr>
         </tbody>

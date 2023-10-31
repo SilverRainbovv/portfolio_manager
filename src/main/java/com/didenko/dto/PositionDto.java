@@ -1,12 +1,9 @@
 package com.didenko.dto;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -23,6 +20,10 @@ public class PositionDto {
     private String openDate;
 
     private BigDecimal currentPrice;
+
+    private BigDecimal closePrice;
+
+    private String closeDate;
 
     private BigDecimal profit;
 

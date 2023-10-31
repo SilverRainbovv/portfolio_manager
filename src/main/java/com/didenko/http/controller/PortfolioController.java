@@ -1,9 +1,7 @@
 package com.didenko.http.controller;
 
-import com.didenko.dto.AssetTransactionReadDto;
 import com.didenko.dto.PortfolioCreateEditDto;
 import com.didenko.dto.PositionDto;
-import com.didenko.entity.PositionDirection;
 import com.didenko.entity.TransactionState;
 import com.didenko.entity.User;
 import com.didenko.service.AssetTransactionService;
@@ -48,14 +46,22 @@ public class PortfolioController {
 
         verifyPortfolioBelongsToUser(portfolioId, user);
 
-        var portfolioTransactions = transactionService
+        var openTransactions = transactionService
                 .findByPortfolioIdAndTransactionState(portfolioId, TransactionState.OPEN);
+        var closedTransactions = transactionService
+                .findByPortfolioIdAndTransactionState(portfolioId, TransactionState.CLOSED);
 
-        if (!portfolioTransactions.isEmpty()) {
-            var positions = transactionsToPositionConverter.convert(portfolioTransactions);
+        if (!openTransactions.isEmpty()) {
+            var positions = transactionsToPositionConverter.convert(openTransactions);
             positions.sort(Comparator.comparing(PositionDto::getAssetName));
 
-            model.addAttribute("positions", positions);
+            model.addAttribute("openPositions", positions);
+        }
+        if (!closedTransactions.isEmpty()) {
+            var positions = transactionsToPositionConverter.convert(closedTransactions);
+            positions.sort(Comparator.comparing(PositionDto::getAssetName));
+
+            model.addAttribute("closedPositions", positions);
         }
 
         model.addAttribute("portfolioId", portfolioId);
