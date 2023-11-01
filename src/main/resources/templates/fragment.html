@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Header</title>
-<!--    <link th:href="@{/css/header.css}" rel="stylesheet">-->
+    <!--    <link th:href="@{/css/header.css}" rel="stylesheet">-->
 </head>
 <body>
 <div th:fragment="header" class="header-block">
@@ -12,8 +12,18 @@
                th:text="${#authentication.principal.username}">Username</a>
         </li>
         <li><a th:href="@{/logout}">Logout</a></li>
-<!--        <li><button type="submit">Logout</button></li>-->
+        <!--        <li><button type="submit">Logout</button></li>-->
     </ul>
+    <div th:insert="~{fragment :: locale}"></div>
+</div>
+<div th:fragment="locale">
+    <form action="">
+        <select name="lang" onchange="this.form.submit()">
+            <option></option>
+            <option value="en">EN</option>
+            <option value="ru">RU</option>
+        </select>
+    </form>
 </div>
 </body>
 </html>
