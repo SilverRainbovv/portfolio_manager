@@ -11,8 +11,7 @@
         <li><a th:href="@{|/user/${#authentication.principal.id}|}"
                th:text="${#authentication.principal.username}">Username</a>
         </li>
-        <li><a th:href="@{/logout}">Logout</a></li>
-        <!--        <li><button type="submit">Logout</button></li>-->
+        <li><a th:href="@{/logout}" th:text="#{header.logout}"/></li>
     </ul>
     <div th:insert="~{fragment :: locale}"></div>
 </div>

@@ -2,26 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>User page</title>
+    <title th:text="#{userpage.header}"/>
     <link th:href="@{/css/userPage.css}" rel="stylesheet">
     <link th:href="@{/css/header.css}" rel="stylesheet">
 </head>
 <body>
 <div th:insert="~{fragment :: header}"></div>
-<div th:text="|Email: ${user.email}|"/>
+<div th:text="|#{registration.email}: ${user.email}|"/>
 <br>
-<div th:text="|Name: ${user.firstname} ${user.lastname}|"/>
+<div th:text="|#{userpage.name}: ${user.firstname} ${user.lastname}|"/>
 <br>
-<div th:text="|Birthdate: ${user.birthDate}|"/>
+<div th:text="|#{registration.birthDate}: ${user.birthDate}|"/>
 <br>
-<a th:href="@{'/portfolio/create'}"><button>Add new portfolio</button></a>
+<a th:href="@{'/portfolio/create'}"><button th:text="#{userpage.addPortfolio}"/></a>
 <table>
     <thead>
     <tr>
-        <th>Portfolio name</th>
-        <th>Description</th>
-        <th>Assets</th>
-        <th>Profit</th>
+        <th th:text="#{userpage.portfolioName}"/>
+        <th th:text="#{userpage.portfolioDescription}"/>
+        <th th:text="#{userpage.portfolioAssets}"/>
+        <th th:text="#{userpage.portfolioProfit}"/>
         <th></th>
     </tr>
     </thead>
@@ -32,7 +32,7 @@
         <td th:text="${portfolio.assets.toString()}">Assets Placeholder</td>
         <td th:text="${portfolio.profit.toString()}">Profit placeholder</td>
         <td><a th:href="@{'/portfolio/' + ${portfolio.id}}">
-            <button type="button">View</button>
+            <button type="button" th:text="#{userpage.view}"/>
         </a></td>
     </tr>
     </tbody>

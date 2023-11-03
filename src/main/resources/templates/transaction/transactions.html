@@ -8,16 +8,16 @@
 <body>
 <div th:insert="~{fragment :: header}"></div>
 <a th:href="@{'/transaction/transaction?portfolioId=' + ${portfolioId}}">
-    <button type="button">Add new transaction</button>
+    <button type="button" th:text="#{portfolio.page.addTransaction}"/>
 </a><br>
 <form th:action="@{/transaction/transactions}" method="get">
     <label for="portfolioId">
         <input id="portfolioId" type="text" name="portfolioId" th:value="${portfolioId}" hidden="hidden">
     </label>
-    <label for="findAsset">Find Asset
+    <label for="findAsset"><span th:text="#{transactions.findAsset}"/>
         <input id="findAsset" type="text" name="findAsset" th:value="${currentAssetName}">
     </label>
-    <label for="sortBy">Sort by</label>
+    <label for="sortBy"><span th:text="#{transactions.sortBy}"/>
     <select id="sortBy" name="sortBy">
         <option th:each="sortingOrder : ${sortingOrders}"
         th:value="${sortingOrder}"
@@ -25,26 +25,26 @@
         th:selected="${currentSortingOrder.equals(sortingOrder)}">Sort by
         </option>
     </select>
-    <label for="pageSize">Transactions pet page</label>
+    <label for="pageSize"><span th:text="#{transactions.perPage}"/>
     <select id="pageSize" name="pageSize">
         <option th:each="pageSize : ${pageSizeOptions}"
         th:value="${pageSize}"
         th:text="${pageSize.size}"
         th:selected="${currentPageSize.equals(pageSize.size)}">Transactions pet page</option>
     </select>
-    <button type="submit">Submit</button>
+    <button type="submit" th:text="#{registration.submit}"/>
 </form>
     <table>
-        <caption>Open Transactions</caption>
+        <caption th:text="#{transactions.openTransactions}"/>
         <thead>
         <tr>
-            <th>Asset</th>
+            <th th:text="#{transactions.assetName}"/>
             <th>L/S</th>
-            <th>Open time</th>
-            <th>Open price</th>
-            <th>Volume</th>
-            <th>Current Price</th>
-            <th>Profit</th>
+            <th th:text="#{transactions.openDate}"/>
+            <th th:text="#{transactions.openPrice}"/>
+            <th th:text="#{transactions.volume}"/>
+            <th th:text="#{transactions.currentPrice}"/>
+            <th th:text="#{transactions.profit}"/>
             <th></th>
         </tr>
         </thead>
@@ -57,22 +57,22 @@
             <td th:text="${transaction.volume}">Volume</td>
             <td th:text="${transaction.currentPrice}">Price</td>
             <td th:text="${transaction.profit}">Profit</td>
-            <td><a th:href="@{|/transaction/transaction/update/${transaction.id}|}">Edit</a></td>
+            <td><a th:href="@{|/transaction/transaction/update/${transaction.id}|}" th:text="#{transactions.edit}"/></td>
         </tr>
         </tbody>
     </table>
     <table>
-        <caption>Closed Transactions</caption>
+        <caption th:text="#{transactions.closedTransactions}"/>
         <thead>
         <tr>
-            <th>Asset</th>
+            <th th:text="#{transactions.assetName}"/>
             <th>L/S</th>
-            <th>Open time</th>
-            <th>Open price</th>
-            <th>Volume</th>
-            <th>Close Price</th>
-            <th>Close Date</th>
-            <th>Profit</th>
+            <th th:text="#{transactions.openDate}"/>
+            <th th:text="#{transactions.openPrice}"/>
+            <th th:text="#{transactions.volume}"/>
+            <th th:text="#{transactions.closePrice}"/>
+            <th th:text="#{transactions.closeDate}"/>
+            <th th:text="#{transactions.profit}"/>
         </tr>
         </thead>
         <tbody>

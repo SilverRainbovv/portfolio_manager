@@ -2,19 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New Portfolio</title>
+    <title th:text="#{portfolio.create.header}"/>
     <link th:href="@{/css/header.css}" rel="stylesheet">
 </head>
 <body>
 <div th:insert="~{fragment :: header}"></div>
 <form th:action="@{/portfolio/create}" method="post">
-    <label for="name">Portfolio name
+    <label for="name"><span th:text="#{portfolio.create.name}"/>
         <input id="name" name="name" type="text" required>
     </label>
-    <label for="description">Portfolio description
+    <label for="description"><span th:text="#{portfolio.create.description}"/>
         <input id="description" name="description" type="text">
     </label>
-    <button type="submit">Create</button>
+    <button type="submit" th:text="#{portfolio.create.create}"/>
 </form>
 </body>
 </html>

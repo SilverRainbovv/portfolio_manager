@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Portfolio</title>
+    <title th:text="#{portfolio.page.header}"/>
     <link th:href="@{/css/portfolioPage.css}" rel="stylesheet"/>
     <link th:href="@{/css/header.css}" rel="stylesheet">
     <script type="text/javascript" th:src="@{/js/myScript.js}"></script>
@@ -10,24 +10,24 @@
 <body>
 <div th:insert="~{fragment :: header}"></div>
 <a th:href="@{'/transaction/transaction?portfolioId=' + ${portfolioId}}">
-    <button type="button">Add new transaction</button>
+    <button type="button" th:text="#{portfolio.page.addTransaction}"/>
 </a>
 <a th:href="@{'/transaction/transactions?portfolioId=' + ${portfolioId}}">
-    <button type="button">View all transactions</button>
+    <button type="button" th:text="#{portfolio.page.viewTransactions}"/>
 </a>
-<div th:if="${openPositions == null && closedPositions == null}">This portfolio is empty</div>
+<div th:if="${openPositions == null && closedPositions == null}" th:text="#{portfolio.page.emptyPortfolioMessage}"/>
 <div th:if="${openPositions}">
     <table>
-        <caption>Open positions</caption>
+        <caption th:text="#{portfolio.page.openPositions}"/>
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Direction</th>
-            <th>Volume</th>
-            <th>Open price</th>
-            <th>Open date</th>
-            <th>Current price</th>
-            <th>Profit</th>
+            <th th:text="#{portfolio.page.name}"/>
+            <th th:text="#{portfolio.page.direction}"/>
+            <th th:text="#{portfolio.page.volume}"/>
+            <th th:text="#{portfolio.page.openPrice}"/>
+            <th th:text="#{portfolio.page.openDate}"/>
+            <th th:text="#{portfolio.page.currentPrice}"/>
+            <th th:text="#{portfolio.page.profit}"/>
         </tr>
         </thead>
         <tbody>
@@ -45,17 +45,17 @@
 </div>
 <div th:if="${closedPositions}">
     <table>
-        <caption>Closed positions</caption>
+        <caption th:text="#{portfolio.page.closedPositions}"/>
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Direction</th>
-            <th>Volume</th>
-            <th>Open price</th>
-            <th>Open date</th>
-            <th>Close price</th>
-            <th>Close date</th>
-            <th>Profit</th>
+            <th th:text="#{portfolio.page.name}"/>
+            <th th:text="#{portfolio.page.direction}"/>
+            <th th:text="#{portfolio.page.volume}"/>
+            <th th:text="#{portfolio.page.openPrice}"/>
+            <th th:text="#{portfolio.page.openDate}"/>
+            <th th:text="#{portfolio.page.closePrice}"/>
+            <th th:text="#{portfolio.page.closeDate}"/>
+            <th th:text="#{portfolio.page.profit}"/>
         </tr>
         </thead>
         <tbody>

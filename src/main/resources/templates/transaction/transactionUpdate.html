@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New Transaction</title>
+    <title th:text="#{transaction.update.header}"/>
     <link th:href="@{/css/header.css}" rel="stylesheet">
 </head>
 <body>
@@ -11,22 +11,22 @@
     <div th:text="|Asset name : ${transaction.assetName}|"></div> <br>
     <div th:text="|Asset type: ${transaction.assetType}|"></div> <br>
     <div th:text="|Transaction direction : ${transaction.positionDirection}|"></div> <br>
-    <label for="volume">Volume:
+    <label for="volume"><span th:text="#{transactions.volume}"/>
         <input id="volume" type="number" step="0.00001" name="volume" th:value="${transaction} ? ${transaction.volume} : ''">
     </label><br>
-    <label for="openPrice">Open price:
+    <label for="openPrice"><span th:text="#{transactions.openPrice}"/>
         <input id="openPrice" type="number" step="0.00001" name="openPrice" th:value="${transaction} ? ${transaction.openPrice} : ''">
     </label><br>
-    <label for="openDate">Open date and time:
+    <label for="openDate"><span th:text="#{transactions.openDate}"/>
         <input id="openDate" type="datetime-local" name="openDate" th:value="${transaction} ? ${transaction.openDate} : ''">
     </label><br>
-    <label for="closePrice">Close price:
+    <label for="closePrice"><span th:text="#{transactions.closePrice}"/>
         <input id="closePrice" type="number" step="0.00001" name="closePrice" th:value="${transaction} ? ${transaction.closePrice} : ''">
     </label><br>
-    <label for="closeDate">Close date and time:
+    <label for="closeDate"><span th:text="#{transactions.closeDate}"/>
         <input id="closeDate" type="datetime-local" name="closeDate" th:value="${transaction} ? ${transaction.closeDate} : ''">
     </label><br>
-    <button type="submit">Update</button>
+    <button type="submit" th:text="#{transaction.update.update}"/>
 </form>
 </body>
 </html>

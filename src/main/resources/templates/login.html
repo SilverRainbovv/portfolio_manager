@@ -8,7 +8,7 @@
 <div th:insert="~{fragment :: locale}"></div>
 <form th:action="@{/login}" method="post">
     <div style="color: red" th:if="${param.error}">
-        Bad Credentials
+        <div th:text="#{login.badCredentials}"></div>
     </div>
     <label for="username"><span th:text="#{login.username}">Email:</span>
         <input id="username" name="username" type="email">
@@ -16,8 +16,8 @@
     <label for="password"><span th:text="#{login.password}">Password:</span>
         <input id="password" name="password" type="password">
     </label>
-    <button type="submit">Login</button>
+    <button type="submit" th:text="#{login.login}"/>
 </form>
-<a href="/registration"><button type="button">Create new account</button></a>
+<a href="/registration"><button type="button" th:text="#{login.createAccountButton}"/></a>
 </body>
 </html>

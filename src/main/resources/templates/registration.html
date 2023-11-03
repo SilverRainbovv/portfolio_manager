@@ -2,26 +2,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title th:text="#{registration.register}"/>
 </head>
 <body>
+<div th:insert="~{fragment :: locale}"></div>
 <form action="/registration" method="post">
-    <label for="email">Email:
+    <label for="email"><span th:text="#{registration.email}"/>
         <input id="email" name="email" type="email" required>
     </label><br>
-    <label for="password">Password:
+    <label for="password"><span th:text="#{registration.password}"/>
         <input id="password" name="password" type="password" required>
     </label><br>
-    <label for="birthDate">Birth date:
+    <label for="birthDate"><span th:text="#{registration.birthDate}"/>
         <input id="birthDate" name="birthDate" type="date" required>
     </label><br>
-    <label for="firstname">First name:
+    <label for="firstname"><span th:text="#{registration.firstname}"/>
         <input id="firstname" name="firstname" type="text" required>
     </label><br>
-    <label for="lastname">Last name:
+    <label for="lastname"><span th:text="#{registration.lastname}"/>
         <input name="lastname" id="lastname" type="text" required>
-    </label>
-    <button type="submit">Submit</button>
+    </label><br>
+    <button type="submit" th:text="#{registration.submit}"/>
 </form>
 <div th:if="${errors}">
     <p style="color: red" th:each="error : ${errors}" th:text="${error.defaultMessage}">Error Message</p>
