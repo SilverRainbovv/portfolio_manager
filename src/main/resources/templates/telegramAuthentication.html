@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Telegram auth</title>
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+</head>
+<body>
+<div th:insert="~{fragment :: header}"></div>
+<div th:text="|Follow the link, input command authenticate and follow instrusctions|"/>
+<a th:href="@{https://t.me/PortfolioAssistant_bot}">Bot_Link</a>
+<div th:text="|Your authentication token is ${authenticationToken}|"/>
+<br>
+<a th:href="@{'/user'}"><button th:text="|Back to User Page|"/></a>
+
+</body>
+</html>

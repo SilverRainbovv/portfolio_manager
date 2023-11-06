@@ -20,7 +20,7 @@ public class SecurityConfiguration {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(urlConfig -> urlConfig
-                        .requestMatchers("/logout", "/login", "/registration",
+                        .requestMatchers("/api/v1/**", "/logout", "/login", "/registration",
                                 "/v3/api/docs/**", "/swagger-ui/**").permitAll()
                         .requestMatchers("/admin/**").hasAuthority(Role.ADMIN.getAuthority())
                         .anyRequest().authenticated())

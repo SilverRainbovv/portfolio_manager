@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Locale;
 
-@RequiredArgsConstructor
-@RestController
-@RequestMapping("/api/v1/messages")
-public class MessageRestController {
-
-    private final MessageSource messageSource;
-    @GetMapping
-    public String getMessage(@RequestParam("key") String key,
-                             @RequestParam("lang") String lang) {
-
-        return messageSource.getMessage(key, null, null, new Locale(lang));
-    }
-}
+//@RequiredArgsConstructor
+//@RestController
+//@RequestMapping("/api/v1/messages")
+//public class MessageRestController {
+//
+//    private final MessageSource messageSource;
+//    @GetMapping
+//    public String getMessage(@RequestParam("key") String key,
+//                             @RequestParam("lang") String lang) {
+//
+//        return messageSource.getMessage(key, null, null, new Locale(lang));
+//    }
+//}

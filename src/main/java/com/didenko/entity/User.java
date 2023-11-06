@@ -39,6 +39,9 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Portfolio> portfolios;
 
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+    private TelegramUserInfo telegramUserInfo;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(role);
