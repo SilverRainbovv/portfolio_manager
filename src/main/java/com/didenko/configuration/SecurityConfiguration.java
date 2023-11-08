@@ -16,12 +16,19 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
+    private static final String[] WHITE_LIST_REQUESTS = {
+            "/swagger-ui/**","/api/v1/**", "/logout", "/registration",
+            "/v3/api/docs/**", "/v3/api/docs", "/swagger/resources",
+            "/swagger/resources/**", "swagger-ui", "/api/auth/**",
+            "/swagger-ui/index.html", "/swagger-ui.html",
+            "/login"
+    };
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(urlConfig -> urlConfig
-                        .requestMatchers("/api/v1/**", "/logout", "/login", "/registration",
-                                "/v3/api/docs/**", "/swagger-ui/**").permitAll()
+                        .requestMatchers(WHITE_LIST_REQUESTS).permitAll()
                         .requestMatchers("/admin/**").hasAuthority(Role.ADMIN.getAuthority())
                         .anyRequest().authenticated())
                 .formLogin(login -> login

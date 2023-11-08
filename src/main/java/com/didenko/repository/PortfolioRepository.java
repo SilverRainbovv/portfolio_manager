@@ -18,6 +18,12 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, Long> {
 
     @Query("select p from Portfolio p " +
             "join p.user u " +
+            "join u.telegramUserInfo t " +
+            "where t.chatId = :chatId")
+    List<Portfolio> findAllByTelegramChatId(Long chatId);
+
+    @Query("select p from Portfolio p " +
+            "join p.user u " +
             "where p.id = :portfolioId and u.id = :userId")
     Optional<Portfolio> verifyPortfolioBelongsToUserById(Long portfolioId, Long userId);
 

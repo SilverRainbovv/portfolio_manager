@@ -33,7 +33,7 @@ public class UserController {
 
         validateUser(id, user.getId());
 
-        var portfolios = portfolioService.getByUserId(id).stream().toList();
+        var portfolios = portfolioService.getByUserId(id);
 
         return userService.findById(id)
                 .map(maybeUser -> {

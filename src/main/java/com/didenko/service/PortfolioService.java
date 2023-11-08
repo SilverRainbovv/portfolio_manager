@@ -31,6 +31,11 @@ public class PortfolioService {
                 .map(portfolioReadDtoMapper::mapFrom).toList();
     }
 
+    public List<PortfolioReadDto> getByTelegramChatId(Long chatId){
+        return portfolioRepository.findAllByTelegramChatId(chatId).stream()
+                .map(portfolioReadDtoMapper::mapFrom).toList();
+    }
+
     public boolean verifyPortfolioBelongsToUser(Long portfolioId, Long userId){
         return portfolioRepository.verifyPortfolioBelongsToUserById(portfolioId, userId).isPresent();
     }
