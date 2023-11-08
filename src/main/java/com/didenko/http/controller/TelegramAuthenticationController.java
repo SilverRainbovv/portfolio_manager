@@ -23,8 +23,8 @@ public class TelegramAuthenticationController {
         var telegramUserInfo = authenticationService.createAuthenticationEntry(user);
 
         model.addAttribute("authenticationToken", telegramUserInfo.getToken());
+        model.addAttribute("email", user.getEmail());
 
         return "/telegramAuthentication";
     }
-
 }

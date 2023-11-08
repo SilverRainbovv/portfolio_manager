@@ -37,4 +37,23 @@ public class TelegramAuthenticationService {
             throw new RuntimeException("You already have authenticated telegram account");
     }
 
+    public String tryAuthorize(String email, String token, Long chatId) {
+
+        var maybeEntry = telegramRepository.findTelegramUserInfoByUser_Email(email);
+
+        if (maybeEntry.isPresent() && maybeEntry.get().getChatId() == null){
+            var entry = maybeEntry.get();
+            if (entry.getToken().equals(token) && entry.getUser().getEmail().equals(email)){
+                entry.setChatId(chatId);
+                telegramRepository.updateTelegramUserInfosById(entry.getId(), chatId);
+                return "Successful authentication";
+            } else {
+                return "Bad credentials";
+            }
+        } else {
+            return maybeEntry.isEmpty()
+                    ? "Please first generate credentials on your user-page"
+                    : "You are already authenticated";
+        }
+    }
 }
