@@ -19,7 +19,7 @@ public class SecurityConfiguration {
             "/v3/api-docs/**", "/v3/api-docs", "/swagger/resources",
             "/swagger/resources/**", "swagger-ui", "/api/auth/**",
             "/swagger-ui/index.html", "/swagger-ui.html",
-            "/login", "/home", "/css/**", "/images/**"    };
+            "/login", "/login/**", "/home", "/css/**", "/images/**"    };
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -31,6 +31,7 @@ public class SecurityConfiguration {
                 .formLogin(login -> login
                         .loginPage("/login")
                         .defaultSuccessUrl("/user"))
+                .logout(logout -> logout.logoutSuccessUrl("/home"))
                 .httpBasic(Customizer.withDefaults())
                 .build();
     }

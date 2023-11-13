@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link th:href="@{/css/login.css}" rel="stylesheet">
 </head>
 <body>
-<div th:insert="~{fragment :: locale}"></div>
 <form th:action="@{/login}" method="post">
+    <div class="login-form">
+        <input type="email" name="username" id="username" placeholder="Email">
+        <input type="password" name="password" id="password" placeholder="Password">
+        <button type="submit">Login</button>
+        <p>Not registered? <a href="/registration">Create an account</a></p>
+    </div>
     <div style="color: red" th:if="${param.error}">
         <div th:text="#{login.badCredentials}"></div>
     </div>
-    <label for="username"><span th:text="#{login.username}">Email:</span>
-        <input id="username" name="username" type="email">
-    </label>
-    <label for="password"><span th:text="#{login.password}">Password:</span>
-        <input id="password" name="password" type="password">
-    </label>
-    <button type="submit" th:text="#{login.login}"/>
 </form>
-<a href="/registration"><button type="button" th:text="#{login.createAccountButton}"/></a>
 </body>
 </html>

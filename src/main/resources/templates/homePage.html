@@ -11,10 +11,10 @@
                 <div class="nav-flex-container">
                     <div id="companyName">Portfolio Manager</div>
                     <div class="link"><a th:href="@{'/home'}">Home</a></div>
-                    <div class="link" th:if="${authenticated}"><a th:href="@{'/user'}">User Page</a></div>
-                    <div class="link" th:if="${authenticated == null}"><a th:href="@{'/registration'}">Registration</a></div>
-                    <div class="link" th:if="${authenticated == null}"><a th:href="@{'/login'}">Login</a></div>
-                    <div class="link" th:if="${authenticated}"><a th:href="@{'/logout'}">Logout</a></div>
+                    <div class="link" th:if="${authenticated }"><a th:href="@{'/user'}">User Page</a></div>
+                    <div class="link" th:if="${authenticated}"><a th:href="@{'/logout'}" th:text="#{header.logout}"></a></div>
+                    <div class="link" th:if="${!authenticated}"><a th:href="@{'/registration'}" th:text="#{header.registration}"></a></div>
+                    <div class="link" th:if="${!authenticated}"><a th:href="@{'/login'}" th:text="#{header.login}"></a></div>
                     <div class="link"><a href="https://instagram.com">Insta</a></div>
                 </div>
             </nav>
@@ -23,12 +23,12 @@
             <div class="entrance">
                 <div class="entrance-column-block">
                     <div class="entrance-text-large">
-                        <p>Maximize Your Stock</p>
-                        <p>Portfolio Potential</p>
+                        <p th:text="#{home.entrance-text-large1}"/>
+                        <p th:text="#{home.entrance-text-large2}"/>
                     </div>
                     <div class="entrance-text-normal">
-                        <p>Stay informed and make smart investment decisions with our</p>
-                        <p> Stocks Portfolio Monitor.</p>
+                        <p th:text="#{home.entrance-text-normal1}"/>
+                        <p th:text="#{home.entrance-text-normal2}"/>
                     </div>
                 </div>
                 <div class="entrance-image">
@@ -39,36 +39,28 @@
                 <div class="features-block">
                     <img class="features-image" src="/images/image3.jpg">
                     <div class="features-text">
-                        <h3>Real-time Stock Tracking</h3>
-                        <p>Stay updated with live stock prices, making informed investment decisions</p>
+                        <h3 th:text="#{home.features1}"/>
+                        <p th:text="#{home.features2}"/>
                     </div>
                 </div>
                 <div class="features-block">
                     <img class="features-image" src="/images/image6.jpg" alt="">
                     <div class="features-text">
-                        <h3>Portfolio Analysis</h3>
-                        <p>Recieve detailed analysis of your stock portfolio's performance and potential risks</p>
+                        <h3 th:text="#{home.features3}"/>
+                        <p th:text="#{home.features4}"/>
                     </div>
                 </div>
                 <div class="features-block">
                     <img class="features-image" src="/images/image4.jpg" alt="">
                     <div class="features-text">
-                        <h3>Customized Reports</h3>
-                        <p>Get personilized reports on your portfolio performance</p>
+                        <h3 th:text="#{home.features5}"/>
+                        <p th:text="#{home.features6}"/>
                     </div>
                 </div>
             </div>
             <div class="about">
-                <h2>About us</h2>
-                <p>Welcome to Portfolio Manager, your go-to platform for monitoring stocks portfolios.
-                    Based in Kiev, Ukraine, we are dedicated to providing you with the tools and insights you need
-                    to make informed investment decisions. With our advanced portfolio monitoring system, you can
-                    track the performance of your stocks in real-time and stay updated on the latest market trends.
-                    Our team of experienced professionals is committed to delivering accurate and reliable data,
-                    empowering you to optimize your investment strategies. Whether you are a seasoned investor or
-                    just starting out, Portfolio Manager is here to help you navigate the complex world of stock markets
-                    and maximize your returns. Join us today and take control of your portfolio like never before.
-                </p>
+                <h2 th:text="#{home.aboutUs}"/>
+                <p th:text="#{home.aboutText}"/>
             </div>
         </div>
     </body>

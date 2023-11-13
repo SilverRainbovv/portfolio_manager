@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add telegram bot authentication">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/rest/PortfolioRestController.java" afterDir="false" />
+    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add project home page">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/configuration/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/TelegramAuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/TelegramAuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/rest/MessageRestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/rest/TelegramRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/rest/TelegramAuthenticationRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/PortfolioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/PortfolioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/service/PortfolioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/PortfolioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/HomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/HomePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_ru.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_ru.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/homePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/homePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,66 +69,66 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers&quot;: &quot;true&quot;,
-    &quot;database.data.extractors.current.export.id&quot;: &quot;Excel (xlsx)&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Intellij Projects/portfolio_manager/src/main/resources/templates/user&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.25581396&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;4660d947f791b9bb7d9cccef4985ee49&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers": "true",
+    "database.data.extractors.current.export.id": "Excel (xlsx)",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/Intellij Projects/portfolio_manager/src/main/resources/static/css",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.25581396",
+    "settings.editor.selected.configurable": "preferences.general",
+    "spring.configuration.checksum": "4660d947f791b9bb7d9cccef4985ee49",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
-      &quot;PostgreSQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
+      "PostgreSQL"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
-      &quot;PostgreSQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
+      "PostgreSQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.didenko.entity" />
       <recent name="com.didenko.dao.entity.User" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Intellij Projects\portfolio_manager\src\main\resources\static\css" />
+      <recent name="D:\Intellij Projects\portfolio_manager\src\main\resources\templates" />
       <recent name="D:\Intellij Projects\portfolio_manager\src\main\resources\templates\user" />
       <recent name="D:\Intellij Projects\portfolio_manager\src\main\resources\db\changelog" />
       <recent name="C:\Users\vadim\Downloads\portfolio_manager\src\main\resources\templates\transaction" />
-      <recent name="C:\Users\vadim\IdeaProjects\portfolio_manager\src\main\resources\db\changelog" />
-      <recent name="E:\JAVA\portfolio-manager\src\main\resources\db\changelog" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Intellij Projects\portfolio_manager\src\main\resources\static\images" />
+      <recent name="D:\Intellij Projects\portfolio_manager\src\main\resources\static" />
+      <recent name="D:\Intellij Projects\portfolio_manager\src\main\resources\static\css" />
       <recent name="D:\Intellij Projects\portfolio_manager\src\main\resources\templates" />
       <recent name="E:\JAVA\portfolio-manager\src\main\resources" />
-      <recent name="E:\JAVA\portfolio-manager\src\main\resources\static\js" />
-      <recent name="E:\JAVA\portfolio-manager\src\main\resources\static" />
-      <recent name="E:\JAVA\portfolio-manager\src\main\resources\static\css" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -320,7 +319,11 @@
       <workItem from="1699350283488" duration="2468000" />
       <workItem from="1699371166893" duration="738000" />
       <workItem from="1699433298339" duration="5059000" />
-      <workItem from="1699457624989" duration="4816000" />
+      <workItem from="1699457624989" duration="5157000" />
+      <workItem from="1699605884775" duration="1561000" />
+      <workItem from="1699788209263" duration="917000" />
+      <workItem from="1699866829151" duration="6783000" />
+      <workItem from="1699885704212" duration="327000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -585,7 +588,23 @@
       <option name="project" value="LOCAL" />
       <updated>1699438088436</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="add PortfolioRestController">
+      <option name="closed" value="true" />
+      <created>1699463119871</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1699463119872</updated>
+    </task>
+    <task id="LOCAL-00037" summary="add project home page">
+      <option name="closed" value="true" />
+      <created>1699869623015</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1699869623015</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,8 +636,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add basic portfolio transactions page" />
-    <MESSAGE value="optimise price for transactions obtainment" />
     <MESSAGE value="change transactions page logic" />
     <MESSAGE value="fix bug with wrong result on portfolio page" />
     <MESSAGE value="add transaction creation mapping and html page" />
@@ -642,7 +659,9 @@
     <MESSAGE value="add full localization" />
     <MESSAGE value="start integration of telegram bot" />
     <MESSAGE value="add telegram bot authentication" />
-    <option name="LAST_COMMIT_MESSAGE" value="add telegram bot authentication" />
+    <MESSAGE value="add PortfolioRestController" />
+    <MESSAGE value="add project home page" />
+    <option name="LAST_COMMIT_MESSAGE" value="add project home page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -656,11 +675,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/didenko/rest/HelloRestController.java</url>
           <line>13</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/didenko/http/rest/PortfolioRestController.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
