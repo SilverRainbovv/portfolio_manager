@@ -1,13 +1,11 @@
 package com.didenko.configuration;
 
 import com.didenko.entity.Role;
-import com.didenko.entity.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -18,11 +16,10 @@ public class SecurityConfiguration {
 
     private static final String[] WHITE_LIST_REQUESTS = {
             "/swagger-ui/**","/api/v1/**", "/logout", "/registration",
-            "/v3/api/docs/**", "/v3/api/docs", "/swagger/resources",
+            "/v3/api-docs/**", "/v3/api-docs", "/swagger/resources",
             "/swagger/resources/**", "swagger-ui", "/api/auth/**",
             "/swagger-ui/index.html", "/swagger-ui.html",
-            "/login"
-    };
+            "/login", "/home", "/css/**", "/images/**"    };
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

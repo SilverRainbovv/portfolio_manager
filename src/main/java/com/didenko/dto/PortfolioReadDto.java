@@ -19,5 +19,4 @@ public class PortfolioReadDto {
     private List<String> assets;
 
     private BigDecimal profit;
-
 }

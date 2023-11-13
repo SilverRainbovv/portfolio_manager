@@ -20,5 +20,4 @@ public class PortfolioRestController {
         return portfolioService.getByTelegramChatId(chatId);
 
     }
-
 }

@@ -1,0 +1,63 @@
+@import url(parent-styles.css);
+
+.entrance{
+    margin-top: 5em;
+    margin-bottom: 5em;
+    display: flex;
+    flex-direction: row;
+}
+
+.entrance-column-block {
+    flex-direction: column;
+    padding-top: 2em;
+    margin-right: 2em;
+    margin-left: 5em;
+}
+
+.entrance-text-large p {
+    font-size: 3em;
+    font-weight: bolder;
+    line-height: 0.2em;
+}
+
+.entrance-text-normal p {
+    font-size: 1em;
+    line-height: 0.7em;
+}
+
+.entrance-image {
+    margin-left: 12em;
+    border-radius: 10px;
+}
+
+.features {
+    display: flex;
+    margin-left: 3em;
+    margin-right: 3em;
+    flex-direction: row;
+    align-items: center;
+}
+
+.features-block {
+    flex-basis: 400px;
+    align-self: baseline;
+    margin: 40px;
+}
+
+.features-image {
+    width: 400px;
+    border-radius: 10px;
+}
+
+.features-text {
+    text-align: center;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15em;
+    margin-bottom: 5em;
+    margin-left: 5em;
+    align-items: flex-start;
+}

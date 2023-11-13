@@ -1,9 +1,33 @@
-.header-block {
-    border-style: hidden;
+
+.main-header{
+    background-color: #E2D3BD;
 }
 
-.menu > li {
-    display: inline-flex;
-    margin-left: 20px;
-    font-family: 'Quicksand', sans-serif;
+.nav-bar a {
+    color: #000;
+    text-decoration: none;
+}
+
+.nav-flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav-flex-container div {
+    flex-basis: 6%;
+    margin: 0;
+    line-height: 80px;
+    text-align: center;
+}
+
+#companyName{
+    flex-basis: 70%;
+    text-align: left;
+    padding-left: 1em;
+    font-size: 2em;
+}
+
+.link:hover {
+    background-color: rgba(0,0,0, .15);
 }
