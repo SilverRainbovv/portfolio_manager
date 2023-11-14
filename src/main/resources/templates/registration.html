@@ -3,29 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="#{registration.register}"/>
+    <link th:href="@{/css/registration.css}" rel="stylesheet">
 </head>
 <body>
 <div th:insert="~{fragment :: locale}"></div>
 <form action="/registration" method="post">
-    <label for="email"><span th:text="#{registration.email}"/>
-        <input id="email" name="email" type="email" required>
-    </label><br>
-    <label for="password"><span th:text="#{registration.password}"/>
-        <input id="password" name="password" type="password" required>
-    </label><br>
-    <label for="birthDate"><span th:text="#{registration.birthDate}"/>
-        <input id="birthDate" name="birthDate" type="date" required>
-    </label><br>
-    <label for="firstname"><span th:text="#{registration.firstname}"/>
-        <input id="firstname" name="firstname" type="text" required>
-    </label><br>
-    <label for="lastname"><span th:text="#{registration.lastname}"/>
-        <input name="lastname" id="lastname" type="text" required>
-    </label><br>
-    <button type="submit" th:text="#{registration.submit}"/>
+    <div class="registration-form">
+        <input type="email" name="email" th:placeholder="#{registration.email}" required>
+        <input type="password" name="password" th:placeholder="#{registration.password}" required>
+        <input type="date" name="birthDate" th:placeholder="#{registration.birthDate}" required>
+        <input type="text" name="firstname" th:placeholder="#{registration.firstname}" required>
+        <input type="text" name="lastname" th:placeholder="#{registration.lastname}" required>
+        <button type="submit" th:text="#{registration.submit}"/>
+        <p th:text="#{registration.haveAccount1}" /><a th:href="@{/login}"><span th:text="#{registration.haveAccount2}"></span></a>
+        <div th:if="${errors}">
+            <p style="color: red" th:each="error : ${errors}" th:text="${error.defaultMessage}">Error Message</p>
+        </div>
+    </div>
 </form>
-<div th:if="${errors}">
-    <p style="color: red" th:each="error : ${errors}" th:text="${error.defaultMessage}">Error Message</p>
-</div>
 </body>
 </html>

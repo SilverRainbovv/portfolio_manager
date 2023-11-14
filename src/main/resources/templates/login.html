@@ -8,10 +8,10 @@
 <body>
 <form th:action="@{/login}" method="post">
     <div class="login-form">
-        <input type="email" name="username" id="username" placeholder="Email">
-        <input type="password" name="password" id="password" placeholder="Password">
-        <button type="submit">Login</button>
-        <p>Not registered? <a href="/registration">Create an account</a></p>
+        <input type="email" name="username" id="username" th:placeholder="#{login.username}">
+        <input type="password" name="password" id="password" th:placeholder="#{login.password}">
+        <button type="submit" th:text="#{login.login}"/>
+        <p th:text="#{login.createAccount1}"/><a th:href="@{/registration}"><span th:text="#{login.createAccount2}"></span></a>
     </div>
     <div style="color: red" th:if="${param.error}">
         <div th:text="#{login.badCredentials}"></div>
