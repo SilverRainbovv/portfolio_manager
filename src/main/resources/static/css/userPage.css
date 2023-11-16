@@ -1,4 +1,47 @@
-table, th, td{
-    border: 1px solid black;
+@import url(header.css);
+
+.userPage {
+    display: flex;
+    flex-direction: column;
+    margin: 1% 2%;
+}
+
+.userInfo {
+    margin-left: 3%;
+}
+
+table {
+    margin-top: 2%;
+    max-width: 60%;
     border-collapse: collapse;
+}
+
+tr {
+    height: 2em;
+    max-width: 100px;
+}
+th {
+    max-width: 100px;
+}
+
+tbody td {
+    text-align: center;
+    max-width: 100px;
+}
+
+tbody tr:hover {background-color: rgba(0,0,0, .15);}
+
+
+.uncolored {
+    background-color: #F8F4E5;
+}
+
+button {
+    border: 2px solid rgba(0,0,0, .1);
+    background-color: #F8F4E5;
+}
+
+button:hover {
+    background-color: rgba(0,0,0, .15);
+    cursor: pointer;
 }
