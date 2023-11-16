@@ -1,4 +1,57 @@
-table, th, td{
-    border: 1px solid black;
-    border-collapse: collapse;
+@import url(header.css);
+
+.data-area {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 2% 2%;
 }
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1%;
+}
+
+.buttons a {
+    margin: 0.2em;
+}
+
+.buttons button {
+    width: 15em;
+    border: 2px solid rgba(0,0,0, .1);
+    background-color: #F8F4E5;
+}
+
+button:hover {
+    background-color: rgba(0,0,0, .15);
+    cursor: pointer;
+}
+
+.tables {
+    display: flex;
+    flex-direction: column;
+}
+
+.tables table {
+    align-items: baseline;
+    border-collapse: collapse;
+    margin-bottom: 2%;
+    width: 90%;
+}
+
+tr {
+    height: 2em;
+    max-width: 100px;
+}
+th {
+    max-width: 100px;
+}
+
+tbody td {
+    text-align: center;
+    max-width: 100px;
+}
+
+tbody tr:hover {background-color: rgba(0,0,0, .15);}

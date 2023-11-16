@@ -22,30 +22,32 @@
         <p th:text="|#{registration.email}: ${user.email}|"/>
         <p th:text="|#{userpage.name}: ${user.firstname} ${user.lastname}|"/>
         <p th:text="|#{registration.birthDate}: ${user.birthDate}|"/>
-        <a th:href="@{'/portfolio/create'}"><button th:text="#{userpage.addPortfolio}"/></a>
+        <a th:href="@{'/portfolio/create'}">
+            <button th:text="#{userpage.addPortfolio}"/>
+        </a>
     </div>
-<table>
-    <thead>
-    <tr>
-        <th th:text="#{userpage.portfolioName}"/>
-        <th th:text="#{userpage.portfolioDescription}"/>
-        <th th:text="#{userpage.portfolioAssets}"/>
-        <th th:text="#{userpage.portfolioProfit}"/>
-        <th class="uncolored"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="portfolio : ${portfolios}">
-        <td th:text="${portfolio.name}">Portfolio name</td>
-        <td th:text="${portfolio.description}">Description Placeholder</td>
-        <td th:text="${portfolio.assets.toString()}">Assets Placeholder</td>
-        <td th:text="${portfolio.profit.toString()}">Profit placeholder</td>
-        <td class="uncolored"><a th:href="@{'/portfolio/' + ${portfolio.id}}">
-            <button type="button" th:text="#{userpage.view}"/>
-        </a></td>
-    </tr>
-    </tbody>
-</table>
+    <table>
+        <thead>
+        <tr>
+            <th th:text="#{userpage.portfolioName}"/>
+            <th th:text="#{userpage.portfolioDescription}"/>
+            <th th:text="#{userpage.portfolioAssets}"/>
+            <th th:text="#{userpage.portfolioProfit}"/>
+            <th class="uncolored"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="portfolio : ${portfolios}">
+            <td th:text="${portfolio.name}">Portfolio name</td>
+            <td th:text="${portfolio.description}">Description Placeholder</td>
+            <td th:text="${portfolio.assets.toString()}">Assets Placeholder</td>
+            <td th:text="${portfolio.profit.toString()}">Profit placeholder</td>
+            <td class="uncolored"><a th:href="@{'/portfolio/' + ${portfolio.id}}">
+                <button type="button" th:text="#{userpage.view}"/>
+            </a></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
