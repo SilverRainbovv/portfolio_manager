@@ -59,7 +59,7 @@
                 <th th:text="#{transactions.volume}"/>
                 <th th:text="#{transactions.currentPrice}"/>
                 <th th:text="#{transactions.profit}"/>
-                <th></th>
+                <th class="uncolored"></th>
             </tr>
             </thead>
             <tbody>
@@ -71,7 +71,9 @@
                 <td th:text="${transaction.volume}">Volume</td>
                 <td th:text="${transaction.currentPrice}">Price</td>
                 <td th:text="${transaction.profit}">Profit</td>
-                <td><a th:href="@{|/transaction/transaction/update/${transaction.id}|}" th:text="#{transactions.edit}"/>
+                <td class="uncolored"><a th:href="@{|/transaction/transaction/update/${transaction.id}|}">
+                    <button th:text="#{transactions.edit}"/>
+                </a>
                 </td>
             </tr>
             </tbody>
