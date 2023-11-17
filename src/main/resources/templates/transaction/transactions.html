@@ -3,94 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <title>Transactions</title>
-    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/transactionsPage.css}" rel="stylesheet">
 </head>
 <body>
-<div th:insert="~{fragment :: header}"></div>
-<a th:href="@{'/transaction/transaction?portfolioId=' + ${portfolioId}}">
-    <button type="button" th:text="#{portfolio.page.addTransaction}"/>
-</a><br>
-<form th:action="@{/transaction/transactions}" method="get">
-    <label for="portfolioId">
-        <input id="portfolioId" type="text" name="portfolioId" th:value="${portfolioId}" hidden="hidden">
-    </label>
-    <label for="findAsset"><span th:text="#{transactions.findAsset}"/>
-        <input id="findAsset" type="text" name="findAsset" th:value="${currentAssetName}">
-    </label>
-    <label for="sortBy"><span th:text="#{transactions.sortBy}"/>
-    <select id="sortBy" name="sortBy">
-        <option th:each="sortingOrder : ${sortingOrders}"
-        th:value="${sortingOrder}"
-        th:text="${sortingOrder.order}"
-        th:selected="${currentSortingOrder.equals(sortingOrder)}">Sort by
-        </option>
-    </select>
-    <label for="pageSize"><span th:text="#{transactions.perPage}"/>
-    <select id="pageSize" name="pageSize">
-        <option th:each="pageSize : ${pageSizeOptions}"
-        th:value="${pageSize}"
-        th:text="${pageSize.size}"
-        th:selected="${currentPageSize.equals(pageSize.size)}">Transactions pet page</option>
-    </select>
-    <button type="submit" th:text="#{registration.submit}"/>
-</form>
-    <table>
-        <caption th:text="#{transactions.openTransactions}"/>
-        <thead>
-        <tr>
-            <th th:text="#{transactions.assetName}"/>
-            <th>L/S</th>
-            <th th:text="#{transactions.openDate}"/>
-            <th th:text="#{transactions.openPrice}"/>
-            <th th:text="#{transactions.volume}"/>
-            <th th:text="#{transactions.currentPrice}"/>
-            <th th:text="#{transactions.profit}"/>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="transaction : ${openTransactions}">
-            <td th:text="${transaction.assetName}">Asset</td>
-            <td th:text="${transaction.positionDirection}">L/S</td>
-            <td th:text="${transaction.openDate}">Open time</td>
-            <td th:text="${transaction.openPrice}">Open price</td>
-            <td th:text="${transaction.volume}">Volume</td>
-            <td th:text="${transaction.currentPrice}">Price</td>
-            <td th:text="${transaction.profit}">Profit</td>
-            <td><a th:href="@{|/transaction/transaction/update/${transaction.id}|}" th:text="#{transactions.edit}"/></td>
-        </tr>
-        </tbody>
-    </table>
-    <table>
-        <caption th:text="#{transactions.closedTransactions}"/>
-        <thead>
-        <tr>
-            <th th:text="#{transactions.assetName}"/>
-            <th>L/S</th>
-            <th th:text="#{transactions.openDate}"/>
-            <th th:text="#{transactions.openPrice}"/>
-            <th th:text="#{transactions.volume}"/>
-            <th th:text="#{transactions.closePrice}"/>
-            <th th:text="#{transactions.closeDate}"/>
-            <th th:text="#{transactions.profit}"/>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="transaction : ${closedTransactions}">
-            <td th:text="${transaction.assetName}">Asset</td>
-            <td th:text="${transaction.positionDirection}">L/S</td>
-            <td th:text="${transaction.openDate}">Open time</td>
-            <td th:text="${transaction.openPrice}">Open price</td>
-            <td th:text="${transaction.volume}">Volume</td>
-            <td th:text="${transaction.closePrice}">Price</td>
-            <td th:text="${transaction.closeDate}">Close Date</td>
-            <th th:text="${transaction.profit}">Profit</th>
-        </tr>
-        </tbody>
-    </table>
+<header class="main-header">
+    <nav class="nav-bar">
+        <div class="nav-flex-container">
+            <div id="companyName">Portfolio Manager</div>
+            <div class="link"><a th:href="@{'/home'}">Home</a></div>
+            <div class="link"><a th:href="@{'/user'}">User Page</a></div>
+            <div class="link"><a th:href="@{'/logout'}" th:text="#{header.logout}"></a></div>
+            <div class="link"><a href="https://instagram.com">Insta</a></div>
+        </div>
+    </nav>
+</header>
+<div class="data-area">
+    <div class="buttons">
+        <a th:href="@{'/transaction/transaction?portfolioId=' + ${portfolioId}}">
+            <button type="button" th:text="#{portfolio.page.addTransaction}"/>
+        </a>
+    </div>
+    <form th:action="@{/transaction/transactions}" method="get">
+        <label for="portfolioId">
+            <input id="portfolioId" type="text" name="portfolioId" th:value="${portfolioId}" hidden="hidden">
+        </label>
+        <label for="findAsset"><span th:text="#{transactions.findAsset}"/>
+            <input id="findAsset" type="text" name="findAsset" th:value="${currentAssetName}">
+        </label>
+        <label for="sortBy"><span th:text="#{transactions.sortBy}"/>
+            <select id="sortBy" name="sortBy">
+                <option th:each="sortingOrder : ${sortingOrders}"
+                        th:value="${sortingOrder}"
+                        th:text="${sortingOrder.order}"
+                        th:selected="${currentSortingOrder.equals(sortingOrder)}">Sort by
+                </option>
+            </select>
+        </label>
+        <label for="pageSize">Page Size
+            <select id="pageSize" name="pageSize">
+                <option>5</option>
+                <option>10</option>
+            </select>
+        </label>
+        <button class="submit-button" type="submit" th:text="#{registration.submit}"/>
+    </form>
+    <div class="tables">
+        <table>
+            <caption th:text="#{transactions.openTransactions}"/>
+            <thead>
+            <tr>
+                <th th:text="#{transactions.assetName}"/>
+                <th>L/S</th>
+                <th th:text="#{transactions.openDate}"/>
+                <th th:text="#{transactions.openPrice}"/>
+                <th th:text="#{transactions.volume}"/>
+                <th th:text="#{transactions.currentPrice}"/>
+                <th th:text="#{transactions.profit}"/>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="transaction : ${openTransactions}">
+                <td th:text="${transaction.assetName}">Asset</td>
+                <td th:text="${transaction.positionDirection}">L/S</td>
+                <td th:text="${transaction.openDate}">Open time</td>
+                <td th:text="${transaction.openPrice}">Open price</td>
+                <td th:text="${transaction.volume}">Volume</td>
+                <td th:text="${transaction.currentPrice}">Price</td>
+                <td th:text="${transaction.profit}">Profit</td>
+                <td><a th:href="@{|/transaction/transaction/update/${transaction.id}|}" th:text="#{transactions.edit}"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <table>
+            <caption th:text="#{transactions.closedTransactions}"/>
+            <thead>
+            <tr>
+                <th th:text="#{transactions.assetName}"/>
+                <th>L/S</th>
+                <th th:text="#{transactions.openDate}"/>
+                <th th:text="#{transactions.openPrice}"/>
+                <th th:text="#{transactions.volume}"/>
+                <th th:text="#{transactions.closePrice}"/>
+                <th th:text="#{transactions.closeDate}"/>
+                <th th:text="#{transactions.profit}"/>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="transaction : ${closedTransactions}">
+                <td th:text="${transaction.assetName}">Asset</td>
+                <td th:text="${transaction.positionDirection}">L/S</td>
+                <td th:text="${transaction.openDate}">Open time</td>
+                <td th:text="${transaction.openPrice}">Open price</td>
+                <td th:text="${transaction.volume}">Volume</td>
+                <td th:text="${transaction.closePrice}">Price</td>
+                <td th:text="${transaction.closeDate}">Close Date</td>
+                <th th:text="${transaction.profit}">Profit</th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 <form th:if="${totalPages > 1}" th:action="@{/transaction/transactions(portfolioId = ${portfolioId})}" method="get">
     <span th:each="page:${#numbers.sequence(0, totalPages - 1)}">
-        <a th:href="@{/transaction/transactions(portfolioId = ${portfolioId}, page = ${page})}" th:text="${page + 1}"></a>
+        <a th:href="@{/transaction/transactions(portfolioId = ${portfolioId}, page = ${page})}"
+           th:text="${page + 1}"></a>
     </span>
 </form>
 </body>

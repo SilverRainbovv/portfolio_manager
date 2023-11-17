@@ -1,0 +1,25 @@
+@import url(portfolioPage.css);
+
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    margin: 2%;
+}
+
+label {
+    margin-right: 5%;
+}
+
+input {
+    background-color: #F8F4E5;
+}
+
+select {
+    background-color: #F8F4E5;
+}
+
+.submit-button {
+    background-color: #F8F4E5;
+    border: 2px solid rgba(0,0,0, .1);;
+}
