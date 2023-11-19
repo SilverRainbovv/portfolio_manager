@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import static com.didenko.entity.PositionDirection.*;
 
@@ -23,13 +24,13 @@ public class AssetTransactionReadDtoMapper
                 .assetType(object.getAsset().getAssetType())
                 .positionDirection(object.getPositionDirection())
                 .state(object.getState())
-                .volume(object.getQuantity())
-                .openPrice(object.getOpenPrice())
+                .volume(object.getQuantity().setScale(3, RoundingMode.HALF_UP))
+                .openPrice(object.getOpenPrice().setScale(3, RoundingMode.HALF_UP))
                 .openDate(object.getOpenDate().toString())
-                .closePrice(object.getClosePrice())
+                .closePrice(object.getClosePrice() == null ? null : object.getClosePrice().setScale(3, RoundingMode.HALF_UP))
                 .closeDate(object.getCloseDate() == null ? null : object.getCloseDate().toString())
-                .currentPrice(currentPrice)
-                .profit(getProfit(object, currentPrice))
+                .currentPrice(currentPrice.setScale(3, RoundingMode.HALF_UP))
+                .profit(getProfit(object, currentPrice).setScale(3, RoundingMode.HALF_UP))
                 .build();
     }
     private BigDecimal getProfit(AssetTransaction transaction, BigDecimal currentPrice){

@@ -40,7 +40,8 @@ public class AssetTransactionController {
         Pageable pageable = PageRequest.of(currentPage, currentPageSize,
                 Sort.by(currentSortingOrder.fieldName));
 
-        var transactions = currentAssetName.isEmpty() ? transactionService.findByPortfolioIdPageable(portfolioId, pageable)
+        var transactions = currentAssetName.isEmpty()
+                ? transactionService.findByPortfolioIdPageable(portfolioId, pageable)
                 : transactionService.findByAssetNameAndPortfolioId(portfolioId, pageable, assetName);
 
         model.addAttribute("pageSizeOptions", PageSizeOptions.values());

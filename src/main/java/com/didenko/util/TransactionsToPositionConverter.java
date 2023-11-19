@@ -28,9 +28,10 @@ public class TransactionsToPositionConverter {
 
             var transaction = transactionsByName.get(name).get(0);
 
-                    var currentPrice = transaction.getClosePrice() == null ? transaction.getCurrentPrice()
-                            : transaction.getClosePrice();
-                    var closePrice = transaction.getClosePrice();
+                    var currentPrice = transaction.getClosePrice() == null ? transaction.getCurrentPrice().setScale(3, RoundingMode.HALF_UP)
+                            : transaction.getClosePrice().setScale(3, RoundingMode.HALF_UP);
+                    var closePrice = transaction.getClosePrice() == null ? null
+                            : transaction.getClosePrice().setScale(3, RoundingMode.HALF_UP);
                     var openDate = transaction.getOpenDate();
                     var closeDate = transaction.getCloseDate();
 
@@ -57,7 +58,8 @@ public class TransactionsToPositionConverter {
 
                         longPosition.setQuantity(
                                 longs.stream().map(AssetTransactionReadDto::getVolume)
-                                        .reduce(BigDecimal.ZERO, BigDecimal::add));
+                                        .reduce(BigDecimal.ZERO, BigDecimal::add)
+                                        .setScale(3, RoundingMode.HALF_UP));
 
                         var sum = new ArrayList<BigDecimal>();
                         var totalVolume = new ArrayList<BigDecimal>();
@@ -68,10 +70,12 @@ public class TransactionsToPositionConverter {
 
                         longPosition.setOpenPrice(sum.stream().reduce(new BigDecimal(0), BigDecimal::add)
                                 .divide(totalVolume.stream().reduce(new BigDecimal(0), BigDecimal::add),
-                                        RoundingMode.FLOOR));
+                                        RoundingMode.HALF_UP)
+                                .setScale(3, RoundingMode.HALF_UP));
 
                         longPosition.setProfit(currentPrice.subtract(longPosition.getOpenPrice())
-                                .multiply(longPosition.getQuantity()));
+                                .multiply(longPosition.getQuantity())
+                                .setScale(3, RoundingMode.HALF_UP));
 
                         positions.add(longPosition);
                     }
@@ -86,7 +90,8 @@ public class TransactionsToPositionConverter {
 
                         shortPosition.setQuantity(
                                 shorts.stream().map(AssetTransactionReadDto::getVolume)
-                                        .reduce(BigDecimal.ZERO, BigDecimal::add));
+                                        .reduce(BigDecimal.ZERO, BigDecimal::add)
+                                        .setScale(3, RoundingMode.HALF_UP));
 
                         var sum = new ArrayList<BigDecimal>();
                         var totalVolume = new ArrayList<BigDecimal>();
@@ -97,10 +102,12 @@ public class TransactionsToPositionConverter {
 
                         shortPosition.setOpenPrice(sum.stream().reduce(new BigDecimal(0), BigDecimal::add)
                                 .divide(totalVolume.stream().reduce(new BigDecimal(0), BigDecimal::add),
-                                        RoundingMode.FLOOR));
+                                        RoundingMode.HALF_UP)
+                                .setScale(3, RoundingMode.HALF_UP));
 
                         shortPosition.setProfit(shortPosition.getOpenPrice().subtract(currentPrice)
-                                .multiply(shortPosition.getQuantity()));
+                                .multiply(shortPosition.getQuantity())
+                                .setScale(3, RoundingMode.HALF_UP));
 
                         positions.add(shortPosition);
                     }
