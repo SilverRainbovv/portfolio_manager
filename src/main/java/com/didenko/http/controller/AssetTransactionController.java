@@ -29,14 +29,14 @@ public class AssetTransactionController {
     public String findByPortfolioId(Model model, @RequestParam(value = "portfolioId") Long portfolioId,
                                     @RequestParam(value = "findAsset", required = false) String assetName,
                                     @RequestParam(value = "page", required = false) Integer page,
-                                    @RequestParam(value = "pageSize", required = false) PageSizeOptions pageSize,
+                                    @RequestParam(value = "pageSize", required = false) Integer pageSize,
                                     @RequestParam(value = "sortBy", required = false) TransactionsSortingOrder sortingOrder,
                                     @AuthenticationPrincipal User user){
 
         String currentAssetName = assetName == null ? "" : assetName;
         TransactionsSortingOrder currentSortingOrder = sortingOrder == null ? DEFAULT_SORTING_ORDER : sortingOrder;
         Integer currentPage = page == null ? DEFAULT_PAGE : page;
-        Integer currentPageSize = getPageSize(pageSize, user);
+        Integer currentPageSize = getPageSize(PageSizeOptions.of(pageSize), user);
         Pageable pageable = PageRequest.of(currentPage, currentPageSize,
                 Sort.by(currentSortingOrder.fieldName));
 

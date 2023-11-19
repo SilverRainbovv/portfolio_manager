@@ -10,4 +10,14 @@ public enum PageSizeOptions {
     private PageSizeOptions(Integer size){
         this.size = size;
     }
+
+    private Integer getSize() {
+        return size;
+    }
+    public static PageSizeOptions of(Integer pageSize) {
+        for (PageSizeOptions option : PageSizeOptions.values()) {
+            if (option.getSize().equals(pageSize)) return option;
+        }
+        return null;
+    }
 }
