@@ -36,19 +36,19 @@
         <label th:for="${direction}" th:text="${direction}"><span th:text="#{transaction.create.transactionDirection}"/></label>
     </div>
     <label for="volume"><span th:text="#{portfolio.page.volume}"/>
-        <input class="align" id="volume" type="number" step="0.00001" name="volume">
+        <input class="align" id="volume" type="number" step="0.00001" min="0.001" name="volume">
     </label>
     <label for="openPrice"><span th:text="#{portfolio.page.openPrice}"/>
-        <input class="align" id="openPrice" type="number" step="0.00001" name="openPrice">
+        <input class="align" id="openPrice" type="number" step="0.00001" min="0.001" name="openPrice">
     </label>
     <label for="openDate"><span th:text="#{portfolio.page.openDate}"/>
         <input class="align" id="openDate" type="datetime-local" name="openDate">
     </label>
     <label for="closePrice"><span th:text="#{portfolio.page.closePrice}"/>
-        <input class="align" id="closePrice" type="number" step="0.00001" name="closePrice">
+        <input class="align" id="closePrice" type="number" step="0.00001" min="0.001" name="closePrice">
     </label>
     <label for="closeDate"><span th:text="#{portfolio.page.closeDate}"/>
-        <input class="align" id="closeDate" type="datetime-local" name="closeDate">
+        <input class="align" id="closeDate" type="datetime-local" min="0.001" name="closeDate">
     </label>
     <button type="submit">Submit</button>
 </form>
