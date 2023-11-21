@@ -25,8 +25,10 @@ public class  PortfolioReadDtoMapper implements Mapper<Portfolio, PortfolioReadD
 
             var assets = assetRepository.getAllByPortfolioId(object.getId());
 
-            List<String> assetNames = assetRepository.getAllByPortfolioId(object.getId())
-                    .stream().map(Asset::getName).toList();
+            StringBuilder assetNamesBuilder = new StringBuilder();
+
+            assetRepository.getAllByPortfolioId(object.getId())
+                    .forEach(asset -> assetNamesBuilder.append(asset.getName() + " "));
 
             var portfolioTransactions = transactionService
                     .findByPortfolioId(object.getId());
@@ -42,7 +44,7 @@ public class  PortfolioReadDtoMapper implements Mapper<Portfolio, PortfolioReadD
                     .id(object.getId())
                     .name(object.getName())
                     .description(object.getDescription())
-                    .assets(assetNames)
+                    .assets(assetNamesBuilder.toString())
                     .profit(portfolioProfit)
                     .build();
         }

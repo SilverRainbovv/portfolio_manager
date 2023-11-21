@@ -1,5 +1,6 @@
 package com.didenko.http.controller;
 
+import com.didenko.dto.PortfolioReadDto;
 import com.didenko.dto.UserCreateEditDto;
 import com.didenko.entity.User;
 import com.didenko.service.PortfolioService;
@@ -12,7 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -24,7 +28,6 @@ public class UserController {
 
     @GetMapping
     public String userRedirect(@AuthenticationPrincipal User user){
-
         return "redirect:/user/" + user.getId();
     }
 
@@ -33,15 +36,24 @@ public class UserController {
 
         validateUser(id, user.getId());
 
-        var portfolios = portfolioService.getByUserId(id);
+        List<PortfolioReadDto> portfolios = portfolioService.getByUserId(id);
 
         return userService.findById(id)
                 .map(maybeUser -> {
                     model.addAttribute("user", maybeUser);
                     model.addAttribute("portfolios", portfolios);
+                    model.addAttribute("chartData", prepareChartData(portfolios));
                     return "user/userPage";
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    private Map<String, BigDecimal> prepareChartData(List<PortfolioReadDto> portfolios) {
+        Map<String, BigDecimal> nameToProfit = new HashMap<>();
+        portfolios.forEach(portfolio -> {
+            nameToProfit.put(portfolio.getName(), portfolio.getProfit());
+        });
+        return nameToProfit;
     }
 
     private void validateUser(Long urlId, Long authenticatedId) {

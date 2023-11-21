@@ -16,7 +16,7 @@ public class PortfolioReadDto {
 
     private final String description;
 
-    private List<String> assets;
+    private String assets;
 
     private BigDecimal profit;
 }

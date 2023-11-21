@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="fix bug with page path variable" />
+    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="minor change to html set min values for price and volume">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/chartScript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/dto/PortfolioReadDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/dto/PortfolioReadDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioReadDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioReadDtoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/userPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/userPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/userPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/userPage.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +22,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="Interface" />
         <option value="HTML File" />
@@ -21,6 +29,7 @@
         <option value="Enum" />
         <option value="Dockerfile" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -320,6 +329,8 @@
       <workItem from="1700128371910" duration="5555000" />
       <workItem from="1700214359930" duration="4313000" />
       <workItem from="1700414119791" duration="2428000" />
+      <workItem from="1700473939070" duration="1432000" />
+      <workItem from="1700572901539" duration="7135000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -672,7 +683,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700416543608</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="minor change to html set min values for price and volume">
+      <option name="closed" value="true" />
+      <created>1700474143790</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1700474143790</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -704,7 +723,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix transaction state during transaction creation" />
     <MESSAGE value="add test container configuration" />
     <MESSAGE value="fix short position calculation error" />
     <MESSAGE value="changes to AssetReadDtoMapper" />
@@ -729,7 +747,8 @@
     <MESSAGE value="add style for transaction creation and update pages" />
     <MESSAGE value="limit price precision to 3 digits" />
     <MESSAGE value="fix bug with page path variable" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug with page path variable" />
+    <MESSAGE value="minor change to html set min values for price and volume" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor change to html set min values for price and volume" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

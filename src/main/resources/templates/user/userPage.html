@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title th:text="#{userpage.header}"/>
     <link th:href="@{/css/userPage.css}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <header class="main-header">
@@ -18,13 +19,35 @@
     </nav>
 </header>
 <div class="userPage">
-    <div class="userInfo">
-        <p th:text="|#{registration.email}: ${user.email}|"/>
-        <p th:text="|#{userpage.name}: ${user.firstname} ${user.lastname}|"/>
-        <p th:text="|#{registration.birthDate}: ${user.birthDate}|"/>
-        <a th:href="@{'/portfolio/create'}">
-            <button th:text="#{userpage.addPortfolio}"/>
-        </a>
+    <div class="parallel">
+        <div class="userInfo">
+            <p th:text="|#{registration.email}: ${user.email}|"/>
+            <p th:text="|#{userpage.name}: ${user.firstname} ${user.lastname}|"/>
+            <p th:text="|#{registration.birthDate}: ${user.birthDate}|"/>
+            <a th:href="@{'/portfolio/create'}">
+                <button th:text="#{userpage.addPortfolio}"/>
+            </a>
+        </div>
+        <div style="width: 250px">
+            <canvas id="chart"></canvas>
+            <script th:inline="javascript">
+                var names = [[${chartData.keySet()}]];
+                var profits = [[${chartData.values()}]];
+                const ctx = document.getElementById('chart');
+
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: names,
+                        datasets: [{
+                            label: 'Portfolio Profit',
+                            data: profits,
+                            borderWidth: 1
+                        }]
+                    }
+                });
+            </script>
+        </div>
     </div>
     <table>
         <thead>
