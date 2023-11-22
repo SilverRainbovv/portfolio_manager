@@ -1,5 +1,10 @@
 @import url(header.css);
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 form {
     display: flex;
     flex-direction: column;

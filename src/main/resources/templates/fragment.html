@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Header</title>
-    <!--    <link th:href="@{/css/header.css}" rel="stylesheet">-->
 </head>
 <body>
-<div th:fragment="header" class="header-block">
-    <ul class="menu">
-        <li><a th:href="@{|/user/${#authentication.principal.id}|}"
-               th:text="${#authentication.principal.username}">Username</a>
-        </li>
-        <li><a th:href="@{/logout}" th:text="#{header.logout}"/></li>
-    </ul>
-    <div th:insert="~{fragment :: locale}"></div>
+<div th:fragment="header">
+    <header class="main-header">
+        <nav class="nav-bar">
+            <div class="nav-flex-container">
+                <div id="companyName">Portfolio Manager</div>
+                <div class="link"><a th:href="@{'/home'}">Home</a></div>
+                <div class="link"><a th:href="@{'/user'}">User Page</a></div>
+                <div class="link"><a th:href="@{'/logout'}" th:text="#{header.logout}"></a></div>
+                <div th:insert="~{fragment :: locale}"></div>
+            </div>
+        </nav>
+    </header>
 </div>
 <div th:fragment="locale">
     <form action="">

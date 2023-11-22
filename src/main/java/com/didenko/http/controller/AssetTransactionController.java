@@ -25,8 +25,8 @@ public class AssetTransactionController {
     private static final Integer DEFAULT_PAGE = 0;
     private static final TransactionsSortingOrder DEFAULT_SORTING_ORDER = TransactionsSortingOrder.ASSET_NAME;
 
-    @GetMapping("transactions/**")
-    public String findByPortfolioId(Model model, @RequestParam(value = "portfolioId") Long portfolioId,
+    @GetMapping("transactions/{portfolioId}")
+    public String findByPortfolioId(Model model, @PathVariable("portfolioId") Long portfolioId,
                                     @RequestParam(value = "findAsset", required = false) String assetName,
                                     @RequestParam(value = "page", required = false) Integer page,
                                     @RequestParam(value = "pageSize", required = false) Integer pageSize,
@@ -35,7 +35,7 @@ public class AssetTransactionController {
 
         String currentAssetName = assetName == null ? "" : assetName;
         TransactionsSortingOrder currentSortingOrder = sortingOrder == null ? DEFAULT_SORTING_ORDER : sortingOrder;
-        Integer currentPage = page == null ? DEFAULT_PAGE : page;
+        int currentPage = page == null || page <=0 ? DEFAULT_PAGE : page - 1;
         Integer currentPageSize = getPageSize(PageSizeOptions.of(pageSize), user);
         Pageable pageable = PageRequest.of(currentPage, currentPageSize,
                 Sort.by(currentSortingOrder.fieldName));
@@ -60,8 +60,8 @@ public class AssetTransactionController {
         return "/transaction/transactions";
     }
 
-    @GetMapping("transaction")
-    public String create(Model model, @RequestParam(value = "portfolioId") Long portfolioId){
+    @GetMapping("transaction/{portfolioId}")
+    public String create(Model model, @PathVariable("portfolioId") Long portfolioId){
 
         addBasicInfoToModel(model, portfolioId);
 
@@ -82,9 +82,9 @@ public class AssetTransactionController {
         return "/transaction/transactionUpdate";
     }
 
-    @PostMapping("transaction")
+    @PostMapping("transaction/{portfolioId}")
     public String create(@ModelAttribute AssetTransactionCreateEditDto createEditDto,
-                         @RequestParam(value = "portfolioId") Long portfolioId){
+                         @PathVariable("portfolioId") Long portfolioId){
 
         createEditDto.setPortfolioId(portfolioId);
         transactionService.save(createEditDto);
@@ -92,9 +92,9 @@ public class AssetTransactionController {
         return "redirect:/portfolio/" + portfolioId;
     }
 
-    @PostMapping("transaction/update")
+    @PostMapping("transaction/{portfolioId}/update")
     public String edit(@ModelAttribute AssetTransactionCreateEditDto createEditDto,
-                       @RequestParam(value = "portfolioId") Long portfolioId,
+                       @PathVariable("portfolioId") Long portfolioId,
                        @RequestParam(value = "transactionId") Long transactionId){
         createEditDto.setPortfolioId(portfolioId);
         createEditDto.setId(transactionId);

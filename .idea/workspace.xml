@@ -4,14 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="minor change to html set min values for price and volume">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/chartScript.js" afterDir="false" />
+    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add chart to usr page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/dto/PortfolioReadDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/dto/PortfolioReadDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioReadDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioReadDtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/userPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/userPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/transaction.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/transaction.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/transactionsPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/transactionsPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragment.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/homePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/homePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/portfolio/portfolioCreatePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/portfolio/portfolioCreatePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/portfolio/portfolioPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/portfolio/portfolioPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/registration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transaction/transaction.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transaction/transaction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactionUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactionUpdate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactions.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactions.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/userPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/userPage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -330,7 +335,8 @@
       <workItem from="1700214359930" duration="4313000" />
       <workItem from="1700414119791" duration="2428000" />
       <workItem from="1700473939070" duration="1432000" />
-      <workItem from="1700572901539" duration="7135000" />
+      <workItem from="1700572901539" duration="7493000" />
+      <workItem from="1700645747283" duration="5721000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -691,7 +697,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700474143790</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="add chart to usr page">
+      <option name="closed" value="true" />
+      <created>1700582937836</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1700582937836</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -723,7 +737,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add test container configuration" />
     <MESSAGE value="fix short position calculation error" />
     <MESSAGE value="changes to AssetReadDtoMapper" />
     <MESSAGE value="add pagination" />
@@ -748,7 +761,8 @@
     <MESSAGE value="limit price precision to 3 digits" />
     <MESSAGE value="fix bug with page path variable" />
     <MESSAGE value="minor change to html set min values for price and volume" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor change to html set min values for price and volume" />
+    <MESSAGE value="add chart to usr page" />
+    <option name="LAST_COMMIT_MESSAGE" value="add chart to usr page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

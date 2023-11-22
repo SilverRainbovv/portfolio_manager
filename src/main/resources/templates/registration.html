@@ -6,7 +6,6 @@
     <link th:href="@{/css/registration.css}" rel="stylesheet">
 </head>
 <body>
-<div th:insert="~{fragment :: locale}"></div>
 <form action="/registration" method="post">
     <div class="registration-form">
         <input type="email" name="email" th:placeholder="#{registration.email}" required>

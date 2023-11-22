@@ -32,3 +32,14 @@ button {
 .uncolored {
     background-color: #F8F4E5;
 }
+
+.pageSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.pageSection a {
+    margin-left: 15px;
+    text-decoration: none;
+}

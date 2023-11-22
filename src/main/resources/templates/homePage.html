@@ -15,7 +15,7 @@
                     <div class="link" th:if="${authenticated}"><a th:href="@{'/logout'}" th:text="#{header.logout}"></a></div>
                     <div class="link" th:if="${!authenticated}"><a th:href="@{'/registration'}" th:text="#{header.registration}"></a></div>
                     <div class="link" th:if="${!authenticated}"><a th:href="@{'/login'}" th:text="#{header.login}"></a></div>
-                    <div class="link"><a href="https://instagram.com">Insta</a></div>
+                    <div th:insert="~{fragment::locale}"></div>
                 </div>
             </nav>
         </header>
