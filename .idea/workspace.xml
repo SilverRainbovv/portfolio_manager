@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add chart to usr page">
+    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="change header to thymeleaf fragment, minor fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/AssetTransactionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/transaction.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/transaction.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/transactionsPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/transactionsPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragment.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/homePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/homePage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/portfolio/portfolioCreatePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/portfolio/portfolioCreatePage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/portfolio/portfolioPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/portfolio/portfolioPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/registration.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transaction/transaction.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transaction/transaction.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactionUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactionUpdate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactions.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transaction/transactions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/userPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/userPage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -336,7 +326,8 @@
       <workItem from="1700414119791" duration="2428000" />
       <workItem from="1700473939070" duration="1432000" />
       <workItem from="1700572901539" duration="7493000" />
-      <workItem from="1700645747283" duration="5721000" />
+      <workItem from="1700645747283" duration="6154000" />
+      <workItem from="1700729709751" duration="720000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -705,7 +696,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700582937836</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="change header to thymeleaf fragment, minor fixes">
+      <option name="closed" value="true" />
+      <created>1700651809367</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1700651809367</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -737,7 +736,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix short position calculation error" />
     <MESSAGE value="changes to AssetReadDtoMapper" />
     <MESSAGE value="add pagination" />
     <MESSAGE value="add UserPreferences to store user choice" />
@@ -762,7 +760,8 @@
     <MESSAGE value="fix bug with page path variable" />
     <MESSAGE value="minor change to html set min values for price and volume" />
     <MESSAGE value="add chart to usr page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add chart to usr page" />
+    <MESSAGE value="change header to thymeleaf fragment, minor fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="change header to thymeleaf fragment, minor fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

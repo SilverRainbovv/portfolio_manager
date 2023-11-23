@@ -5,7 +5,7 @@ body {
     flex-direction: column;
 }
 
-form {
+.transactionCreateForm form {
     display: flex;
     flex-direction: column;
     width: 20%;
@@ -36,7 +36,7 @@ button:hover {
     width: 10em;
 }
 
-select {
+.align select {
     background-color: #F8F4E5;
     border: 2px solid rgba(0,0,0, .3);
 }

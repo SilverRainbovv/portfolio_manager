@@ -7,26 +7,34 @@
 </head>
 <body>
 <div th:insert="~{fragment::header}"></div>
-<form th:action="@{'/transaction/transaction/' + ${portfolioId} + '/update?transactionId=' + ${transaction.id}}" method="post">
-    <div th:text="|Asset name : ${transaction.assetName}|"></div>
-    <div th:text="|Asset type: ${transaction.assetType}|"></div>
-    <div th:text="|Transaction direction : ${transaction.positionDirection}|"></div>
-    <label for="volume"><span th:text="#{transactions.volume}"/>
-        <input class="align" id="volume" type="number" step="0.00001" name="volume" th:value="${transaction} ? ${transaction.volume} : ''">
-    </label>
-    <label for="openPrice"><span th:text="#{transactions.openPrice}"/>
-        <input class="align" id="openPrice" type="number" step="0.00001" name="openPrice" th:value="${transaction} ? ${transaction.openPrice} : ''">
-    </label>
-    <label for="openDate"><span th:text="#{transactions.openDate}"/>
-        <input class="align" id="openDate" type="datetime-local" name="openDate" th:value="${transaction} ? ${transaction.openDate} : ''">
-    </label>
-    <label for="closePrice"><span th:text="#{transactions.closePrice}"/>
-        <input class="align" id="closePrice" type="number" step="0.00001" name="closePrice" th:value="${transaction} ? ${transaction.closePrice} : ''">
-    </label>
-    <label for="closeDate"><span th:text="#{transactions.closeDate}"/>
-        <input class="align" id="closeDate" type="datetime-local" name="closeDate" th:value="${transaction} ? ${transaction.closeDate} : ''">
-    </label>
-    <button type="submit" th:text="#{transaction.update.update}"/>
-</form>
+<div class="transactionCreateForm">
+    <form th:action="@{'/transaction/transaction/' + ${portfolioId} + '/update?transactionId=' + ${transaction.id}}"
+          method="post">
+        <div th:text="|Asset name : ${transaction.assetName}|"></div>
+        <div th:text="|Asset type: ${transaction.assetType}|"></div>
+        <div th:text="|Transaction direction : ${transaction.positionDirection}|"></div>
+        <label for="volume"><span th:text="#{transactions.volume}"/>
+            <input class="align" id="volume" type="number" step="0.00001" name="volume"
+                   th:value="${transaction} ? ${transaction.volume} : ''">
+        </label>
+        <label for="openPrice"><span th:text="#{transactions.openPrice}"/>
+            <input class="align" id="openPrice" type="number" step="0.00001" name="openPrice"
+                   th:value="${transaction} ? ${transaction.openPrice} : ''">
+        </label>
+        <label for="openDate"><span th:text="#{transactions.openDate}"/>
+            <input class="align" id="openDate" type="datetime-local" name="openDate"
+                   th:value="${transaction} ? ${transaction.openDate} : ''">
+        </label>
+        <label for="closePrice"><span th:text="#{transactions.closePrice}"/>
+            <input class="align" id="closePrice" type="number" step="0.00001" name="closePrice"
+                   th:value="${transaction} ? ${transaction.closePrice} : ''">
+        </label>
+        <label for="closeDate"><span th:text="#{transactions.closeDate}"/>
+            <input class="align" id="closeDate" type="datetime-local" name="closeDate"
+                   th:value="${transaction} ? ${transaction.closeDate} : ''">
+        </label>
+        <button type="submit" th:text="#{transaction.update.update}"/>
+    </form>
+</div>
 </body>
 </html>
