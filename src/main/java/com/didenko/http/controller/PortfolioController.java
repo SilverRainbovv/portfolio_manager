@@ -54,7 +54,7 @@ public class PortfolioController {
             model.addAttribute("openPositions", transactionsMap.get(OPEN));
 
         if (!transactionsMap.get(CLOSED).isEmpty())
-            model.addAttribute("openPositions", transactionsMap.get(CLOSED));
+            model.addAttribute("closedPositions", transactionsMap.get(CLOSED));
 
         model.addAttribute("portfolioId", portfolioId);
 

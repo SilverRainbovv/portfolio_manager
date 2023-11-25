@@ -18,6 +18,5 @@ public class PortfolioRestController {
     public List<PortfolioReadDto> findAll(@RequestHeader(value = "chatId") Long chatId){
 
         return portfolioService.getByTelegramChatId(chatId);
-
     }
 }

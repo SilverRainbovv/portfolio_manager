@@ -25,15 +25,19 @@ public class AssetReadDtoMapper implements Mapper<Asset, AssetReadDto> {
 
     @Override
     public AssetReadDto mapFrom(Asset object) {
-        var transactionsGroupedByDirection = assetTransactionRepository
+        Map<PositionDirection, List<AssetTransaction>> transactionsGroupedByDirection =
+                assetTransactionRepository
                 .findAllByAssetId(object.getId()).stream()
                 .collect(Collectors.groupingBy(AssetTransaction::getPositionDirection));
 
-        var totalLongQuantity = getTotalQuantityByDirection(LONG, transactionsGroupedByDirection);
-        var totalShortQuantity = getTotalQuantityByDirection(SHORT, transactionsGroupedByDirection);
+        BigDecimal totalLongQuantity = getTotalQuantityByDirection(LONG, transactionsGroupedByDirection);
+        BigDecimal totalShortQuantity = getTotalQuantityByDirection(SHORT, transactionsGroupedByDirection);
 
-        var totalLongOpenPrice = getOpenPriceByDirection(LONG, transactionsGroupedByDirection);
-        var totalShortOpenPrice = getOpenPriceByDirection(SHORT, transactionsGroupedByDirection);
+        BigDecimal totalLongOpenPrice = getOpenPriceByDirection(LONG, transactionsGroupedByDirection);
+        BigDecimal totalShortOpenPrice = getOpenPriceByDirection(SHORT, transactionsGroupedByDirection);
+
+        BigDecimal totalCloseLongPrice = getClosePriceByDirection(LONG, transactionsGroupedByDirection);
+        BigDecimal totalCloseShortPrice = getClosePriceByDirection(SHORT, transactionsGroupedByDirection);
 
         return AssetReadDto.builder()
                 .id(object.getId().toString())
@@ -44,13 +48,16 @@ public class AssetReadDtoMapper implements Mapper<Asset, AssetReadDto> {
                 .shortQuantity(totalShortQuantity)
                 .longOpenPrice(totalLongOpenPrice)
                 .shortOpenPrice(totalShortOpenPrice)
+                .longClosePrice(totalCloseLongPrice)
+                .shortClosePrice(totalCloseShortPrice)
                 .build();
     }
 
     private BigDecimal getTotalQuantityByDirection(PositionDirection direction,
                                                Map<PositionDirection, List<AssetTransaction>> transactionMap) {
-        if (transactionMap.get(direction) == null) return null;
-        return transactionMap.entrySet().stream()
+
+        return transactionMap.get(direction) == null ? null :
+                transactionMap.entrySet().stream()
                 .filter(entry -> entry.getKey().equals(direction))
                 .map(Map.Entry::getValue)
                 .flatMap(List::stream)
@@ -60,23 +67,24 @@ public class AssetReadDtoMapper implements Mapper<Asset, AssetReadDto> {
 
     private BigDecimal getOpenPriceByDirection(PositionDirection direction,
                                            Map<PositionDirection, List<AssetTransaction>> transactionMap) {
-        var sorted = transactionMap.get(direction);
-        if (sorted == null) return null;
-        var size = sorted.size();
-        var priceSum = sorted.stream()
+
+        List<AssetTransaction> transactionsByDirection = transactionMap.get(direction);
+        if (transactionsByDirection == null) return null;
+        int size = transactionsByDirection.size();
+        BigDecimal priceSum = transactionsByDirection.stream()
                 .map(AssetTransaction::getOpenPrice)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-        return priceSum.divide(new BigDecimal(size), RoundingMode.UNNECESSARY);
+        return priceSum.divide(new BigDecimal(size), RoundingMode.HALF_UP);
     }
 
     private BigDecimal getClosePriceByDirection(PositionDirection direction,
                                             Map<PositionDirection, List<AssetTransaction>> transactionMap) {
-        var sorted = transactionMap.get(direction);
-        var size = sorted.size();
-        var priceSum = transactionMap.get(direction).stream()
+        List<AssetTransaction> transactionsByDirection = transactionMap.get(direction);
+        int size = transactionsByDirection.size();
+        BigDecimal priceSum = transactionMap.get(direction).stream()
                 .map(AssetTransaction::getClosePrice)
                 .filter(Objects::nonNull)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-        return priceSum.divide(new BigDecimal(size), RoundingMode.UNNECESSARY);
+        return priceSum.divide(new BigDecimal(size), RoundingMode.HALF_UP);
     }
 }

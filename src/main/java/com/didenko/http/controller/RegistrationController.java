@@ -39,7 +39,8 @@ public class RegistrationController {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
             return "redirect:/registration";
+        } else {
+            return "redirect:/user/" + createdUser.getId();
         }
-        return "redirect:/user/" + createdUser.getId();
     }
 }

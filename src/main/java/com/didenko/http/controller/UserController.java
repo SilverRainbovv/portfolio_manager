@@ -34,7 +34,8 @@ public class UserController {
     @GetMapping("/{id}")
     public String findById(Model model, @PathVariable("id") Long id, @AuthenticationPrincipal User user) {
 
-        validateUser(id, user.getId());
+        if (!id.equals(user.getId()))
+            return "redirect:/user/" + user.getId();
 
         List<PortfolioReadDto> portfolios = portfolioService.getByUserId(id);
 
@@ -54,15 +55,5 @@ public class UserController {
             nameToProfit.put(portfolio.getName(), portfolio.getProfit());
         });
         return nameToProfit;
-    }
-
-    private void validateUser(Long urlId, Long authenticatedId) {
-        if (!urlId.equals(authenticatedId)) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-    }
-
-    @PostMapping
-    public void edit(@ModelAttribute UserCreateEditDto user){
-
-        System.out.println();
     }
 }

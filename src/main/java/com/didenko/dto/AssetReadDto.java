@@ -30,6 +30,10 @@ public class AssetReadDto {
 
     private BigDecimal currentPrice;
 
+    private BigDecimal longClosePrice;
+
+    private BigDecimal shortClosePrice;
+
     private BigDecimal longProfit;
 
     private BigDecimal shortProfit;
