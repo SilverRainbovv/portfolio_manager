@@ -1,5 +1,6 @@
 package com.didenko.mapper;
 
+import com.didenko.dto.AssetTransactionReadDto;
 import com.didenko.dto.PortfolioReadDto;
 import com.didenko.dto.PositionDto;
 import com.didenko.entity.Asset;
@@ -23,14 +24,12 @@ public class  PortfolioReadDtoMapper implements Mapper<Portfolio, PortfolioReadD
         @Override
         public PortfolioReadDto mapFrom(Portfolio object) {
 
-            var assets = assetRepository.getAllByPortfolioId(object.getId());
-
             StringBuilder assetNamesBuilder = new StringBuilder();
 
             assetRepository.getAllByPortfolioId(object.getId())
-                    .forEach(asset -> assetNamesBuilder.append(asset.getName() + " "));
+                    .forEach(asset -> assetNamesBuilder.append(asset.getName()).append(" "));
 
-            var portfolioTransactions = transactionService
+            List<AssetTransactionReadDto> portfolioTransactions = transactionService
                     .findByPortfolioId(object.getId());
 
             var portfolioProfit = new BigDecimal(0);
@@ -48,5 +47,4 @@ public class  PortfolioReadDtoMapper implements Mapper<Portfolio, PortfolioReadD
                     .profit(portfolioProfit)
                     .build();
         }
-
 }

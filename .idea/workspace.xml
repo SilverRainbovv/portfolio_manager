@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="refactoring part1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/dto/AssetReadDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/dto/AssetReadDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/PortfolioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/PortfolioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/rest/PortfolioRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/rest/PortfolioRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetReadDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetReadDtoMapper.java" afterDir="false" />
+    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="refactoring part2 &amp; fix bug with portfolio view">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetTransactionCreateEditDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetTransactionCreateEditDtoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetTransactionReadDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetTransactionReadDtoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioCreateEditDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioCreateEditDtoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioReadDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioReadDtoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetTransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetTransactionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/TelegramAuthenticationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/TelegramAuthenticationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/UserRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -332,7 +333,7 @@
       <workItem from="1700572901539" duration="7493000" />
       <workItem from="1700645747283" duration="6154000" />
       <workItem from="1700729709751" duration="1743000" />
-      <workItem from="1700904949995" duration="5798000" />
+      <workItem from="1700904949995" duration="6388000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -452,14 +453,6 @@
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
       <updated>1697278861303</updated>
-    </task>
-    <task id="LOCAL-00020" summary="add transaction edit controller">
-      <option name="closed" value="true" />
-      <created>1698149426973</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1698149426973</updated>
     </task>
     <task id="LOCAL-00021" summary="add transaction edit functional">
       <option name="closed" value="true" />
@@ -709,7 +702,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700908937180</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="refactoring part2 &amp; fix bug with portfolio view">
+      <option name="closed" value="true" />
+      <created>1700910849392</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1700910849393</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -741,7 +742,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add UserPreferences to store user choice" />
     <MESSAGE value="fix bug, now assets are created in corresponding portfolio" />
     <MESSAGE value="add sorting to transactions page" />
     <MESSAGE value="add filtering by asset name to transactions page" />
@@ -766,7 +766,8 @@
     <MESSAGE value="change header to thymeleaf fragment, minor fixes" />
     <MESSAGE value="fix header display bug on transaction creation and update pages" />
     <MESSAGE value="refactoring part1" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring part1" />
+    <MESSAGE value="refactoring part2 &amp; fix bug with portfolio view" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring part2 &amp; fix bug with portfolio view" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

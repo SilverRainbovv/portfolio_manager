@@ -14,16 +14,18 @@ import java.time.LocalDateTime;
 public class AssetTransactionCreateEditDtoMapper implements Mapper<AssetTransactionCreateEditDto, AssetTransaction> {
     @Override
     public AssetTransaction mapFrom(AssetTransactionCreateEditDto object) {
-        var asset = Asset.builder()
+        Asset asset = Asset.builder()
                 .name(object.getAssetName())
                 .assetType(object.getAssetType())
                 .portfolio(Portfolio.builder()
                         .id(object.getPortfolioId())
                         .build())
                 .build();
+
         BigDecimal closePrice = object.getClosePrice().isEmpty() ? null : new BigDecimal(object.getClosePrice());
         LocalDateTime closeDate = object.getCloseDate() == null ? null : object.getCloseDate();
-        var transaction = AssetTransaction.builder()
+
+        AssetTransaction transaction = AssetTransaction.builder()
                 .id(object.getId())
                 .state(closePrice == null ? TransactionState.OPEN : TransactionState.CLOSED)
                 .positionDirection(object.getDirection())
@@ -33,6 +35,7 @@ public class AssetTransactionCreateEditDtoMapper implements Mapper<AssetTransact
                 .closePrice(closePrice)
                 .closeDate(closeDate)
                 .build();
+
         transaction.setAsset(asset);
 
         return transaction;

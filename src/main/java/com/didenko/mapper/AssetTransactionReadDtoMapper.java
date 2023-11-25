@@ -13,8 +13,7 @@ import static com.didenko.entity.PositionDirection.*;
 
 @RequiredArgsConstructor
 @Component
-public class AssetTransactionReadDtoMapper
-       /* implements Mapper<AssetTransaction, AssetTransactionReadDto>*/ {
+public class AssetTransactionReadDtoMapper {
 
     public AssetTransactionReadDto mapFrom(AssetTransaction object, BigDecimal currentPrice) {
         return AssetTransactionReadDto.builder()

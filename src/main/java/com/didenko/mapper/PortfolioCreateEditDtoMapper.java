@@ -15,6 +15,5 @@ public class PortfolioCreateEditDtoMapper implements Mapper<PortfolioCreateEditD
                 .description(object.getDescription())
                 .user(object.getUser())
                 .build();
-
     }
 }
