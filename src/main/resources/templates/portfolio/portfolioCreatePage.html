@@ -10,7 +10,7 @@
 <form th:action="@{/portfolio/create}" method="post">
     <div class="form">
         <input type="text" name="name" th:placeholder="#{portfolio.create.name}" required>
-        <input type="text" name="description" th:placeholder="#{portfolio.create.description}" required>
+        <input type="text" name="description" th:placeholder="#{portfolio.create.description}">
         <button type="submit" th:text="#{portfolio.create.create}"/>
     </div>
 </form>

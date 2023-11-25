@@ -6,8 +6,6 @@ public enum TransactionsSortingOrder {
     OPEN_TIME("Open time", "openDate"),
     OPEN_PRICE("Open price", "openPrice"),
     VOLUME("Volume", "quantity");
-//    PROFIT("Profit"),
-//    TRANSACTION_STATE("Transaction state");
 
     public final String order;
     public final String fieldName;

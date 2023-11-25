@@ -31,3 +31,8 @@
 .link:hover {
     background-color: rgba(0,0,0, .15);
 }
+
+.locale select {
+    background-color: #F8F4E5;
+    border: 2px solid rgba(0,0,0, .3);
+}

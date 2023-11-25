@@ -2,6 +2,7 @@ package com.didenko.service;
 
 import com.didenko.dto.AssetTransactionCreateEditDto;
 import com.didenko.dto.AssetTransactionReadDto;
+import com.didenko.dto.PositionDto;
 import com.didenko.entity.AssetTransaction;
 import com.didenko.entity.TransactionState;
 import com.didenko.mapper.AssetTransactionCreateEditDtoMapper;
@@ -9,6 +10,7 @@ import com.didenko.mapper.AssetTransactionReadDtoMapper;
 import com.didenko.repository.AssetRepository;
 import com.didenko.repository.AssetTransactionRepository;
 import com.didenko.util.PriceForAssetsRetriever;
+import com.didenko.util.TransactionsToPositionConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -16,9 +18,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static com.didenko.entity.TransactionState.CLOSED;
+import static com.didenko.entity.TransactionState.OPEN;
 
 @RequiredArgsConstructor
 @Service
@@ -30,6 +34,7 @@ public class AssetTransactionService {
     private final PriceForAssetsRetriever retriever;
     private final AssetTransactionCreateEditDtoMapper assetTransactionCreateEditDtoMapper;
     private final AssetRepository assetRepository;
+    private final TransactionsToPositionConverter transactionsToPositionConverter;
 
     public List<AssetTransactionReadDto> findByAssetId(Long assetId) {
         var assetTransactions = transactionRepository.findAllByAssetId(assetId);
@@ -57,13 +62,21 @@ public class AssetTransactionService {
         return setCurrentPriceAndMapToDto(assetTransactions);
     }
 
-    public List<AssetTransactionReadDto> findByPortfolioIdAndTransactionState(Long portfolioId, TransactionState state) {
-        var assetTransactions = transactionRepository.
-                findAllByPortfolioIdAndTransactionState(portfolioId, state);
+    public Map<TransactionState, List<PositionDto>> findByPortfolioIdAndSortByTransactionState(Long portfolioId) {
 
-        return assetTransactions.isEmpty()
-                ? new ArrayList<>()
-                : setCurrentPriceAndMapToDto(assetTransactions);
+        List<AssetTransaction> assetTransactions = transactionRepository.findAllByAssetPortfolioId(portfolioId);
+
+        List<AssetTransactionReadDto> transactionDtos = setCurrentPriceAndMapToDto(assetTransactions);
+
+        Map<TransactionState, List<AssetTransactionReadDto>> transactionStateListMap = transactionDtos.stream()
+                .sorted(Comparator.comparing(AssetTransactionReadDto::getAssetName))
+                .collect(Collectors.groupingBy(AssetTransactionReadDto::getState));
+
+        Map<TransactionState, List<PositionDto>> positionDtoMap = new HashMap<>();
+        positionDtoMap.put(OPEN, transactionsToPositionConverter.convert(transactionStateListMap.get(OPEN)));
+        positionDtoMap.put(CLOSED, transactionsToPositionConverter.convert(transactionStateListMap.get(CLOSED)));
+
+        return positionDtoMap;
     }
 
     private Page<AssetTransactionReadDto> setCurrentPriceAndMapToDto(Page<AssetTransaction> assetTransactions,
@@ -80,7 +93,7 @@ public class AssetTransactionService {
                 })
                 .toList();
 
-        return new PageImpl<AssetTransactionReadDto>(content, pageable, assetTransactions.getTotalPages());
+        return new PageImpl<>(content, pageable, assetTransactions.getTotalPages());
     }
 
     private List<AssetTransactionReadDto> setCurrentPriceAndMapToDto(List<AssetTransaction> assetTransactions) {
@@ -123,7 +136,7 @@ public class AssetTransactionService {
         var closePrice = transaction.getClosePrice();
         var openDate = transaction.getOpenDate();
         var closeDate = transaction.getCloseDate();
-        var state = closePrice == null ? TransactionState.OPEN : TransactionState.CLOSED;
+        var state = closePrice == null ? OPEN : TransactionState.CLOSED;
         transactionRepository.updateById(transaction.getId(), volume, openPrice, closePrice, openDate, closeDate, state);
     }
 }

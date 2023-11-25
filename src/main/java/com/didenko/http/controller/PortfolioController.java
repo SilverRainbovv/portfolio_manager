@@ -6,7 +6,6 @@ import com.didenko.entity.TransactionState;
 import com.didenko.entity.User;
 import com.didenko.service.AssetTransactionService;
 import com.didenko.service.PortfolioService;
-import com.didenko.util.TransactionsToPositionConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
@@ -16,7 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+
+import static com.didenko.entity.TransactionState.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -25,7 +27,6 @@ public class PortfolioController {
 
     private final PortfolioService portfolioService;
     private final AssetTransactionService transactionService;
-    private final TransactionsToPositionConverter transactionsToPositionConverter;
 
     @GetMapping("/create")
     public String createPage(){
@@ -46,23 +47,14 @@ public class PortfolioController {
 
         verifyPortfolioBelongsToUser(portfolioId, user);
 
-        var openTransactions = transactionService
-                .findByPortfolioIdAndTransactionState(portfolioId, TransactionState.OPEN);
-        var closedTransactions = transactionService
-                .findByPortfolioIdAndTransactionState(portfolioId, TransactionState.CLOSED);
+        Map<TransactionState, List<PositionDto>> transactionsMap =
+                transactionService.findByPortfolioIdAndSortByTransactionState(portfolioId);
 
-        if (!openTransactions.isEmpty()) {
-            var positions = transactionsToPositionConverter.convert(openTransactions);
-            positions.sort(Comparator.comparing(PositionDto::getAssetName));
+        if (!transactionsMap.get(OPEN).isEmpty())
+            model.addAttribute("openPositions", transactionsMap.get(OPEN));
 
-            model.addAttribute("openPositions", positions);
-        }
-        if (!closedTransactions.isEmpty()) {
-            var positions = transactionsToPositionConverter.convert(closedTransactions);
-            positions.sort(Comparator.comparing(PositionDto::getAssetName));
-
-            model.addAttribute("closedPositions", positions);
-        }
+        if (!transactionsMap.get(CLOSED).isEmpty())
+            model.addAttribute("openPositions", transactionsMap.get(CLOSED));
 
         model.addAttribute("portfolioId", portfolioId);
 
@@ -71,7 +63,7 @@ public class PortfolioController {
 
     private void verifyPortfolioBelongsToUser(Long portfolioId, User user) throws AccessDeniedException {
 
-        boolean verified = portfolioService.verifyPortfolioBelongsToUser(portfolioId, user.getId());
-        if (!verified) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        if (!portfolioService.verifyPortfolioBelongsToUser(portfolioId, user.getId()))
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 }
