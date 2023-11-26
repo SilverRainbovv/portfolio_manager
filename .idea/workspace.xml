@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="refactoring part2 &amp; fix bug with portfolio view">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetTransactionCreateEditDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetTransactionCreateEditDtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetTransactionReadDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetTransactionReadDtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioCreateEditDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioCreateEditDtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioReadDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioReadDtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetTransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/AssetTransactionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/TelegramAuthenticationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/TelegramAuthenticationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/repository/UserRepository.java" afterDir="false" />
+    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="refactoring part3">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/util/TransactionsToPositionConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/util/TransactionsToPositionConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/util/TwelveAssetDataImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/util/TwelveAssetDataImporter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,7 +330,8 @@
       <workItem from="1700572901539" duration="7493000" />
       <workItem from="1700645747283" duration="6154000" />
       <workItem from="1700729709751" duration="1743000" />
-      <workItem from="1700904949995" duration="6388000" />
+      <workItem from="1700904949995" duration="6752000" />
+      <workItem from="1700993194301" duration="642000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -453,14 +451,6 @@
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
       <updated>1697278861303</updated>
-    </task>
-    <task id="LOCAL-00021" summary="add transaction edit functional">
-      <option name="closed" value="true" />
-      <created>1698228021526</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1698228021526</updated>
     </task>
     <task id="LOCAL-00022" summary="fix transaction state during transaction creation">
       <option name="closed" value="true" />
@@ -710,7 +700,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700910849393</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="refactoring part3">
+      <option name="closed" value="true" />
+      <created>1700911677743</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1700911677743</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -742,7 +740,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix bug, now assets are created in corresponding portfolio" />
     <MESSAGE value="add sorting to transactions page" />
     <MESSAGE value="add filtering by asset name to transactions page" />
     <MESSAGE value="add closed positions to portfolio page" />
@@ -767,7 +764,8 @@
     <MESSAGE value="fix header display bug on transaction creation and update pages" />
     <MESSAGE value="refactoring part1" />
     <MESSAGE value="refactoring part2 &amp; fix bug with portfolio view" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring part2 &amp; fix bug with portfolio view" />
+    <MESSAGE value="refactoring part3" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring part3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
