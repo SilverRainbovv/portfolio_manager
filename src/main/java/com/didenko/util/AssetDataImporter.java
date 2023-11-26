@@ -6,7 +6,5 @@ import java.util.Map;
 import java.util.Optional;
 
 public interface AssetDataImporter {
-
     Map<String, BigDecimal> getAssetPrice(List<String> assetName);
-
 }

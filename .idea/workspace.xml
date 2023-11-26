@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="refactoring part3">
+    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="refactoring part4">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/didenko/util/PriceForAssetsRetrieverTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/didenko/util/TransactionsToPositionConverterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/didenko/util/TwelveAssetDataImporterTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/dto/PositionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/dto/PositionDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/util/AssetDataImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/util/AssetDataImporter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/util/TransactionsToPositionConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/util/TransactionsToPositionConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/util/TwelveAssetDataImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/util/TwelveAssetDataImporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/didenko/mapper/AssetReadDtoMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/didenko/mapper/AssetReadDtoMapperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,11 +27,11 @@
         <option value="CSS File" />
         <option value="Interface" />
         <option value="HTML File" />
-        <option value="JUnit5 Test Class" />
         <option value="Enum" />
         <option value="Dockerfile" />
         <option value="JavaScript File" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -131,69 +136,70 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.didenko.util" />
       <recent name="com.didenko.mapper" />
       <recent name="com.didenko.repository" />
       <recent name="com.didenko.dao" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ApplicationRunner">
-    <configuration name="AssetReadDtoMapperTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TwelveAssetDataImporterTest.checkHasApiKey">
+    <configuration name="TransactionsToPositionConverterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="portfolio-manager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.didenko.mapper.*" />
+          <option name="PATTERN" value="com.didenko.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.didenko.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.didenko.mapper.AssetReadDtoMapperTest" />
+      <option name="PACKAGE_NAME" value="com.didenko.util" />
+      <option name="MAIN_CLASS_NAME" value="com.didenko.util.TransactionsToPositionConverterTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AssetReadDtoMapperTest.mapFromAssetTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TwelveAssetDataImporterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="portfolio-manager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.didenko.mapper.*" />
+          <option name="PATTERN" value="com.didenko.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.didenko.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.didenko.mapper.AssetReadDtoMapperTest" />
-      <option name="METHOD_NAME" value="mapFromAssetTest" />
+      <option name="PACKAGE_NAME" value="com.didenko.util" />
+      <option name="MAIN_CLASS_NAME" value="com.didenko.util.TwelveAssetDataImporterTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TwelveAssetDataImporterTest.checkHasApiKey" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="portfolio-manager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.didenko.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.didenko.util" />
+      <option name="MAIN_CLASS_NAME" value="com.didenko.util.TwelveAssetDataImporterTest" />
+      <option name="METHOD_NAME" value="checkHasApiKey" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AssetTransactionRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TwelveAssetDataImporterTest.getAssetPrice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="portfolio-manager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.didenko.repository.*" />
+          <option name="PATTERN" value="com.didenko.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.didenko.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.didenko.repository.AssetTransactionRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AssetTransactionRepositoryTest.checkPageable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="portfolio-manager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.didenko.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.didenko.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.didenko.repository.AssetTransactionRepositoryTest" />
-      <option name="METHOD_NAME" value="checkPageable" />
+      <option name="PACKAGE_NAME" value="com.didenko.util" />
+      <option name="MAIN_CLASS_NAME" value="com.didenko.util.TwelveAssetDataImporterTest" />
+      <option name="METHOD_NAME" value="getAssetPrice" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -233,11 +239,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TwelveAssetDataImporterTest.checkHasApiKey" />
+        <item itemvalue="JUnit.TwelveAssetDataImporterTest" />
+        <item itemvalue="JUnit.TwelveAssetDataImporterTest.getAssetPrice" />
         <item itemvalue="Spring Boot.ApplicationRunner" />
-        <item itemvalue="JUnit.AssetReadDtoMapperTest.mapFromAssetTest" />
-        <item itemvalue="JUnit.AssetReadDtoMapperTest" />
-        <item itemvalue="JUnit.AssetTransactionRepositoryTest" />
-        <item itemvalue="JUnit.AssetTransactionRepositoryTest.checkPageable" />
+        <item itemvalue="JUnit.TransactionsToPositionConverterTest" />
       </list>
     </recent_temporary>
   </component>
@@ -331,7 +337,7 @@
       <workItem from="1700645747283" duration="6154000" />
       <workItem from="1700729709751" duration="1743000" />
       <workItem from="1700904949995" duration="6752000" />
-      <workItem from="1700993194301" duration="642000" />
+      <workItem from="1700993194301" duration="10362000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -451,14 +457,6 @@
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
       <updated>1697278861303</updated>
-    </task>
-    <task id="LOCAL-00022" summary="fix transaction state during transaction creation">
-      <option name="closed" value="true" />
-      <created>1698308980147</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1698308980147</updated>
     </task>
     <task id="LOCAL-00023" summary="add test container configuration">
       <option name="closed" value="true" />
@@ -708,7 +706,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700911677743</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="refactoring part4">
+      <option name="closed" value="true" />
+      <created>1700993996220</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1700993996221</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -740,7 +746,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add sorting to transactions page" />
     <MESSAGE value="add filtering by asset name to transactions page" />
     <MESSAGE value="add closed positions to portfolio page" />
     <MESSAGE value="add basic localization" />
@@ -765,7 +770,8 @@
     <MESSAGE value="refactoring part1" />
     <MESSAGE value="refactoring part2 &amp; fix bug with portfolio view" />
     <MESSAGE value="refactoring part3" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring part3" />
+    <MESSAGE value="refactoring part4" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring part4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -788,11 +794,20 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/portfolio_manager$TwelveAssetDataImporterTest.ic" NAME="TwelveAssetDataImporterTest Coverage Results" MODIFIED="1701003420995" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.didenko.util.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/portfolio_manager$AssetReadDtoMapperTest_mapFromAssetTest.ic" NAME="AssetReadDtoMapperTest.mapFromAssetTest Coverage Results" MODIFIED="1698399215589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.didenko.mapper.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/portfolio_manager$ApplicationRunner.ic" NAME="ApplicationRunner Coverage Results" MODIFIED="1695229062743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/portfolio_manager$PriceForAssetsRetrieverTest.ic" NAME="PriceForAssetsRetrieverTest Coverage Results" MODIFIED="1700999092750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.didenko.util.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/portfolio_manager$ApplicationRunner.ic" NAME="ApplicationRunner Coverage Results" MODIFIED="1701001031854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.didenko.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/portfolio_manager$TransactionsToPositionConverterTest.ic" NAME="TransactionsToPositionConverterTest Coverage Results" MODIFIED="1701001137760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.didenko.util.*</FILTER>
     </SUITE>
   </component>
 </project>

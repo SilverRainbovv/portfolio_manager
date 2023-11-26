@@ -1,8 +1,10 @@
 package com.didenko.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Data;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.net.URI;
@@ -13,9 +15,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Data
+@Getter
 @RequiredArgsConstructor
 public class TwelveAssetDataImporter implements AssetDataImporter{
+
     private final String apiKey;
 
     @Override

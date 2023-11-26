@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor
@@ -18,36 +19,38 @@ public class TransactionsToPositionConverter {
 
     public List<PositionDto> convert(List<AssetTransactionReadDto> transactions) {
 
-        var positions = new ArrayList<PositionDto>();
+        List<PositionDto> positions = new ArrayList<>();
 
-        var transactionsByName = transactions.stream()
+        Map<String, List<AssetTransactionReadDto>> transactionsByName = transactions.stream()
                 .collect(Collectors.groupingBy(AssetTransactionReadDto::getAssetName));
 
         transactionsByName.keySet().forEach(name -> {
 
-            var transaction = transactionsByName.get(name).get(0);
+                    var transaction = transactionsByName.get(name).get(0);
 
-                    var currentPrice = transaction.getClosePrice() == null ? transaction.getCurrentPrice().setScale(3, RoundingMode.HALF_UP)
+                    BigDecimal currentPrice = transaction.getClosePrice() == null
+                            ? transaction.getCurrentPrice().setScale(3, RoundingMode.HALF_UP)
                             : transaction.getClosePrice().setScale(3, RoundingMode.HALF_UP);
-                    var closePrice = transaction.getClosePrice() == null ? null
+                    BigDecimal closePrice = transaction.getClosePrice() == null
+                            ? null
                             : transaction.getClosePrice().setScale(3, RoundingMode.HALF_UP);
-                    var openDate = transaction.getOpenDate();
-                    var closeDate = transaction.getCloseDate();
+                    String openDate = transaction.getOpenDate();
+                    String closeDate = transaction.getCloseDate();
 
-                    var longs = transactionsByName.values().stream()
+                    List<AssetTransactionReadDto> longs = transactionsByName.values().stream()
                             .flatMap(List::stream)
                             .filter(t -> t.getAssetName().equals(name))
                             .filter(t -> t.getPositionDirection().equals(PositionDirection.LONG))
                             .toList();
 
-                    var shorts = transactionsByName.values().stream()
+                    List<AssetTransactionReadDto> shorts = transactionsByName.values().stream()
                             .flatMap(List::stream)
                             .filter(t -> t.getAssetName().equals(name))
                             .filter(t -> t.getPositionDirection().equals(PositionDirection.SHORT))
                             .toList();
 
                     if (!longs.isEmpty()) {
-                        var longPosition = new PositionDto();
+                        PositionDto longPosition = new PositionDto();
                         longPosition.setAssetName(name);
                         longPosition.setDirection(PositionDirection.LONG.name());
                         longPosition.setCurrentPrice(currentPrice);
