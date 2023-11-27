@@ -80,6 +80,7 @@ public class AssetReadDtoMapper implements Mapper<Asset, AssetReadDto> {
     private BigDecimal getClosePriceByDirection(PositionDirection direction,
                                             Map<PositionDirection, List<AssetTransaction>> transactionMap) {
         List<AssetTransaction> transactionsByDirection = transactionMap.get(direction);
+        if (transactionsByDirection == null) return null;
         int size = transactionsByDirection.size();
         BigDecimal priceSum = transactionMap.get(direction).stream()
                 .map(AssetTransaction::getClosePrice)

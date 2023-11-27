@@ -37,4 +37,9 @@ public class Asset {
     public void addTransaction(AssetTransaction transaction){
         transactions.add(transaction);
     }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
+        portfolio.addAsset(this);
+    }
 }

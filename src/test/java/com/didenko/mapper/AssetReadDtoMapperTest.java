@@ -60,8 +60,7 @@ class AssetReadDtoMapperTest {
             .longOpenPrice(new BigDecimal(50))
             .shortOpenPrice(null)
             .currentPrice(null)
-            .longProfit(null)
-            .shortProfit(null)
+            .longClosePrice(new BigDecimal(55))
             .build();
 
     @Test

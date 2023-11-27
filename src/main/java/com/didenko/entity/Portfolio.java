@@ -29,4 +29,8 @@ public class Portfolio {
     @OneToMany(mappedBy = "portfolio")
     @Builder.Default
     private List<Asset> assets = new ArrayList<>();
+
+    public void addAsset(Asset asset){
+        assets.add(asset);
+    }
 }
