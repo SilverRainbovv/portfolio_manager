@@ -73,8 +73,12 @@ public class AssetTransactionService {
                 .collect(Collectors.groupingBy(AssetTransactionReadDto::getState));
 
         Map<TransactionState, List<PositionDto>> positionDtoMap = new HashMap<>();
-        positionDtoMap.put(OPEN, transactionsToPositionConverter.convert(transactionStateListMap.get(OPEN)));
-        positionDtoMap.put(CLOSED, transactionsToPositionConverter.convert(transactionStateListMap.get(CLOSED)));
+        List<AssetTransactionReadDto> openTransactions = transactionStateListMap.get(OPEN);
+        List<AssetTransactionReadDto> closedTransactions = transactionStateListMap.get(CLOSED);
+        if (openTransactions != null)
+            positionDtoMap.put(OPEN, transactionsToPositionConverter.convert(openTransactions));
+        if (closedTransactions != null)
+           positionDtoMap.put(CLOSED, transactionsToPositionConverter.convert(closedTransactions));
 
         return positionDtoMap;
     }

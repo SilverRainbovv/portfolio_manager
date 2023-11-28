@@ -12,9 +12,11 @@
         <a th:href="@{'/transaction/transaction/' + ${portfolioId}}">
             <button type="button" th:text="#{portfolio.page.addTransaction}"/>
         </a>
-        <a th:href="@{'/transaction/transactions/' + ${portfolioId}}">
-            <button type="button" th:text="#{portfolio.page.viewTransactions}"/>
-        </a>
+        <div th:if="${openPositions != null && closedPositions != null}">
+            <a th:href="@{'/transaction/transactions/' + ${portfolioId}}">
+                <button type="button" th:text="#{portfolio.page.viewTransactions}"/>
+            </a>
+        </div>
     </div>
     <div th:if="${openPositions == null && closedPositions == null}" th:text="#{portfolio.page.emptyPortfolioMessage}"/>
     <div class="tables">

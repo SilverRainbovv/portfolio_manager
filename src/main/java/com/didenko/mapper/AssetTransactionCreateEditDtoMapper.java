@@ -22,7 +22,7 @@ public class AssetTransactionCreateEditDtoMapper implements Mapper<AssetTransact
                         .build())
                 .build();
 
-        BigDecimal closePrice = object.getClosePrice() == null ? null : new BigDecimal(object.getClosePrice());
+        BigDecimal closePrice = object.getClosePrice().isEmpty() ? null : new BigDecimal(object.getClosePrice());
         LocalDateTime closeDate = object.getCloseDate() == null ? null : object.getCloseDate();
 
         AssetTransaction transaction = AssetTransaction.builder()

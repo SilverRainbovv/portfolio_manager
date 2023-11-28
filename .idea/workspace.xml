@@ -4,27 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add tests for utility classes">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/didenko/mapper/AssetTransactionReadDtoMapperTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/didenko/mapper/PortfolioCreateEditDtoMapperTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/didenko/mapper/PortfolioReadDtoMapperTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/didenko/mapper/UserCreateEditDtoMapperTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/didenko/mapper/UserReadDtoMapperTest.java" afterDir="false" />
+    <list default="true" id="d1c7f77f-2201-48fa-a3ac-c9cc641fd413" name="Changes" comment="add tests for mapper classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/dto/PortfolioCreateEditDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/dto/PortfolioCreateEditDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/entity/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/Asset.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/entity/Portfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/entity/Portfolio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetReadDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetReadDtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetTransactionCreateEditDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/AssetTransactionCreateEditDtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioCreateEditDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/mapper/PortfolioCreateEditDtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/util/TwelveAssetDataImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/util/TwelveAssetDataImporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/didenko/mapper/AssetReadDtoMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/didenko/mapper/AssetReadDtoMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/didenko/mapper/AssetTransactionCreateEditDtoMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/didenko/mapper/AssetTransactionCreateEditDtoMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/didenko/repository/AssetRepositoryTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/didenko/repository/AssetTransactionRepositoryTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/didenko/repository/PortfolioRepositoryTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/didenko/repository/TestStock.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/didenko/repository/UserRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/PortfolioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/http/controller/PortfolioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetTransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/didenko/service/AssetTransactionService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,23 +135,7 @@
       <recent name="com.didenko.dao" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.java in portfolio-manager">
-    <configuration name="PortfolioCreateEditDtoMapperTest.mapFrom" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="portfolio-manager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.didenko.mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.didenko.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.didenko.mapper.PortfolioCreateEditDtoMapperTest" />
-      <option name="METHOD_NAME" value="mapFrom" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Spring Boot.ApplicationRunner">
     <configuration name="PortfolioReadDtoMapperTest.mapFrom" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="portfolio-manager" />
       <extension name="coverage">
@@ -238,6 +205,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ApplicationRunner" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="portfolio-manager" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.didenko.ApplicationRunner" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.didenko.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
       <deployment type="dockerfile">
         <settings />
@@ -246,11 +226,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.ApplicationRunner" />
         <item itemvalue="JUnit.java in portfolio-manager" />
         <item itemvalue="JUnit.UserReadDtoMapperTest.mapFrom" />
         <item itemvalue="JUnit.UserCreateEditDtoMapperTest.mapFrom" />
         <item itemvalue="JUnit.PortfolioReadDtoMapperTest.mapFrom" />
-        <item itemvalue="JUnit.PortfolioCreateEditDtoMapperTest.mapFrom" />
       </list>
     </recent_temporary>
   </component>
@@ -345,7 +325,9 @@
       <workItem from="1700729709751" duration="1743000" />
       <workItem from="1700904949995" duration="6752000" />
       <workItem from="1700993194301" duration="10504000" />
-      <workItem from="1701074889716" duration="8251000" />
+      <workItem from="1701074889716" duration="8479000" />
+      <workItem from="1701102115072" duration="61000" />
+      <workItem from="1701165383890" duration="640000" />
     </task>
     <task id="LOCAL-00001" summary="initial project and dependencies setup">
       <created>1692630033711</created>
@@ -465,14 +447,6 @@
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
       <updated>1697278861303</updated>
-    </task>
-    <task id="LOCAL-00024" summary="fix short position calculation error">
-      <option name="closed" value="true" />
-      <created>1698327554734</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1698327554734</updated>
     </task>
     <task id="LOCAL-00025" summary="changes to AssetReadDtoMapper">
       <option name="closed" value="true" />
@@ -722,7 +696,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701003668861</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="add tests for mapper classes">
+      <option name="closed" value="true" />
+      <created>1701083329258</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1701083329258</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -754,7 +736,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add closed positions to portfolio page" />
     <MESSAGE value="add basic localization" />
     <MESSAGE value="add full localization" />
     <MESSAGE value="start integration of telegram bot" />
@@ -779,7 +760,8 @@
     <MESSAGE value="refactoring part3" />
     <MESSAGE value="refactoring part4" />
     <MESSAGE value="add tests for utility classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="add tests for utility classes" />
+    <MESSAGE value="add tests for mapper classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="add tests for mapper classes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -819,13 +801,19 @@
     <SUITE FILE_PATH="coverage/portfolio_manager$PortfolioCreateEditDtoMapperTest_mapFrom.ic" NAME="PortfolioCreateEditDtoMapperTest.mapFrom Coverage Results" MODIFIED="1701079173714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.didenko.mapper.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/portfolio_manager$java_in_portfolio_manager.ic" NAME="java in portfolio-manager Coverage Results" MODIFIED="1701083187812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/portfolio_manager$UserReadDtoMapperTest_mapFrom.ic" NAME="UserReadDtoMapperTest.mapFrom Coverage Results" MODIFIED="1701083172204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.didenko.mapper.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/portfolio_manager$TransactionsToPositionConverterTest.ic" NAME="TransactionsToPositionConverterTest Coverage Results" MODIFIED="1701001137760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.didenko.util.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/portfolio_manager$PriceForAssetsRetrieverTest.ic" NAME="PriceForAssetsRetrieverTest Coverage Results" MODIFIED="1700999092750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.didenko.util.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/portfolio_manager$PortfolioReadDtoMapperTest_mapFrom.ic" NAME="PortfolioReadDtoMapperTest.mapFrom Coverage Results" MODIFIED="1701081644469" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.didenko.mapper.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/portfolio_manager$java_in_portfolio_manager.ic" NAME="java in portfolio-manager Coverage Results" MODIFIED="1701076721766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/portfolio_manager$AssetTransactionReadDtoMapperTest_mapFrom.ic" NAME="AssetTransactionReadDtoMapperTest.mapFrom Coverage Results" MODIFIED="1701078735852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.didenko.mapper.*</FILTER>
     </SUITE>
@@ -837,9 +825,6 @@
     </SUITE>
     <SUITE FILE_PATH="coverage/portfolio_manager$UserCreateEditDtoMapperTest_mapFrom.ic" NAME="UserCreateEditDtoMapperTest.mapFrom Coverage Results" MODIFIED="1701082844628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.didenko.mapper.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/portfolio_manager$TransactionsToPositionConverterTest.ic" NAME="TransactionsToPositionConverterTest Coverage Results" MODIFIED="1701001137760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.didenko.util.*</FILTER>
     </SUITE>
   </component>
 </project>

@@ -50,10 +50,10 @@ public class PortfolioController {
         Map<TransactionState, List<PositionDto>> transactionsMap =
                 transactionService.findByPortfolioIdAndSortByTransactionState(portfolioId);
 
-        if (!transactionsMap.get(OPEN).isEmpty())
+        if (transactionsMap.get(OPEN) != null)
             model.addAttribute("openPositions", transactionsMap.get(OPEN));
 
-        if (!transactionsMap.get(CLOSED).isEmpty())
+        if (transactionsMap.get(CLOSED) != null)
             model.addAttribute("closedPositions", transactionsMap.get(CLOSED));
 
         model.addAttribute("portfolioId", portfolioId);
